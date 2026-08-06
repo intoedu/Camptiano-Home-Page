@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   캠프티아노기념사업회 디자인 토큰
+   황토(ochre) · 카키(khaki) · 나무/자연 — 따뜻하고 정중한 보훈 사이트
+   검정·회색·강한 빨강은 사용하지 않습니다.
+   ------------------------------------------------------------------ */
+@theme {
+  /* 크림 — 배경 계열 */
+  --color-cream-50: #fdfbf6;
+  --color-cream-100: #f8f3e9;
+  --color-cream-200: #f0e7d6;
+  --color-cream-300: #e5d8c0;
+
+  /* 황토 — 주조색 */
+  --color-ochre-200: #ecd6ab;
+  --color-ochre-300: #ddb877;
+  --color-ochre-400: #c99a4e;
+  --color-ochre-500: #b07f35;
+  --color-ochre-600: #8f6427;
+  --color-ochre-700: #6e4c1e;
+
+  /* 카키 — 보조색 */
+  --color-khaki-200: #d3d5bb;
+  --color-khaki-300: #a8aa84;
+  --color-khaki-400: #8a8d63;
+  --color-khaki-500: #6e7150;
+  --color-khaki-600: #565840;
+  --color-khaki-700: #3e4030;
+
+  /* 나무껍질 — 본문 텍스트 (순수 검정 대신) */
+  --color-bark-500: #6b5844;
+  --color-bark-600: #574634;
+  --color-bark-700: #46372a;
+  --color-bark-800: #362b20;
+  --color-bark-900: #271f17;
+
+  --font-serif: var(--font-noto-serif-kr), "Noto Serif KR", serif;
+  --font-sans: var(--font-noto-sans-kr), "Noto Sans KR", system-ui, sans-serif;
+
+  --shadow-warm: 0 1px 2px rgb(70 55 42 / 0.06), 0 8px 24px -8px rgb(70 55 42 / 0.14);
+  --shadow-warm-lg: 0 2px 4px rgb(70 55 42 / 0.06), 0 20px 48px -16px rgb(70 55 42 / 0.22);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream-50);
+    color: var(--color-bark-800);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-wrap: pretty;
+    /* 한국어는 어절 중간에서 줄이 끊기지 않도록 합니다. */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    color: var(--color-bark-900);
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: var(--color-ochre-200);
+    color: var(--color-bark-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ochre-600);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  /* 종이·한지 결의 은은한 질감 */
+  .texture-paper {
+    background-image:
+      radial-gradient(
+        circle at 20% 15%,
+        rgb(201 154 78 / 0.06) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        circle at 85% 70%,
+        rgb(110 113 80 / 0.07) 0%,
+        transparent 50%
+      );
+  }
+
+  /* 나뭇결 느낌의 가로 결 */
+  .texture-grain {
+    background-image: repeating-linear-gradient(
+      92deg,
+      rgb(70 55 42 / 0.028) 0px,
+      rgb(70 55 42 / 0.028) 1px,
+      transparent 1px,
+      transparent 9px
+    );
+  }
+
+  /* 사진이 준비되기 전, 자리를 지켜 주는 품위 있는 플레이스홀더 */
+  .photo-slot {
+    background-color: var(--color-cream-200);
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgb(176 127 53 / 0.09) 0px,
+      rgb(176 127 53 / 0.09) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

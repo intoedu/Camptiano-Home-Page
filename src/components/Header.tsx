@@ -1,0 +1,160 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { LogoMark, Wordmark } from "./Logo";
+import { IconClose, IconGlobe, IconMenu } from "./Icons";
+import type { Dictionary, Locale } from "@/i18n";
+import { navigation } from "@/lib/site";
+
+type NavKey = (typeof navigation)[number]["key"];
+
+export function Header({
+  locale,
+  dict,
+  orgName,
+  tagline,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+  orgName: string;
+  tagline: string;
+}) {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const other: Locale = locale === "ko" ? "en" : "ko";
+
+  // 페이지가 바뀌면 모바일 메뉴를 닫습니다.
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  // 메뉴가 열려 있는 동안 본문 스크롤을 잠급니다.
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const rest = pathname.replace(/^\/(ko|en)/, "") || "";
+  const switchHref = `/${other}${rest}`;
+
+  const isActive = (href: string) => pathname.startsWith(`/${locale}${href}`);
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-cream-300/70 bg-cream-50/90 backdrop-blur-md">
+      <div className="mx-auto flex h-18 w-full max-w-6xl items-center gap-4 px-5 sm:px-8">
+        <Link
+          href={`/${locale}`}
+          className="flex shrink-0 items-center gap-3"
+          aria-label={orgName}
+        >
+          <LogoMark className="h-10 w-10 sm:h-11 sm:w-11" />
+          <Wordmark name={orgName} tagline={tagline} />
+        </Link>
+
+        <nav
+          className="ml-auto hidden items-center gap-0.5 lg:flex"
+          aria-label={dict.nav.menu}
+        >
+          {navigation.map((item) => (
+            <Link
+              key={item.key}
+              href={`/${locale}${item.href}`}
+              aria-current={isActive(item.href) ? "page" : undefined}
+              className={`rounded-full px-2.5 py-2 text-sm font-medium whitespace-nowrap transition-colors xl:px-3 ${
+                isActive(item.href)
+                  ? "bg-cream-200 text-ochre-700"
+                  : "text-bark-700 hover:bg-cream-100 hover:text-ochre-700"
+              }`}
+            >
+              {dict.nav[item.key as NavKey]}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="ml-auto flex items-center gap-2 lg:ml-2">
+          <Link
+            href={switchHref}
+            hrefLang={other}
+            className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-bark-600 transition-colors hover:bg-cream-100 hover:text-ochre-700"
+          >
+            <IconGlobe className="h-4 w-4" />
+            <span className="hidden sm:inline">{dict.meta.switchTo}</span>
+            <span className="sm:hidden">{other.toUpperCase()}</span>
+          </Link>
+
+          <Link
+            href={`/${locale}/support`}
+            className="hidden rounded-full bg-ochre-600 px-5 py-2.5 text-sm font-semibold whitespace-nowrap text-cream-50 shadow-warm transition-colors hover:bg-ochre-700 sm:inline-flex"
+          >
+            {dict.nav.support}
+          </Link>
+
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            aria-label={dict.nav.menu}
+            aria-expanded={open}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-bark-700 transition-colors hover:bg-cream-100 lg:hidden"
+          >
+            <IconMenu />
+          </button>
+        </div>
+      </div>
+
+      {open ? (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <button
+            type="button"
+            aria-label={dict.nav.close}
+            onClick={() => setOpen(false)}
+            className="absolute inset-0 bg-bark-900/40 backdrop-blur-sm"
+          />
+          <div className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col overflow-y-auto bg-cream-50 shadow-warm-lg">
+            <div className="flex h-18 shrink-0 items-center justify-between border-b border-cream-300/70 px-5">
+              <span className="font-serif text-base font-semibold">
+                {dict.nav.menu}
+              </span>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label={dict.nav.close}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full text-bark-700 transition-colors hover:bg-cream-100"
+              >
+                <IconClose />
+              </button>
+            </div>
+
+            <nav className="flex flex-col p-3" aria-label={dict.nav.menu}>
+              {navigation.map((item) => (
+                <Link
+                  key={item.key}
+                  href={`/${locale}${item.href}`}
+                  className={`rounded-xl px-4 py-3.5 text-base font-medium transition-colors ${
+                    isActive(item.href)
+                      ? "bg-cream-200 text-ochre-700"
+                      : "text-bark-800 hover:bg-cream-100"
+                  }`}
+                >
+                  {dict.nav[item.key as NavKey]}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="mt-auto border-t border-cream-300/70 p-5">
+              <Link
+                href={`/${locale}/support`}
+                className="flex w-full items-center justify-center rounded-full bg-ochre-600 px-5 py-3.5 text-sm font-semibold text-cream-50"
+              >
+                {dict.nav.support}
+              </Link>
+            </div>
+          </div>
+        </div>
+      ) : null}
+    </header>
+  );
+}
