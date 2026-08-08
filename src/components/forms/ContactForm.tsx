@@ -14,7 +14,7 @@ export function ContactForm({
   dict: Dictionary;
 }) {
   const t = dict.contact;
-  const { state, submit } = useSubmit("/api/inquiry", site.contact.email);
+  const { state, submit } = useSubmit(site.contact.email);
   const [agreed, setAgreed] = useState(false);
 
   const subjectEntries = Object.entries(t.subjects) as [string, string][];

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>캠프티아노기념사업회 · Camp Tiano Memorial Association</title>
+    <link rel="icon" href="./favicon.svg" />
+    <!-- 자바스크립트가 꺼져 있어도 한국어 페이지로 넘어가도록 -->
+    <noscript><meta http-equiv="refresh" content="0; url=./ko/" /></noscript>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #fdfbf6;
+        color: #6b5844;
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 14px;
+      }
+      a {
+        color: #8f6427;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      잠시만 기다려 주세요 · <a href="./ko/">한국어</a> ·
+      <a href="./en/">English</a>
+    </p>
+    <script>
+      // 방문자의 브라우저 언어에 맞춰 한국어/영어 페이지로 안내합니다.
+      // (서버 미들웨어가 하던 일을 정적 사이트에서 대신합니다.)
+      (function () {
+        var langs = navigator.languages || [navigator.language || "ko"];
+        var target = "ko";
+        for (var i = 0; i < langs.length; i++) {
+          var tag = String(langs[i]).toLowerCase();
+          if (tag.indexOf("ko") === 0) {
+            target = "ko";
+            break;
+          }
+          if (tag.indexOf("en") === 0) {
+            target = "en";
+            break;
+          }
+        }
+        location.replace("./" + target + "/");
+      })();
+    </script>
+  </body>
+</html>

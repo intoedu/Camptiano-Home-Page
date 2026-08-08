@@ -3,7 +3,8 @@
 한국전쟁에 참전한 필리핀 용사와 그 가족을 기억하는 보훈 사이트.
 한국어·영어 2개 언어로 제공됩니다.
 
-- 예정 도메인: `www.camptiano.kr`
+- 현재 주소: `https://intoedu.github.io/Camptiano-Home-Page/` (GitHub Pages, 무료)
+- 예정 도메인: `www.camptiano.kr` (사업회에서 구매 여부 결정)
 - 목표 일정: 9월 18일 제74주년 추모식 이전 공개
 
 ## 개발
@@ -23,9 +24,9 @@ Node 22 이상이 필요합니다.
 | 프레임워크 | Next.js 15 (App Router) | 대부분의 페이지를 정적으로 미리 생성 |
 | 스타일 | Tailwind CSS 4 | 디자인 토큰은 `src/app/globals.css` 의 `@theme` |
 | 글꼴 | Noto Serif KR (제목) · Noto Sans KR (본문) | 빌드 시 자체 호스팅 |
-| 다국어 | `/ko`, `/en` 경로 분리 + 미들웨어 | 외부 라이브러리 없음 |
-| 문의·신청 | `/api/inquiry` → Resend 메일 발송 | 미설정 시 방문자 메일 앱으로 대체 |
-| 호스팅 | Vercel 무료 플랜 권장 | 예산 0원으로 운영 가능 |
+| 다국어 | `/ko`, `/en` 경로 분리 | 첫 진입 시 브라우저 언어로 자동 안내 |
+| 문의·신청 | 폼 접수 서비스 연동 | 미설정 시 방문자 메일 앱으로 대체 |
+| 호스팅 | **GitHub Pages** (정적 배포, 무료) | 서버 비용 0원 |
 
 ## 내용을 고치는 곳
 
@@ -63,20 +64,37 @@ items: [
 사진이 하나도 없는 앨범은 자리표시자가 대신 표시되므로, 준비되는 대로 하나씩
 채워 넣으면 됩니다.
 
-## 문의·신청 메일 연결
+## 배포
 
-기본 상태에서는 방문자가 폼을 제출하면 메일 앱이 열려 같은 내용을 사업회 주소로
-보내도록 되어 있습니다. 접수 내용을 서버에서 바로 받아 보려면 아래 환경변수를
-설정하세요. (Resend 무료 플랜: 하루 100통)
+`main` 브랜치에 변경이 올라가면 GitHub Actions가 자동으로 사이트를 새로 만들어
+GitHub Pages에 공개합니다. 별도로 해야 할 일은 없습니다.
+
+**저장소 최초 설정** — 한 번만 하면 됩니다.
+저장소 **Settings → Pages → Build and deployment → Source** 를 **GitHub Actions**
+로 지정하세요.
+
+### 도메인을 연결할 때
+
+`www.camptiano.kr` 같은 도메인을 구매해 연결하는 경우:
+
+1. 저장소 **Settings → Pages → Custom domain** 에 도메인 입력
+2. `.github/workflows/deploy.yml` 의 `BASE_PATH` 를 `""` 로 변경
+3. 도메인 등록업체(가비아·후이즈 등)에서 DNS 를 GitHub Pages 로 설정
+
+## 문의·신청 폼
+
+기본 상태에서는 방문자가 폼을 제출하면 **메일 앱이 열려** 입력한 내용이 그대로
+채워집니다. 별도 설정 없이 지금 바로 동작합니다.
+
+방문자가 사이트를 벗어나지 않고 접수하게 하려면, 무료 폼 접수 서비스
+(Formspree 등)에 가입해 받은 주소를 저장소 **Settings → Secrets and variables →
+Actions → Variables** 에 아래 이름으로 등록하세요.
 
 ```
-RESEND_API_KEY=re_xxxxxxxx
-INQUIRY_TO=사업회_받는_주소@example.com
-INQUIRY_FROM=no-reply@camptiano.kr
+NEXT_PUBLIC_FORM_ENDPOINT = https://formspree.io/f/xxxxxxxx
 ```
 
-`.env.example` 을 참고하세요. `INQUIRY_FROM` 은 Resend에 인증된 도메인의 주소여야
-합니다.
+등록하면 다음 배포부터 자동으로 적용됩니다.
 
 ## 남은 일
 

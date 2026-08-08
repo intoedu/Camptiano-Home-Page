@@ -14,7 +14,7 @@ export function ApplyForm({
   dict: Dictionary;
 }) {
   const t = dict.apply;
-  const { state, submit } = useSubmit("/api/inquiry", site.contact.email);
+  const { state, submit } = useSubmit(site.contact.email);
   const [agreed, setAgreed] = useState(false);
 
   const typeEntries = Object.entries(t.types) as [string, string][];

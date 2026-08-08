@@ -55,7 +55,8 @@ export async function generateMetadata({
       locale: locale === "ko" ? "ko_KR" : "en_US",
       title: `${org.name} — ${org.tagline}`,
     },
-    icons: { icon: "/favicon.svg" },
+    // 정적 배포 시 하위 경로(/Camptiano-Home-Page)를 붙여 줘야 합니다.
+    icons: { icon: `${process.env.BASE_PATH ?? ""}/favicon.svg` },
   };
 }
 

@@ -5,9 +5,18 @@
  * `TODO:` 로 표시된 값은 사업회 확인이 필요한 항목입니다.
  */
 
+/**
+ * 사이트가 실제로 열리는 주소.
+ * 도메인을 구매해 연결하기 전까지는 GitHub 기본 주소를 사용합니다.
+ * (검색엔진에 알려 줄 주소·sitemap 에 쓰입니다)
+ */
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  "https://intoedu.github.io/Camptiano-Home-Page";
+
 export const site = {
   domain: "www.camptiano.kr",
-  url: "https://www.camptiano.kr",
+  url: SITE_URL,
 
   org: {
     ko: {
