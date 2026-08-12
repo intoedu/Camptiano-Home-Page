@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Button, Container } from "@/components/ui";
+import Image from "next/image";
+import { Button, Container, PhotoSlot } from "@/components/ui";
 import { getDictionary, isLocale, locales, type Locale } from "@/i18n";
 import { getNewsPost, getSortedNews, newsPosts } from "@/content/news";
 import { formatDate } from "@/lib/format";
@@ -85,12 +86,67 @@ export default async function NewsPostPage({
             ))}
           </div>
 
-          <div className="mt-14 flex flex-wrap gap-3 border-t border-cream-300/70 pt-10">
-            <Button href={`/${locale}/apply`}>{dict.common.applyNow}</Button>
-            <Button href={`/${locale}/support`} variant="secondary">
-              {dict.common.donate}
-            </Button>
-          </div>
+          {post.photos?.length ? (
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              {post.photos.map((photo) => (
+                <figure
+                  key={photo.src}
+                  className="overflow-hidden rounded-xl bg-cream-200"
+                >
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt[locale]}
+                    width={1200}
+                    height={900}
+                    className="h-auto w-full object-cover"
+                  />
+                </figure>
+              ))}
+            </div>
+          ) : post.photoPlaceholders ? (
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              {Array.from({ length: post.photoPlaceholders }).map((_, i) => (
+                <PhotoSlot
+                  key={i}
+                  label={dict.common.photoPending}
+                  ratio="aspect-4/3"
+                />
+              ))}
+            </div>
+          ) : null}
+
+          {post.callout ? (
+            <aside className="mt-10 rounded-2xl bg-cream-100 p-6 ring-1 ring-ochre-300/60 sm:p-8">
+              <h2 className="font-serif text-lg font-semibold text-ochre-700">
+                {post.callout.heading[locale]}
+              </h2>
+              <ul className="mt-4 space-y-2.5">
+                {post.callout.lines[locale].map((line, index) => (
+                  <li
+                    key={index}
+                    className="text-base leading-relaxed text-bark-700"
+                  >
+                    {line}
+                  </li>
+                ))}
+              </ul>
+              {post.callout.note ? (
+                <p className="mt-5 border-t border-cream-300 pt-4 text-xs leading-relaxed text-bark-500">
+                  {post.callout.note[locale]}
+                </p>
+              ) : null}
+            </aside>
+          ) : null}
+
+          {/* 부고에는 행사 참석·후원 권유 버튼을 붙이지 않습니다. */}
+          {post.category === "memoriam" ? null : (
+            <div className="mt-14 flex flex-wrap gap-3 border-t border-cream-300/70 pt-10">
+              <Button href={`/${locale}/apply`}>{dict.common.applyNow}</Button>
+              <Button href={`/${locale}/support`} variant="secondary">
+                {dict.common.donate}
+              </Button>
+            </div>
+          )}
         </Container>
       </article>
 

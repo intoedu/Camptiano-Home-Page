@@ -140,6 +140,7 @@ export const ko = {
       event: "행사",
       report: "사업보고",
       press: "언론보도",
+      memoriam: "부고",
     },
     published: "게시일",
   },

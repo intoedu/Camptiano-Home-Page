@@ -1,6 +1,6 @@
 import type { Locale } from "@/i18n";
 
-export type NewsCategory = "notice" | "event" | "report" | "press";
+export type NewsCategory = "notice" | "event" | "report" | "press" | "memoriam";
 
 export type NewsPost = {
   slug: string;
@@ -9,10 +9,27 @@ export type NewsPost = {
   category: NewsCategory;
   /** 목록 상단에 고정 */
   pinned?: boolean;
+  /**
+   * 부고나 긴급 안내처럼 모든 페이지 상단에 띠로 알려야 하는 글.
+   * 한 번에 하나만 표시되며, 가장 최근 글이 우선합니다.
+   */
+  urgent?: boolean;
+  /** 상단 띠에 쓰일 짧은 문구 */
+  urgentLabel?: Record<Locale, string>;
   title: Record<Locale, string>;
   excerpt: Record<Locale, string>;
   /** 문단 배열 */
   body: Record<Locale, string[]>;
+  /** 본문 뒤에 상자로 강조해 보여 줄 안내 (후원 계좌 등) */
+  callout?: {
+    heading: Record<Locale, string>;
+    lines: Record<Locale, string[]>;
+    note?: Record<Locale, string>;
+  };
+  /** 본문에 곁들일 사진. /public 아래 경로. */
+  photos?: { src: string; alt: Record<Locale, string> }[];
+  /** 사진이 아직 없을 때 보여 줄 자리표시자 개수 */
+  photoPlaceholders?: number;
 };
 
 /**
@@ -22,6 +39,66 @@ export type NewsPost = {
  * 아래 두 건은 사업회 확인 후 세부 내용(시간·장소·계좌)을 채워 주세요.
  */
 export const newsPosts: NewsPost[] = [
+  {
+    slug: "col-flores-in-memoriam",
+    date: "2026-08-06",
+    category: "memoriam",
+    pinned: true,
+    urgent: true,
+    urgentLabel: {
+      ko: "부고 — 한국전 참전용사 플로레스 대령 별세",
+      en: "In memoriam — Col. Flores, Korean War veteran",
+    },
+    title: {
+      ko: "부고 — 필리핀 제14대대전투단 플로레스 대령 별세",
+      en: "In memoriam — Col. Flores of the 14th BCT",
+    },
+    excerpt: {
+      ko: "한국전쟁에 참전한 필리핀 제14대대전투단(14th BCT)의 퇴역 장교이자 14th BCT 초대 회장이었던 플로레스 대령께서 97세를 일기로 별세하셨습니다. 장례를 위한 도움을 청합니다.",
+      en: "Col. Flores — a retired officer of the Philippine 14th Battalion Combat Team and its first association president — has passed away at the age of 97. His family asks for help with the funeral.",
+    },
+    body: {
+      ko: [
+        "한국전쟁에 참전했던 필리핀 제14대대전투단(14th BCT)의 퇴역 장교이자 14th BCT 초대 회장이었던 플로레스 대령(Col. Flores)께서 97세를 일기로 별세하셨습니다.",
+        "플로레스 대령은 장애를 안고 살아오신 참전용사였으며, 한국전쟁 당시 대한민국의 자유를 위해 용감히 싸운 한국전 참전 영웅이었습니다.",
+        "고인의 희생과 헌신을 기억하며, 유가족께 깊은 위로를 전합니다.",
+        "장례 일정과 장소는 확인되는 대로 이 글에 다시 안내드리겠습니다.",
+        "대한민국을 위해 싸워 주신 고인의 희생과 헌신을 기억하며, 유가족에게도 하나님의 위로가 함께하시기를 기도합니다.",
+        "캠프티아노기념사업회 윤정화 선교사 올림",
+      ],
+      en: [
+        "Col. Flores, a retired officer of the Philippine 14th Battalion Combat Team (14th BCT) who served in the Korean War, and the first president of the 14th BCT association, has passed away at the age of 97.",
+        "He lived with a disability, and he fought bravely for the freedom of the Republic of Korea during the Korean War.",
+        "We remember his sacrifice and his service, and we extend our deepest sympathy to his family.",
+        "The funeral date and place will be added here as soon as they are confirmed.",
+        "We remember the sacrifice and devotion of one who fought for the Republic of Korea, and we pray that God's comfort will be with his family.",
+        "Yoon Jung-hwa, Camp Tiano Memorial Association",
+      ],
+    },
+    callout: {
+      heading: {
+        ko: "장례 후원 안내",
+        en: "Helping with the funeral",
+      },
+      lines: {
+        ko: [
+          "유가족이 장례를 치를 수 있도록 도움을 청합니다. 작은 금액이라도 큰 힘이 됩니다.",
+          "[한국] 카카오뱅크 3333-1838-79101 · 예금주 윤정화",
+          "[필리핀] GCash 09477101607 · 예금주 Aira Jane Alcantara",
+        ],
+        en: [
+          "His family has asked for help with the funeral. Any amount, however small, is a great help.",
+          "[Korea] KakaoBank 3333-1838-79101 · Yoon Jung-hwa",
+          "[Philippines] GCash 09477101607 · Aira Jane Alcantara",
+        ],
+      },
+      note: {
+        ko: "이 계좌는 플로레스 대령 장례 후원을 위한 것으로, 사업회의 일반 후원 계좌와 다릅니다.",
+        en: "These accounts are for Col. Flores's funeral, and are separate from the association's general donation account.",
+      },
+    },
+    photoPlaceholders: 2,
+  },
   {
     slug: "74th-memorial-ceremony",
     date: "2026-08-01",
@@ -91,4 +168,11 @@ export function getSortedNews() {
 
 export function getNewsPost(slug: string) {
   return newsPosts.find((post) => post.slug === slug);
+}
+
+/** 모든 페이지 상단 띠에 띄울 글 — 가장 최근 것 하나만. */
+export function getUrgentPost() {
+  return [...newsPosts]
+    .filter((post) => post.urgent)
+    .sort((a, b) => b.date.localeCompare(a.date))[0];
 }

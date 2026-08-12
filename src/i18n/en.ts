@@ -143,6 +143,7 @@ export const en: Dictionary = {
       event: "Events",
       report: "Reports",
       press: "Press",
+      memoriam: "In memoriam",
     },
     published: "Published",
   },
