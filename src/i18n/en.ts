@@ -79,9 +79,12 @@ export const en: Dictionary = {
     supportBody:
       "Gifts go to the descendants' scholarship fund, the Wall of the Fallen, and the photo memorial hall. We publish how the funds are used in our news section.",
 
-    visitorsEyebrow: "Remembering together",
-    visitorsToday: "Today",
-    visitorsTotal: "Total visits",
+  },
+
+  visitors: {
+    eyebrow: "Remembering together",
+    today: "Today",
+    total: "Total",
   },
 
   about: {
@@ -202,9 +205,15 @@ export const en: Dictionary = {
     bankHolder: "Account holder",
     copy: "Copy",
     copied: "Copied",
-    onlineHeading: "Online giving",
+    onlineHeading: "Quick giving",
+    onlineBody:
+      "Give through KakaoPay or Toss without entering an account number.",
     onlinePending:
-      "Online payment opens once the association's account and payment provider are registered. Until then, please use a bank transfer or the contact form.",
+      "Quick-giving links are being prepared. Until then, please use a bank transfer or the contact form.",
+    corporateHeading: "Companies and institutions",
+    corporateBody:
+      "We welcome support and partnership from companies, public bodies, schools, and churches — co-hosting the ceremony, matching the scholarship fund, or helping build the memorial hall. Let's talk about what fits.",
+    corporateCta: "Discuss a partnership",
     receiptHeading: "Tax receipts",
     receiptPending:
       "We will confirm whether tax-deductible receipts can be issued and update this page.",

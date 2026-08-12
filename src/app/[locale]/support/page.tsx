@@ -38,6 +38,9 @@ export default async function SupportPage({
   const dict = getDictionary(locale);
   const t = dict.support;
 
+  // 링크가 채워진 간편 후원 수단만 노출합니다.
+  const activeLinks = site.donationLinks.filter((link) => link.url);
+
   return (
     <>
       <PageHeader eyebrow={dict.nav.support} title={t.title} lead={t.lead} />
@@ -142,8 +145,43 @@ export default async function SupportPage({
               <h2 className="font-serif text-lg font-semibold">
                 {t.onlineHeading}
               </h2>
-              <div className="mt-3">
-                <PendingNote>{t.onlinePending}</PendingNote>
+              {activeLinks.length > 0 ? (
+                <>
+                  <p className="mt-3 text-sm leading-relaxed text-bark-600">
+                    {t.onlineBody}
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {activeLinks.map((link) => (
+                      <a
+                        key={link.id}
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="inline-flex items-center justify-center rounded-full bg-ochre-600 px-6 py-3 text-sm font-semibold text-cream-50 shadow-warm transition-colors hover:bg-ochre-700"
+                      >
+                        {link.label[locale]}
+                      </a>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <div className="mt-3">
+                  <PendingNote>{t.onlinePending}</PendingNote>
+                </div>
+              )}
+            </div>
+
+            <div>
+              <h2 className="font-serif text-lg font-semibold">
+                {t.corporateHeading}
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-bark-600">
+                {t.corporateBody}
+              </p>
+              <div className="mt-4">
+                <Button href={`/${locale}/contact`} variant="secondary">
+                  {t.corporateCta}
+                </Button>
               </div>
             </div>
 

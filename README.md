@@ -96,6 +96,27 @@ NEXT_PUBLIC_FORM_ENDPOINT = https://formspree.io/f/xxxxxxxx
 
 등록하면 다음 배포부터 자동으로 적용됩니다.
 
+## 방문자 통계
+
+방문자 수는 **GoatCounter** 로 집계합니다. 쿠키를 쓰지 않고 개인을 식별하는
+정보를 남기지 않아, 개인정보처리방침과 충돌하지 않습니다. 비영리단체는 무료입니다.
+
+1. https://www.goatcounter.com 에서 가입 (사이트 코드를 정하게 됩니다)
+2. 저장소 **Settings → Secrets and variables → Actions → Variables** 에 등록
+
+```
+NEXT_PUBLIC_GOATCOUNTER_CODE = 가입할_때_정한_코드
+```
+
+등록 전에는 홈페이지 하단의 방문자 수가 아예 표시되지 않습니다.
+(빈 숫자가 보이는 일이 없도록 해 두었습니다)
+
+## 온라인 간편 후원
+
+카카오페이·토스 송금 링크는 결제 대행 계약 없이 무료로 만들 수 있습니다.
+링크를 만드신 뒤 `src/lib/site.ts` 의 `donationLinks` 에 넣어 주세요.
+비어 있으면 해당 버튼은 표시되지 않습니다.
+
 ## 남은 일
 
 공개 전에 채워야 할 자료와 확인이 필요한 사실은 [`CONTENT-CHECKLIST.md`](./CONTENT-CHECKLIST.md)

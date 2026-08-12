@@ -126,6 +126,17 @@ export const site = {
     },
   ],
 
+  /**
+   * 온라인 간편 후원 링크.
+   * 카카오페이·토스는 송금 링크만 만들면 되므로 결제 대행 계약 없이,
+   * 비용 없이 바로 쓸 수 있습니다.
+   * TODO: 링크를 만들어 아래에 넣어 주세요. 빈 값이면 버튼이 숨겨집니다.
+   */
+  donationLinks: [
+    { id: "kakaopay", label: { ko: "카카오페이로 후원", en: "Give with KakaoPay" }, url: "" },
+    { id: "toss", label: { ko: "토스로 후원", en: "Give with Toss" }, url: "" },
+  ],
+
   /** 후원 계좌 — TODO: 사업회 명의 계좌 확정 후 입력 */
   bank: {
     name: { ko: "은행명 확인 중", en: "Bank to be confirmed" },

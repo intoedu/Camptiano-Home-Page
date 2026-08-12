@@ -76,9 +76,12 @@ export const ko = {
     supportBody:
       "후원금은 참전용사 후손 장학기금, 전사자의 벽 건립, 사진 기념관 건립에 사용됩니다. 사용 내역은 공지·소식에 정기적으로 공개합니다.",
 
-    visitorsEyebrow: "함께 기억하는 분들",
-    visitorsToday: "오늘 방문",
-    visitorsTotal: "누적 방문",
+  },
+
+  visitors: {
+    eyebrow: "함께 기억하는 분들",
+    today: "오늘",
+    total: "누적",
   },
 
   about: {
@@ -199,9 +202,15 @@ export const ko = {
     bankHolder: "예금주",
     copy: "복사",
     copied: "복사되었습니다",
-    onlineHeading: "온라인 후원",
+    onlineHeading: "간편 후원",
+    onlineBody:
+      "카카오페이나 토스로 계좌번호를 입력하지 않고 바로 후원하실 수 있습니다.",
     onlinePending:
-      "온라인 결제는 사업회 계좌 및 결제 대행 등록 절차가 마무리되는 대로 열립니다. 그동안은 계좌 후원 또는 문의하기를 이용해 주세요.",
+      "간편 후원 링크를 준비하고 있습니다. 그동안은 계좌 후원 또는 문의하기를 이용해 주세요.",
+    corporateHeading: "기업·기관 후원",
+    corporateBody:
+      "기업, 관공서, 학교, 교회 등 단체 차원의 후원과 협력을 환영합니다. 추모식 공동 주최, 장학기금 매칭, 사진 기념관 건립 참여 등 함께할 수 있는 방법을 상의드리겠습니다.",
+    corporateCta: "협력 문의하기",
     receiptHeading: "기부금 영수증",
     receiptPending:
       "기부금 영수증 발급 가능 여부는 확인 후 안내드리겠습니다.",

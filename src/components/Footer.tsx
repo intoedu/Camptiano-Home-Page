@@ -9,6 +9,7 @@ import {
   IconYoutube,
 } from "./Icons";
 import { Container } from "./ui";
+import { VisitorStats } from "./VisitorStats";
 import type { Dictionary, Locale } from "@/i18n";
 import { navigation, site } from "@/lib/site";
 
@@ -122,11 +123,35 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-cream-200/15 pt-8 text-xs text-cream-200/55 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {year} {dict.footer.rights}. All rights reserved.
-          </p>
-          <p>{dict.footer.builtNote}</p>
+        <div className="mt-14 border-t border-cream-200/15 pt-8">
+          <VisitorStats
+            labels={{
+              eyebrow: dict.visitors.eyebrow,
+              today: dict.visitors.today,
+              total: dict.visitors.total,
+            }}
+          />
+
+          <div className="flex flex-col gap-4 text-xs text-cream-200/55 sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              © {year} {dict.footer.rights}. All rights reserved.
+            </p>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              <Link
+                href={`/${locale}/privacy`}
+                className="transition-colors hover:text-ochre-300"
+              >
+                {dict.footer.privacy}
+              </Link>
+              <Link
+                href={`/${locale}/terms`}
+                className="transition-colors hover:text-ochre-300"
+              >
+                {dict.footer.terms}
+              </Link>
+              <span>{dict.footer.builtNote}</span>
+            </div>
+          </div>
         </div>
       </Container>
     </footer>

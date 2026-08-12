@@ -6,7 +6,13 @@ import { newsPosts } from "@/content/news";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ["", ...navigation.map((item) => item.href), "/support"];
+  const paths = [
+    "",
+    ...navigation.map((item) => item.href),
+    "/support",
+    "/privacy",
+    "/terms",
+  ];
 
   const pages = locales.flatMap((locale) =>
     paths.map((path) => ({
