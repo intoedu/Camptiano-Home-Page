@@ -1,7 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { ContactActions } from "@/components/ContactActions";
 import { Countdown } from "@/components/Countdown";
+import { MemorialScene } from "@/components/MemorialScene";
 import { programIcons, IconArrowRight, IconMapPin } from "@/components/Icons";
 import {
   Button,
@@ -50,18 +53,18 @@ export default async function HomePage({
         />
         <Container className="relative grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-12 lg:gap-16 lg:py-28">
           <div className="lg:col-span-7">
-            <p className="mb-5 flex items-center gap-3 text-xs font-semibold tracking-[0.18em] text-ochre-600 uppercase">
+            <p className="rise mb-5 flex items-center gap-3 text-xs font-semibold tracking-[0.18em] text-ochre-600 uppercase">
               <span aria-hidden className="h-px w-10 bg-ochre-400" />
               {t.heroEyebrow}
             </p>
-            <h1 className="text-4xl leading-[1.15] font-semibold whitespace-pre-line sm:text-5xl lg:text-6xl">
+            <h1 className="rise rise-1 text-4xl leading-[1.15] font-semibold whitespace-pre-line sm:text-5xl lg:text-6xl">
               {t.heroTitle}
             </h1>
-            <p className="mt-7 max-w-xl text-base leading-relaxed text-bark-600 sm:text-lg">
+            <p className="rise rise-2 mt-7 max-w-xl text-base leading-relaxed text-bark-600 sm:text-lg">
               {t.heroBody}
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Button href={`/${locale}/apply`}>{t.heroPrimary}</Button>
+            <div className="rise rise-3 mt-9 flex flex-wrap gap-3">
+              <Button href={`/${locale}/visit`}>{t.heroPrimary}</Button>
               <Button href={`/${locale}/about`} variant="secondary">
                 {t.heroSecondary}
               </Button>
@@ -69,17 +72,22 @@ export default async function HomePage({
           </div>
 
           <div className="lg:col-span-5">
-            <figure className="relative">
-              <PhotoSlot
-                label={
-                  locale === "ko"
-                    ? "캠프티아노 기념비 사진이 들어갈 자리"
-                    : "Photograph of the Camp Tiano Memorial"
-                }
-                ratio="aspect-4/5"
-                className="w-full shadow-warm-lg"
-              />
-              <figcaption className="mt-3 text-xs leading-relaxed text-bark-500">
+            <figure className="rise rise-2 relative">
+              <div className="overflow-hidden rounded-2xl shadow-warm-lg ring-1 ring-ochre-300/30">
+                {site.heroPhoto ? (
+                  <Image
+                    src={site.heroPhoto}
+                    alt={site.heroPhotoAlt[locale]}
+                    width={800}
+                    height={1000}
+                    priority
+                    className="aspect-4/5 h-auto w-full object-cover"
+                  />
+                ) : (
+                  <MemorialScene className="aspect-4/5 w-full" />
+                )}
+              </div>
+              <figcaption className="mt-3.5 text-xs leading-relaxed text-bark-500">
                 {locale === "ko"
                   ? "70년을 그 자리에서 견뎌 온 기념비."
                   : "The stone that has kept its place for seventy years."}
@@ -118,7 +126,7 @@ export default async function HomePage({
               }}
               passedLabel={t.ceremonyPassed}
             />
-            <Button href={`/${locale}/apply`} variant="onDark">
+            <Button href={`/${locale}/contact`} variant="onDark">
               {t.ceremonyCta}
             </Button>
           </div>
@@ -286,6 +294,25 @@ export default async function HomePage({
               {dict.common.contactUs}
             </Link>
           </div>
+        </Container>
+      </section>
+
+      {/* ── 연락 ───────────────────────────────────────────────── */}
+      <section className="py-20 sm:py-24">
+        <Container className="flex flex-col items-center gap-8 text-center">
+          <div className="max-w-xl">
+            <p className="mb-3 text-xs font-semibold tracking-[0.18em] text-ochre-600 uppercase">
+              {dict.nav.contact}
+            </p>
+            <h2 className="text-2xl font-semibold sm:text-3xl">
+              {dict.contact.lead}
+            </h2>
+          </div>
+          <ContactActions
+            callLabel={dict.common.call}
+            emailLabel={dict.common.email}
+            size="lg"
+          />
         </Container>
       </section>
     </>

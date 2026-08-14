@@ -12,9 +12,8 @@ export const ko = {
     news: "공지·소식",
     gallery: "갤러리",
     visit: "오시는 길",
-    apply: "신청·예약",
     faq: "자주 묻는 질문",
-    contact: "문의하기",
+    contact: "연락처",
     support: "후원·헌금",
     menu: "메뉴",
     close: "닫기",
@@ -25,12 +24,11 @@ export const ko = {
     learnMore: "자세히 보기",
     viewAll: "전체 보기",
     donate: "후원하기",
-    applyNow: "참석 신청하기",
-    contactUs: "문의하기",
+    contactUs: "연락하기",
+    call: "전화 걸기",
+    email: "이메일 보내기",
     backTo: "목록으로",
     comingSoon: "준비 중입니다",
-    required: "필수",
-    optional: "선택",
     days: "일",
     hours: "시간",
     minutes: "분",
@@ -43,12 +41,12 @@ export const ko = {
     heroTitle: "70년 전 세워진\n작은 비석 하나",
     heroBody:
       "그 돌 하나에 담겨 있던, 잊혀진 전쟁의 잊혀진 영웅 이야기. 캠프티아노 기념비의 주인공 티아노 아폴로 소위와 한국전에 참전하신 필리핀 용사 여러분께 감사의 마음을 전합니다.",
-    heroPrimary: "추모식 참석 신청",
+    heroPrimary: "추모식 안내 보기",
     heroSecondary: "이야기 읽기",
 
     ceremonyLabel: "다가오는 추모식",
     ceremonyHeading: "제{n}주년 캠프티아노 추모식",
-    ceremonyCta: "참석 신청",
+    ceremonyCta: "참석 문의",
     ceremonyPassed: "올해 추모식이 마무리되었습니다. 다음 일정은 곧 안내드립니다.",
 
     missionEyebrow: "우리가 하는 일",
@@ -171,29 +169,6 @@ export const ko = {
     ],
   },
 
-  apply: {
-    title: "신청·예약",
-    lead: "추모식 참석, 단체 참배, 교육·강연 요청을 접수합니다.",
-    typeLabel: "신청 종류",
-    types: {
-      ceremony: "추모식 참석",
-      group: "단체 참배 예약",
-      education: "교육·강연 요청",
-      family: "유가족 등록",
-    },
-    nameLabel: "성함",
-    orgLabel: "소속 (단체·기관·학교)",
-    emailLabel: "이메일",
-    phoneLabel: "연락처",
-    countLabel: "참석 인원",
-    dateLabel: "희망 날짜",
-    messageLabel: "남기실 말씀",
-    submit: "신청서 보내기",
-    privacy:
-      "입력하신 정보는 신청 처리 목적으로만 사용하며, 처리 완료 후 파기합니다.",
-    privacyAgree: "개인정보 수집·이용에 동의합니다.",
-  },
-
   support: {
     title: "후원·헌금",
     lead: "여러분의 후원이 장학기금, 전사자의 벽, 사진 기념관으로 이어집니다.",
@@ -207,7 +182,7 @@ export const ko = {
     onlineBody:
       "카카오페이나 토스로 계좌번호를 입력하지 않고 바로 후원하실 수 있습니다.",
     onlinePending:
-      "간편 후원 링크를 준비하고 있습니다. 그동안은 계좌 후원 또는 문의하기를 이용해 주세요.",
+      "간편 후원 링크를 준비하고 있습니다. 그동안은 계좌 후원을 이용하시거나 전화·이메일로 연락 주세요.",
     corporateHeading: "기업·기관 후원",
     corporateBody:
       "기업, 관공서, 학교, 교회 등 단체 차원의 후원과 협력을 환영합니다. 추모식 공동 주최, 장학기금 매칭, 사진 기념관 건립 참여 등 함께할 수 있는 방법을 상의드리겠습니다.",
@@ -229,30 +204,48 @@ export const ko = {
   },
 
   contact: {
-    title: "문의하기",
-    lead: "궁금한 점, 제안, 취재 요청, 유가족 연결 — 무엇이든 편하게 연락 주세요.",
-    formHeading: "문의 남기기",
+    title: "연락처",
+    lead: "전화나 이메일로 편하게 연락 주세요. 사람이 직접 받고, 직접 답합니다.",
     infoHeading: "직접 연락",
-    nameLabel: "성함",
+    phoneLabel: "전화",
     emailLabel: "이메일",
-    phoneLabel: "연락처",
-    subjectLabel: "문의 유형",
-    subjects: {
-      general: "일반 문의",
-      donation: "후원 문의",
-      family: "유가족·참전용사 관련",
-      press: "취재·언론",
-      volunteer: "자원봉사·재능기부",
-      photo: "사진·자료 제공",
-    },
-    messageLabel: "내용",
-    submit: "보내기",
-    sending: "보내는 중…",
-    success: "문의가 접수되었습니다. 빠른 시일 안에 답변드리겠습니다.",
-    error: "전송에 실패했습니다. 잠시 후 다시 시도하시거나 이메일로 연락 주세요.",
-    privacy:
-      "입력하신 정보는 문의 답변 목적으로만 사용하며, 답변 완료 후 파기합니다.",
-    privacyAgree: "개인정보 수집·이용에 동의합니다.",
+
+    callHeading: "전화로 연락",
+    callBody:
+      "가장 빠른 방법입니다. 추모식 참석이나 단체 참배처럼 일정 조율이 필요한 일은 전화가 편합니다.",
+    callCta: "전화 걸기",
+
+    mailHeading: "이메일로 연락",
+    mailBody:
+      "사진이나 자료를 함께 보내실 때, 또는 영어로 연락하실 때 이용해 주세요. 필리핀에서 보내시는 문의도 환영합니다.",
+    mailCta: "이메일 보내기",
+
+    reasonsHeading: "이런 일로 연락 주세요",
+    reasons: [
+      {
+        title: "추모식 참석·단체 참배",
+        body: "개인·가족 참석은 신청 없이 오셔도 됩니다. 학교, 기관, 기업 등 단체로 오시거나 헌화를 계획하고 계시면 미리 알려 주세요.",
+      },
+      {
+        title: "유가족·참전용사",
+        body: "필리핀 참전용사의 가족이시라면 꼭 연락 주세요. 한국어와 영어 모두 가능합니다.",
+      },
+      {
+        title: "사진·자료 제공",
+        body: "아버지, 할아버지의 사진 한 장이 사진 기념관의 시작이 됩니다. 원본이 아니어도 좋습니다.",
+      },
+      {
+        title: "후원·협력",
+        body: "개인 후원, 기업·기관 협력, 자원봉사와 재능기부 모두 환영합니다.",
+      },
+      {
+        title: "취재·강연 요청",
+        body: "언론 취재, 학교와 기관의 교육 프로그램 요청을 받고 있습니다.",
+      },
+    ],
+
+    noteHeading: "연락하실 때",
+    note: "전화를 받지 못하는 경우가 있습니다. 문자나 이메일을 남겨 주시면 반드시 답을 드리겠습니다.",
   },
 
   footer: {

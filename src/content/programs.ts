@@ -26,12 +26,12 @@ export const programs: Program[] = [
       ko: [
         "캠프티아노 기념비 앞에서 열리는 추모식은 사업회의 가장 오래된 일이자, 모든 일의 출발점입니다.",
         "참전용사와 유가족, 정부 기관과 기업, 학교와 청소년, 그리고 감사의 마음을 전하고자 하는 국민 누구나 함께합니다. 헌화와 묵념, 참전 기록 낭독으로 이어집니다.",
-        "참석은 무료이며, 신청·예약 페이지에서 미리 알려 주시면 좌석과 안내를 준비해 드립니다.",
+        "참석은 무료이며, 전화나 이메일로 미리 알려 주시면 좌석과 안내를 준비해 드립니다.",
       ],
       en: [
         "The ceremony before the Camp Tiano Memorial is the association's oldest work, and the origin of everything else we do.",
         "Veterans and families, government bodies and companies, schools and young people, and any citizen who wishes to give thanks stand together — for the wreath-laying, the silence, and the reading of the record.",
-        "Attendance is free. Telling us in advance through the Register page lets us prepare seating and guidance for you.",
+        "Attendance is free. A call or an email in advance lets us prepare seating and guidance for you.",
       ],
     },
   },
@@ -141,12 +141,12 @@ export const programs: Program[] = [
       ko: [
         "필리핀 참전용사들의 역할을 알지 못했던 한국과 세계의 다음 세대에게, 한국전쟁의 의미와 참전 용사들의 희생을 전하는 교육 프로그램을 준비하고 있습니다.",
         "학교 방문 수업, 기념비 현장 학습, 한국어·영어 교육 자료 제작을 계획하고 있습니다.",
-        "학교나 기관에서 강연을 요청하시려면 신청·예약 페이지를 이용해 주세요.",
+        "학교나 기관에서 강연을 요청하시려면 전화나 이메일로 연락 주세요.",
       ],
       en: [
         "A programme to teach what the Korean War meant, and what these veterans gave, to a generation in Korea and abroad that never knew the Filipino contingent existed.",
         "We are planning school visits, field learning at the memorial, and teaching materials in both Korean and English.",
-        "Schools and institutions can request a talk through the Register page.",
+        "Schools and institutions can request a talk by phone or email.",
       ],
     },
   },

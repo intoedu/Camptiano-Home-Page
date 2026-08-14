@@ -121,7 +121,7 @@ export default async function VisitPage({
             </dl>
 
             <div className="mt-8">
-              <Button href={`/${locale}/apply`}>{dict.nav.apply}</Button>
+              <Button href={`/${locale}/contact`}>{dict.common.contactUs}</Button>
             </div>
           </div>
         </Container>
@@ -171,7 +171,7 @@ export default async function VisitPage({
                 {site.ceremony.place[locale]}
               </p>
             </div>
-            <Button href={`/${locale}/apply`}>
+            <Button href={`/${locale}/contact`}>
               {dict.home.ceremonyCta}
             </Button>
           </Card>

@@ -111,6 +111,20 @@
     );
   }
 
+  /* 첫 화면이 조용히 자리를 잡도록 하는 짧은 등장 */
+  .rise {
+    animation: rise 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+  .rise-1 {
+    animation-delay: 0.06s;
+  }
+  .rise-2 {
+    animation-delay: 0.12s;
+  }
+  .rise-3 {
+    animation-delay: 0.18s;
+  }
+
   /* 사진이 준비되기 전, 자리를 지켜 주는 품위 있는 플레이스홀더 */
   .photo-slot {
     background-color: var(--color-cream-200);
@@ -121,6 +135,17 @@
       transparent 1px,
       transparent 12px
     );
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 

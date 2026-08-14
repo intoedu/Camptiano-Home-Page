@@ -56,6 +56,17 @@ export const site = {
     kakao: "",
   },
 
+  /**
+   * 메인 화면 큰 사진.
+   * 기념비 사진이 준비되면 "/images/파일이름.jpg" 를 넣어 주세요.
+   * 비어 있으면 삽화(MemorialScene)가 대신 표시됩니다.
+   */
+  heroPhoto: "",
+  heroPhotoAlt: {
+    ko: "캠프티아노 기념비",
+    en: "The Camp Tiano Memorial",
+  },
+
   /** 기념비 위치 — 지도 및 오시는 길에 사용 */
   memorial: {
     // TODO: 캠프티아노 기념비 정확한 주소·좌표 확인 필요
@@ -147,14 +158,13 @@ export const site = {
 
 export type Locale = "ko" | "en";
 
-/** 전역 내비게이션 — 의뢰서의 메뉴 구성 그대로 */
+/** 전역 내비게이션 */
 export const navigation = [
   { href: "/about", key: "about" },
   { href: "/programs", key: "programs" },
   { href: "/news", key: "news" },
   { href: "/gallery", key: "gallery" },
   { href: "/visit", key: "visit" },
-  { href: "/apply", key: "apply" },
   { href: "/faq", key: "faq" },
   { href: "/contact", key: "contact" },
 ] as const;

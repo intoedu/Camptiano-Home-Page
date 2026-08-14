@@ -22,11 +22,11 @@ export const faqGroups: FaqGroup[] = [
         a: {
           ko: [
             "네. 참전용사와 유가족은 물론, 감사의 마음을 전하고자 하는 어느 분이든 함께하실 수 있습니다. 참가비는 없습니다.",
-            "준비를 위해 '신청·예약' 페이지에서 미리 알려 주시면 감사하겠습니다.",
+            "준비를 위해 전화나 이메일로 미리 알려 주시면 감사하겠습니다.",
           ],
           en: [
             "Yes. Veterans and their families are our honoured guests, and anyone who wishes to give thanks is welcome. There is no fee.",
-            "Letting us know in advance through the Register page helps us prepare.",
+            "Letting us know in advance by phone or email helps us prepare.",
           ],
         },
       },
@@ -37,10 +37,10 @@ export const faqGroups: FaqGroup[] = [
         },
         a: {
           ko: [
-            "학교, 기관, 기업, 교회 등 단체 참석은 '신청·예약'에서 단체 참배를 선택해 인원과 희망 날짜를 알려 주세요. 헌화나 별도 순서를 원하시면 문의하기로 연락 주시면 함께 준비하겠습니다.",
+            "학교, 기관, 기업, 교회 등 단체로 오시는 경우에는 전화나 이메일로 인원과 희망 날짜를 알려 주세요. 헌화나 별도 순서를 원하시면 함께 준비하겠습니다.",
           ],
           en: [
-            "Schools, institutions, companies, and churches can select the group visit option on the Register page and tell us the number of people and preferred date. If you would like to lay a wreath or take part in the programme, contact us and we will arrange it together.",
+            "Schools, institutions, companies, and churches are asked to call or email us with the number of people and a preferred date. If you would like to lay a wreath or take part in the programme, we will arrange it with you.",
           ],
         },
       },
@@ -121,11 +121,11 @@ export const faqGroups: FaqGroup[] = [
         },
         a: {
           ko: [
-            "'신청·예약'의 유가족 등록 또는 문의하기를 통해 연락 주세요. 한국어와 영어 모두 가능합니다.",
+            "전화나 이메일로 연락 주세요. 한국어와 영어 모두 가능합니다.",
             "사업회는 유가족의 한국 방문이 이루어질 수 있도록 준비하고 있습니다. 연락처를 남겨 주시면 진행 상황을 계속 알려 드리겠습니다.",
           ],
           en: [
-            "Please use the family registration option on the Register page, or the contact form. We can correspond in English or Korean.",
+            "Please call or email us. We correspond in English and Korean.",
             "The association is working toward bringing veterans' families to Korea. If you leave your contact details we will keep you informed as this develops.",
           ],
         },
@@ -173,10 +173,10 @@ export const faqGroups: FaqGroup[] = [
         },
         a: {
           ko: [
-            "문의하기에서 '취재·언론' 또는 '신청·예약'의 교육·강연 요청을 선택해 연락 주세요. 학교와 기관 대상 교육 프로그램을 준비하고 있습니다.",
+            "전화나 이메일로 연락 주세요. 학교와 기관 대상 교육 프로그램을 준비하고 있습니다.",
           ],
           en: [
-            "Please select 'Press and media' on the contact form, or the education / speaking request on the Register page. We are developing programmes for schools and institutions.",
+            "Please call or email us. We are developing programmes for schools and institutions.",
           ],
         },
       },

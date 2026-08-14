@@ -14,7 +14,6 @@ export const en: Dictionary = {
     news: "News",
     gallery: "Gallery",
     visit: "Visit",
-    apply: "Register",
     faq: "FAQ",
     contact: "Contact",
     support: "Donate",
@@ -27,12 +26,11 @@ export const en: Dictionary = {
     learnMore: "Learn more",
     viewAll: "View all",
     donate: "Donate",
-    applyNow: "Register to attend",
-    contactUs: "Contact us",
+    contactUs: "Get in touch",
+    call: "Call",
+    email: "Email us",
     backTo: "Back to list",
     comingSoon: "Coming soon",
-    required: "required",
-    optional: "optional",
     days: "days",
     hours: "hrs",
     minutes: "min",
@@ -45,12 +43,12 @@ export const en: Dictionary = {
     heroTitle: "One small stone,\nset seventy years ago",
     heroBody:
       "In that single stone lay the story of forgotten heroes of a forgotten war. We offer our gratitude to Lt. Apolo Tiano, whose name the Camp Tiano Memorial carries, and to every Filipino veteran who came to Korea.",
-    heroPrimary: "Register to attend",
+    heroPrimary: "About the ceremony",
     heroSecondary: "Read the story",
 
     ceremonyLabel: "Upcoming memorial ceremony",
     ceremonyHeading: "The {n} Camp Tiano Memorial Ceremony",
-    ceremonyCta: "Register",
+    ceremonyCta: "Ask about attending",
     ceremonyPassed:
       "This year's ceremony has concluded. The next date will be announced soon.",
 
@@ -174,28 +172,6 @@ export const en: Dictionary = {
     ],
   },
 
-  apply: {
-    title: "Register & Book",
-    lead: "For ceremony attendance, group visits, and education or speaking requests.",
-    typeLabel: "Request type",
-    types: {
-      ceremony: "Attend the memorial ceremony",
-      group: "Book a group visit",
-      education: "Education / speaking request",
-      family: "Register as a veteran's family",
-    },
-    nameLabel: "Full name",
-    orgLabel: "Organisation (group, institution, school)",
-    emailLabel: "Email",
-    phoneLabel: "Phone",
-    countLabel: "Number of attendees",
-    dateLabel: "Preferred date",
-    messageLabel: "Anything you'd like to add",
-    submit: "Send request",
-    privacy:
-      "Your details are used only to process this request and are deleted once it is complete.",
-    privacyAgree: "I consent to the collection and use of my personal data.",
-  },
 
   support: {
     title: "Donate",
@@ -210,7 +186,7 @@ export const en: Dictionary = {
     onlineBody:
       "Give through KakaoPay or Toss without entering an account number.",
     onlinePending:
-      "Quick-giving links are being prepared. Until then, please use a bank transfer or the contact form.",
+      "Quick-giving links are being prepared. Until then, please use a bank transfer, or call or email us.",
     corporateHeading: "Companies and institutions",
     corporateBody:
       "We welcome support and partnership from companies, public bodies, schools, and churches — co-hosting the ceremony, matching the scholarship fund, or helping build the memorial hall. Let's talk about what fits.",
@@ -233,29 +209,47 @@ export const en: Dictionary = {
 
   contact: {
     title: "Contact",
-    lead: "Questions, suggestions, press enquiries, or help reaching a family — please get in touch.",
-    formHeading: "Send a message",
+    lead: "Reach us by phone or email. A person reads it, and a person replies.",
     infoHeading: "Reach us directly",
-    nameLabel: "Full name",
-    emailLabel: "Email",
     phoneLabel: "Phone",
-    subjectLabel: "Subject",
-    subjects: {
-      general: "General enquiry",
-      donation: "Giving",
-      family: "Veterans and families",
-      press: "Press and media",
-      volunteer: "Volunteering",
-      photo: "Offering photographs or records",
-    },
-    messageLabel: "Message",
-    submit: "Send",
-    sending: "Sending…",
-    success: "Thank you — your message has reached us. We'll reply shortly.",
-    error: "The message could not be sent. Please try again, or email us directly.",
-    privacy:
-      "Your details are used only to reply to this enquiry and are deleted afterwards.",
-    privacyAgree: "I consent to the collection and use of my personal data.",
+    emailLabel: "Email",
+
+    callHeading: "By phone",
+    callBody:
+      "The fastest way. For anything that needs scheduling — attending the ceremony, arranging a group visit — a call is easiest.",
+    callCta: "Call us",
+
+    mailHeading: "By email",
+    mailBody:
+      "Best when you are sending photographs or documents, or writing in English. Enquiries from the Philippines are very welcome.",
+    mailCta: "Email us",
+
+    reasonsHeading: "Why people write to us",
+    reasons: [
+      {
+        title: "Attending the ceremony",
+        body: "Individuals and families may simply come; no registration is needed. If you are coming as a school, institution, or company, or plan to lay a wreath, please tell us in advance.",
+      },
+      {
+        title: "Veterans and families",
+        body: "If you are the family of a Filipino veteran, please do get in touch. We correspond in English and Korean.",
+      },
+      {
+        title: "Photographs and records",
+        body: "One photograph of a father or grandfather is where the memorial hall begins. It need not be an original.",
+      },
+      {
+        title: "Giving and partnership",
+        body: "Personal gifts, corporate and institutional partnership, volunteering and pro bono skills — all welcome.",
+      },
+      {
+        title: "Press and speaking",
+        body: "We take press enquiries and requests for talks from schools and institutions.",
+      },
+    ],
+
+    noteHeading: "Before you call",
+    note: "We are not always able to answer the phone. Leave a message or send an email and we will reply without fail.",
   },
 
   footer: {

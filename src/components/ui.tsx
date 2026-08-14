@@ -154,7 +154,10 @@ export function Card({
   );
 }
 
-/** 사진이 준비되기 전 자리를 지키는 플레이스홀더 */
+/**
+ * 사진이 준비되기 전 자리를 지키는 플레이스홀더.
+ * 망가진 이미지가 아니라 '의도된 빈 액자'로 보이도록 그립니다.
+ */
 export function PhotoSlot({
   label,
   className = "",
@@ -166,9 +169,23 @@ export function PhotoSlot({
 }) {
   return (
     <div
-      className={`photo-slot flex items-center justify-center rounded-xl ring-1 ring-ochre-300/40 ring-inset ${ratio} ${className}`}
+      className={`photo-slot flex flex-col items-center justify-center gap-2.5 rounded-xl ring-1 ring-ochre-300/40 ring-inset ${ratio} ${className}`}
     >
-      <span className="px-4 text-center text-xs font-medium tracking-wide text-ochre-700/60">
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        className="h-7 w-7 text-ochre-600/35"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.3}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="3" y="5" width="18" height="14" rx="1.5" />
+        <path d="m3 15.4 4.6-4.5 3 2.9 2.3-2.1 5.1 4.4" />
+        <circle cx="8.2" cy="9.2" r="1.1" />
+      </svg>
+      <span className="px-4 text-center text-[11px] font-medium tracking-wide text-ochre-700/50">
         {label}
       </span>
     </div>

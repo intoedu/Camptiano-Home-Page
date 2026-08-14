@@ -4,9 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LogoMark, Wordmark } from "./Logo";
-import { IconClose, IconGlobe, IconMenu } from "./Icons";
+import { IconClose, IconGlobe, IconMenu, IconPhone } from "./Icons";
 import type { Dictionary, Locale } from "@/i18n";
-import { navigation } from "@/lib/site";
+import { navigation, site } from "@/lib/site";
 
 type NavKey = (typeof navigation)[number]["key"];
 
@@ -76,6 +76,18 @@ export function Header({
         </nav>
 
         <div className="ml-auto flex items-center gap-2 lg:ml-2">
+          {/* 전화가 가장 빠른 연락 수단이므로 어느 화면에서나 한 번에 닿게 둡니다. */}
+          <a
+            href={`tel:${site.contact.phoneHref}`}
+            aria-label={`${dict.contact.callCta} ${site.contact.phone}`}
+            className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium whitespace-nowrap text-bark-700 transition-colors hover:bg-cream-100 hover:text-ochre-700"
+          >
+            <IconPhone className="h-4 w-4" />
+            <span className="hidden xl:inline tabular-nums">
+              {site.contact.phone}
+            </span>
+          </a>
+
           <Link
             href={switchHref}
             hrefLang={other}
@@ -144,13 +156,20 @@ export function Header({
               ))}
             </nav>
 
-            <div className="mt-auto border-t border-cream-300/70 p-5">
+            <div className="mt-auto space-y-3 border-t border-cream-300/70 p-5">
               <Link
                 href={`/${locale}/support`}
                 className="flex w-full items-center justify-center rounded-full bg-ochre-600 px-5 py-3.5 text-sm font-semibold text-cream-50"
               >
                 {dict.nav.support}
               </Link>
+              <a
+                href={`tel:${site.contact.phoneHref}`}
+                className="flex w-full items-center justify-center gap-2 rounded-full px-5 py-3.5 text-sm font-semibold text-bark-800 ring-1 ring-inset ring-cream-300"
+              >
+                <IconPhone className="h-4 w-4" />
+                {site.contact.phone}
+              </a>
             </div>
           </div>
         </div>

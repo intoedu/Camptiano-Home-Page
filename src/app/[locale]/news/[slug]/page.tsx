@@ -141,7 +141,7 @@ export default async function NewsPostPage({
           {/* 부고에는 행사 참석·후원 권유 버튼을 붙이지 않습니다. */}
           {post.category === "memoriam" ? null : (
             <div className="mt-14 flex flex-wrap gap-3 border-t border-cream-300/70 pt-10">
-              <Button href={`/${locale}/apply`}>{dict.common.applyNow}</Button>
+              <Button href={`/${locale}/contact`}>{dict.common.contactUs}</Button>
               <Button href={`/${locale}/support`} variant="secondary">
                 {dict.common.donate}
               </Button>

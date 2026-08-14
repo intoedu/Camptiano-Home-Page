@@ -22,8 +22,8 @@ export type LegalDocument = {
 /**
  * 개인정보처리방침.
  *
- * 사이트가 실제로 수집하는 항목만 적었습니다.
- * 문의·신청 폼에서 받는 정보 외에는 수집하지 않습니다.
+ * 사이트가 실제로 하는 일만 적었습니다.
+ * 홈페이지에는 입력 양식이 없어, 사이트 자체가 수집하는 개인정보는 없습니다.
  *
  * TODO: 개인정보 보호책임자 성함·직위·연락처를 사업회에서 확정해 주세요.
  */
@@ -37,45 +37,39 @@ export const privacyPolicy: LegalDocument = {
   sections: [
     {
       heading: {
-        ko: "1. 수집하는 개인정보 항목과 목적",
-        en: "1. What we collect, and why",
+        ko: "1. 홈페이지는 개인정보를 수집하지 않습니다",
+        en: "1. This website collects nothing",
       },
       body: {
         ko: [
-          "사업회는 방문자가 문의하기 또는 신청·예약 양식을 직접 작성해 보내신 경우에 한해 아래 정보를 수집합니다. 그 밖에 방문자가 입력하지 않은 정보를 자동으로 수집하지 않습니다.",
+          "이 홈페이지에는 이름이나 연락처를 입력하는 양식이 없습니다. 회원가입도 없습니다. 따라서 방문만으로는 어떤 개인정보도 수집되지 않습니다.",
+          "연락은 전화와 이메일로만 받습니다. 방문자가 먼저 연락해 주신 경우에 한해, 그 연락에 답하기 위한 목적으로 아래 정보가 사업회에 남습니다.",
         ],
         en: [
-          "We collect the following only when a visitor voluntarily submits the contact or registration form. We do not automatically collect anything a visitor has not entered.",
+          "This website has no form asking for your name or contact details, and there is no sign-up. Simply visiting the site collects nothing.",
+          "We take enquiries by phone and email only. Where you contact us first, the following remains with the association solely so that we can reply.",
         ],
       },
       table: {
         columns: {
-          ko: ["구분", "수집 항목", "이용 목적"],
-          en: ["Form", "Fields", "Purpose"],
+          ko: ["연락 방법", "남는 정보", "이용 목적"],
+          en: ["How you contact us", "What remains", "Purpose"],
         },
         rows: {
           ko: [
+            ["전화", "전화번호, 통화로 알려 주신 내용", "문의에 대한 답변과 안내"],
             [
-              "문의하기",
-              "성함, 이메일, 연락처(선택), 문의 유형, 문의 내용",
-              "문의에 대한 답변",
-            ],
-            [
-              "신청·예약",
-              "성함, 소속(선택), 이메일, 연락처, 참석 인원, 희망 날짜, 남기실 말씀",
-              "추모식·단체 참배·교육 요청 접수 및 안내",
+              "이메일",
+              "이메일 주소, 메일에 적어 주신 내용과 첨부 자료",
+              "문의에 대한 답변, 제공해 주신 사진·자료의 보존",
             ],
           ],
           en: [
+            ["Phone", "Your number, and what you tell us", "Replying and following up"],
             [
-              "Contact",
-              "Name, email, phone (optional), subject, message",
-              "Replying to your enquiry",
-            ],
-            [
-              "Registration",
-              "Name, organisation (optional), email, phone, number of attendees, preferred date, message",
-              "Processing and confirming your request",
+              "Email",
+              "Your address, your message, and anything you attach",
+              "Replying, and preserving photographs or records you offer",
             ],
           ],
         },
@@ -120,12 +114,14 @@ export const privacyPolicy: LegalDocument = {
       },
       body: {
         ko: [
-          "문의·신청 양식의 접수와 전달을 위해 외부 서비스를 이용할 수 있습니다. 이 경우 위탁받는 업체는 접수 내용을 사업회 메일함으로 전달하는 목적 외에는 개인정보를 이용할 수 없습니다.",
-          "현재 이용 중인 서비스는 홈페이지 하단 또는 이 페이지에 공개하며, 변경 시 미리 알려 드립니다.",
+          "사업회는 개인정보 처리를 외부에 위탁하지 않습니다.",
+          "홈페이지는 GitHub Pages 를 통해 공개되며, 이는 웹페이지를 전달하는 역할만 합니다. 방문자의 개인정보가 이곳에 저장되지 않습니다.",
+          "앞으로 위탁이 필요해지는 경우, 위탁받는 업체와 위탁 업무를 이 페이지에 미리 공개하겠습니다.",
         ],
         en: [
-          "We may use an external service to receive and forward form submissions. Such a processor may not use the data for any purpose beyond delivering it to our mailbox.",
-          "Services currently in use are disclosed on this page, and we give notice before any change.",
+          "We do not outsource the processing of personal data.",
+          "The site is published through GitHub Pages, which only serves the web pages themselves. No visitor's personal data is stored there.",
+          "Should outsourcing become necessary, we will disclose the processor and the work entrusted to them on this page in advance.",
         ],
       },
     },

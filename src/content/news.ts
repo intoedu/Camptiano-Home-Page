@@ -116,13 +116,13 @@ export const newsPosts: NewsPost[] = [
       ko: [
         "캠프티아노기념사업회는 오는 9월 18일 제74주년 추모식을 엽니다.",
         "한국전쟁에 참전한 필리핀 용사들과, 이 땅에서 스러져 간 전사자들을 기억하는 자리입니다. 참전용사와 유가족은 물론, 감사의 마음을 전하고자 하는 어느 분이든 함께하실 수 있습니다.",
-        "정확한 시간과 장소, 식순은 확정되는 대로 이 게시판과 홈 화면에 다시 안내드리겠습니다. 참석을 원하시는 분은 '신청·예약' 페이지에서 미리 알려 주시면 준비에 큰 도움이 됩니다.",
-        "단체로 참석하시거나 헌화를 계획하고 계신 기관·학교·기업은 문의하기를 통해 연락 주시기 바랍니다.",
+        "정확한 시간과 장소, 식순은 확정되는 대로 이 게시판과 홈 화면에 다시 안내드리겠습니다. 참석을 원하시는 분은 전화나 이메일로 미리 알려 주시면 준비에 큰 도움이 됩니다.",
+        "단체로 참석하시거나 헌화를 계획하고 계신 기관·학교·기업은 전화나 이메일로 연락 주시기 바랍니다.",
       ],
       en: [
         "The Camp Tiano Memorial Association will hold the 74th memorial ceremony on 18 September.",
         "It is a gathering to remember the Filipino soldiers who came to the Korean War, and those who fell on this soil. Veterans and their families are our honoured guests, and anyone who wishes to give thanks is welcome to join.",
-        "The exact time, venue, and order of service will be posted here and on the home page as soon as they are confirmed. If you plan to attend, letting us know through the Register page helps us prepare.",
+        "The exact time, venue, and order of service will be posted here and on the home page as soon as they are confirmed. If you plan to attend, a call or an email in advance helps us prepare.",
         "Institutions, schools, and companies attending as a group or planning a wreath-laying are asked to contact us in advance.",
       ],
     },
