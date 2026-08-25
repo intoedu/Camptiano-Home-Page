@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Noto_Sans_KR, Noto_Serif_KR } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 
@@ -10,19 +9,15 @@ import { UrgentNotice } from "@/components/UrgentNotice";
 import { getDictionary, isLocale, locales, type Locale } from "@/i18n";
 import { site } from "@/lib/site";
 
-const notoSerifKr = Noto_Serif_KR({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-noto-serif-kr",
-  display: "swap",
-});
-
-const notoSansKr = Noto_Sans_KR({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-  variable: "--font-noto-sans-kr",
-  display: "swap",
-});
+/**
+ * 글꼴은 브라우저가 직접 받아 갑니다.
+ *
+ * 예전에는 next/font 로 빌드할 때 내려받았는데, 폰트 서버가 잠깐만 불안정해도
+ * 배포 전체가 실패했습니다(실제로 한 번 실패했습니다). 빌드가 바깥 서버에
+ * 기대지 않도록 바꿨습니다. 글꼴을 못 받아 와도 아래 대체 글꼴로 정상 표시됩니다.
+ */
+const FONT_CSS =
+  "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;500;600;700&display=swap";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -77,10 +72,16 @@ export default async function LocaleLayout({
   const org = site.org[typedLocale];
 
   return (
-    <html
-      lang={typedLocale}
-      className={`${notoSerifKr.variable} ${notoSansKr.variable}`}
-    >
+    <html lang={typedLocale}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="stylesheet" href={FONT_CSS} />
+      </head>
       <body className="flex min-h-screen flex-col">
         <a
           href="#main"

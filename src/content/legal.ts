@@ -116,11 +116,13 @@ export const privacyPolicy: LegalDocument = {
         ko: [
           "사업회는 개인정보 처리를 외부에 위탁하지 않습니다.",
           "홈페이지는 GitHub Pages 를 통해 공개되며, 이는 웹페이지를 전달하는 역할만 합니다. 방문자의 개인정보가 이곳에 저장되지 않습니다.",
+          "글꼴은 Google Fonts 에서 불러옵니다. 이 과정에서 방문자의 IP 주소가 Google 서버에 전달될 수 있습니다. 글꼴을 표시하는 목적 외에 사업회가 이 정보를 받거나 이용하지는 않습니다.",
           "앞으로 위탁이 필요해지는 경우, 위탁받는 업체와 위탁 업무를 이 페이지에 미리 공개하겠습니다.",
         ],
         en: [
           "We do not outsource the processing of personal data.",
           "The site is published through GitHub Pages, which only serves the web pages themselves. No visitor's personal data is stored there.",
+          "Typefaces are loaded from Google Fonts, which may transmit a visitor's IP address to Google's servers. Beyond displaying the typefaces, the association neither receives nor uses that information.",
           "Should outsourcing become necessary, we will disclose the processor and the work entrusted to them on this page in advance.",
         ],
       },

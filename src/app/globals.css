@@ -35,8 +35,12 @@
   --color-bark-800: #362b20;
   --color-bark-900: #271f17;
 
-  --font-serif: var(--font-noto-serif-kr), "Noto Serif KR", serif;
-  --font-sans: var(--font-noto-sans-kr), "Noto Sans KR", system-ui, sans-serif;
+  /* 글꼴을 못 받아 온 경우에도 한글이 제대로 보이도록 대체 글꼴을 넉넉히 둡니다. */
+  --font-serif:
+    "Noto Serif KR", "Nanum Myeongjo", "Apple SD Gothic Neo", "Batang", serif;
+  --font-sans:
+    "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Malgun Gothic", system-ui, sans-serif;
 
   --shadow-warm: 0 1px 2px rgb(70 55 42 / 0.06), 0 8px 24px -8px rgb(70 55 42 / 0.14);
   --shadow-warm-lg: 0 2px 4px rgb(70 55 42 / 0.06), 0 20px 48px -16px rgb(70 55 42 / 0.22);
