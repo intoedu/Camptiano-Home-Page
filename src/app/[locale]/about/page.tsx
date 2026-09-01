@@ -75,29 +75,13 @@ export default async function AboutPage({
 
       {/* 캠프티아노, 그 이름의 유래 */}
       <section className="texture-paper border-y border-cream-300/70 bg-cream-100/70 py-20 sm:py-24">
-        <Container className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
-          <div>
-            <SectionHeading
-              eyebrow={locale === "ko" ? "기록" : "The record"}
-              title={t.storyHeading}
-            />
-            <div className="mt-7">
-              <PendingNote>{t.storyBody}</PendingNote>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <PhotoSlot label={dict.common.photoPending} ratio="aspect-square" />
-            <PhotoSlot
-              label={dict.common.photoPending}
-              ratio="aspect-square"
-              className="mt-8"
-            />
-            <PhotoSlot label={dict.common.photoPending} ratio="aspect-square" />
-            <PhotoSlot
-              label={dict.common.photoPending}
-              ratio="aspect-square"
-              className="mt-8"
-            />
+        <Container className="max-w-3xl">
+          <SectionHeading
+            eyebrow={locale === "ko" ? "기록" : "The record"}
+            title={t.storyHeading}
+          />
+          <div className="mt-7">
+            <PendingNote>{t.storyBody}</PendingNote>
           </div>
         </Container>
       </section>

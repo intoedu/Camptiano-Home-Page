@@ -11,9 +11,9 @@ import {
 import { Container } from "./ui";
 import { VisitorStats } from "./VisitorStats";
 import type { Dictionary, Locale } from "@/i18n";
-import { navigation, site } from "@/lib/site";
+import { footerNavigation, site } from "@/lib/site";
 
-type NavKey = (typeof navigation)[number]["key"];
+type NavKey = (typeof footerNavigation)[number]["key"];
 
 export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const org = site.org[locale];
@@ -64,7 +64,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               {dict.footer.linksHeading}
             </h3>
             <ul className="space-y-2.5 text-sm">
-              {navigation.map((item) => (
+              {footerNavigation.map((item) => (
                 <li key={item.key}>
                   <Link
                     href={`/${locale}${item.href}`}

@@ -159,15 +159,24 @@ export const site = {
 
 export type Locale = "ko" | "en";
 
-/** 전역 내비게이션 */
+/**
+ * 상단 메뉴. 여섯 개까지만 둡니다 — 더 늘어나면 한눈에 들어오지 않습니다.
+ * 자주 묻는 질문은 하단 바로가기에서 찾을 수 있습니다.
+ */
 export const navigation = [
   { href: "/about", key: "about" },
   { href: "/programs", key: "programs" },
   { href: "/news", key: "news" },
   { href: "/gallery", key: "gallery" },
   { href: "/visit", key: "visit" },
-  { href: "/faq", key: "faq" },
   { href: "/contact", key: "contact" },
+] as const;
+
+/** 하단 바로가기 — 상단 메뉴에 더해 안내 성격의 페이지까지 */
+export const footerNavigation = [
+  ...navigation,
+  { href: "/faq", key: "faq" },
+  { href: "/support", key: "support" },
 ] as const;
 
 export function localePath(locale: Locale, href: string) {

@@ -5,7 +5,6 @@ import "../globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { VisitorStatsScript } from "@/components/VisitorStats";
-import { UrgentNotice } from "@/components/UrgentNotice";
 import { getDictionary, isLocale, locales, type Locale } from "@/i18n";
 import { site } from "@/lib/site";
 
@@ -89,7 +88,6 @@ export default async function LocaleLayout({
         >
           {dict.nav.skipToContent}
         </a>
-        <UrgentNotice locale={typedLocale} />
         <Header
           locale={typedLocale}
           dict={dict}

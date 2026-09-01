@@ -9,13 +9,6 @@ export type NewsPost = {
   category: NewsCategory;
   /** 목록 상단에 고정 */
   pinned?: boolean;
-  /**
-   * 부고나 긴급 안내처럼 모든 페이지 상단에 띠로 알려야 하는 글.
-   * 한 번에 하나만 표시되며, 가장 최근 글이 우선합니다.
-   */
-  urgent?: boolean;
-  /** 상단 띠에 쓰일 짧은 문구 */
-  urgentLabel?: Record<Locale, string>;
   title: Record<Locale, string>;
   excerpt: Record<Locale, string>;
   /** 문단 배열 */
@@ -44,11 +37,6 @@ export const newsPosts: NewsPost[] = [
     date: "2026-08-06",
     category: "memoriam",
     pinned: true,
-    urgent: true,
-    urgentLabel: {
-      ko: "부고 — 한국전 참전용사 플로레스 대령 별세",
-      en: "In memoriam — Col. Flores, Korean War veteran",
-    },
     title: {
       ko: "부고 — 필리핀 제14대대전투단 플로레스 대령 별세",
       en: "In memoriam — Col. Flores of the 14th BCT",
@@ -168,11 +156,4 @@ export function getSortedNews() {
 
 export function getNewsPost(slug: string) {
   return newsPosts.find((post) => post.slug === slug);
-}
-
-/** 모든 페이지 상단 띠에 띄울 글 — 가장 최근 것 하나만. */
-export function getUrgentPost() {
-  return [...newsPosts]
-    .filter((post) => post.urgent)
-    .sort((a, b) => b.date.localeCompare(a.date))[0];
 }

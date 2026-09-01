@@ -23,10 +23,12 @@ export function Countdown({
   datetime,
   labels,
   passedLabel,
+  tone = "light",
 }: {
   datetime: string;
   labels: { days: string; hours: string; minutes: string };
   passedLabel: string;
+  tone?: "light" | "dark";
 }) {
   const [remaining, setRemaining] = useState<Remaining>(null);
   const [mounted, setMounted] = useState(false);
@@ -45,9 +47,15 @@ export function Countdown({
     return <div className="h-20" aria-hidden />;
   }
 
+  const dark = tone === "dark";
+
   if (!remaining) {
     return (
-      <p className="text-sm leading-relaxed text-cream-200/80">{passedLabel}</p>
+      <p
+        className={`text-sm leading-relaxed ${dark ? "text-cream-200/80" : "text-bark-600"}`}
+      >
+        {passedLabel}
+      </p>
     );
   }
 
@@ -58,16 +66,28 @@ export function Countdown({
   ];
 
   return (
-    <div className="flex gap-3" role="timer" aria-live="off">
+    <div className="flex gap-2.5" role="timer" aria-live="off">
       {cells.map((cell) => (
         <div
           key={cell.label}
-          className="min-w-20 rounded-xl bg-cream-50/10 px-4 py-3 text-center ring-1 ring-cream-200/20"
+          className={`min-w-18 rounded-xl px-4 py-3 text-center ring-1 ${
+            dark
+              ? "bg-cream-50/10 ring-cream-200/20"
+              : "bg-cream-50 ring-cream-300/80"
+          }`}
         >
-          <div className="font-serif text-2xl leading-none font-semibold text-cream-50 tabular-nums sm:text-3xl">
+          <div
+            className={`font-serif text-2xl leading-none font-semibold tabular-nums ${
+              dark ? "text-cream-50" : "text-ochre-700"
+            }`}
+          >
             {cell.value}
           </div>
-          <div className="mt-1.5 text-[11px] tracking-wide text-cream-200/70">
+          <div
+            className={`mt-1.5 text-[11px] tracking-wide ${
+              dark ? "text-cream-200/70" : "text-bark-500"
+            }`}
+          >
             {cell.label}
           </div>
         </div>

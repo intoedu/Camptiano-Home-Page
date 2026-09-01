@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { locales } from "@/i18n";
-import { navigation, site } from "@/lib/site";
+import { footerNavigation, site } from "@/lib/site";
 import { newsPosts } from "@/content/news";
 
 export const dynamic = "force-static";
@@ -8,8 +8,7 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
     "",
-    ...navigation.map((item) => item.href),
-    "/support",
+    ...footerNavigation.map((item) => item.href),
     "/privacy",
     "/terms",
   ];
