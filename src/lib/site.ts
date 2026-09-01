@@ -41,10 +41,11 @@ export const site = {
     phone: "010-2603-0324",
     phoneHref: "+82-10-2603-0324",
     email: "yoonjenny324@gmail.com",
-    // TODO: 사무실 주소 확인 필요
+    // 캠프티아노기념교회 개소 안내문에 인쇄된 주소.
+    // TODO: 한글 표기(죽곡로)와 상세 주소가 맞는지 사업회 확인 부탁드립니다.
     address: {
-      ko: "주소 확인 중",
-      en: "Address to be confirmed",
+      ko: "강원도 양구군 죽곡로 289",
+      en: "289 Jukgok-ro, Yanggu-gun, Gangwon-do, Korea",
     },
   },
 

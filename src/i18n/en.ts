@@ -160,7 +160,7 @@ export const en: Dictionary = {
   visit: {
     title: "Visit",
     lead: "How to reach the Camp Tiano Memorial and the association's office.",
-    mapPending: "The map will be added once the exact location is confirmed.",
+    mapPending: "Open directions in a map app. Once the memorial's exact coordinates are confirmed, the map will appear here.",
     addressLabel: "Address",
     transportHeading: "Getting there",
     transportPending: "Travel directions are being prepared.",

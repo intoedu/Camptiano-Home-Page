@@ -31,6 +31,19 @@ export function formatCurrency(amount: number, locale: Locale) {
   }).format(amount);
 }
 
+/**
+ * 주소로 지도 앱을 여는 링크.
+ * 위도·경도를 몰라도 방문자가 길찾기를 시작할 수 있습니다.
+ */
+export function mapLinks(address: string) {
+  const q = encodeURIComponent(address);
+  return {
+    kakao: `https://map.kakao.com/?q=${q}`,
+    naver: `https://map.naver.com/p/search/${q}`,
+    google: `https://www.google.com/maps/search/?api=1&query=${q}`,
+  };
+}
+
 /** 서수 접미사 — 영어에서 74th 같은 표기에 사용 */
 export function ordinal(n: number) {
   const rem100 = n % 100;

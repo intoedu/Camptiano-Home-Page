@@ -157,7 +157,7 @@ export const ko = {
   visit: {
     title: "오시는 길",
     lead: "캠프티아노 기념비와 사업회 사무실 위치를 안내합니다.",
-    mapPending: "지도는 정확한 위치가 확정되는 대로 연결됩니다.",
+    mapPending: "지도 앱에서 길찾기를 시작하실 수 있습니다. 기념비의 정확한 좌표가 확인되면 이 자리에 지도를 바로 띄워 드리겠습니다.",
     addressLabel: "주소",
     transportHeading: "교통편",
     transportPending: "교통편 안내를 준비하고 있습니다.",

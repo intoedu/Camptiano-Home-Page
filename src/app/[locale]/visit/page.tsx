@@ -12,7 +12,7 @@ import {
 } from "@/components/ui";
 import { getDictionary, isLocale, type Locale } from "@/i18n";
 import { site } from "@/lib/site";
-import { formatDateTime } from "@/lib/format";
+import { formatDateTime, mapLinks } from "@/lib/format";
 
 export async function generateMetadata({
   params,
@@ -38,6 +38,19 @@ export default async function VisitPage({
 
   const hasCoords = site.memorial.lat !== null && site.memorial.lng !== null;
 
+  const links = mapLinks(site.contact.address[locale]);
+  const mapButtons =
+    locale === "ko"
+      ? [
+          { label: "카카오맵", href: links.kakao },
+          { label: "네이버 지도", href: links.naver },
+          { label: "Google Maps", href: links.google },
+        ]
+      : [
+          { label: "Google Maps", href: links.google },
+          { label: "Naver Map", href: links.naver },
+        ];
+
   return (
     <>
       <PageHeader eyebrow={dict.nav.visit} title={t.title} lead={t.lead} />
@@ -55,9 +68,26 @@ export default async function VisitPage({
               />
             ) : (
               <div className="photo-slot flex aspect-4/3 items-center justify-center rounded-2xl ring-1 ring-ochre-300/40 ring-inset">
-                <div className="max-w-xs px-6 text-center">
+                <div className="max-w-sm px-6 text-center">
                   <IconMapPin className="mx-auto h-8 w-8 text-ochre-600/60" />
-                  <p className="mt-3 text-sm leading-relaxed text-bark-600">
+                  <p className="mt-4 font-serif text-lg font-semibold text-bark-800">
+                    {site.contact.address[locale]}
+                  </p>
+                  {/* 좌표가 없어도 지도 앱에서 바로 길찾기를 시작할 수 있게 합니다. */}
+                  <div className="mt-5 flex flex-wrap justify-center gap-2">
+                    {mapButtons.map((item) => (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="inline-flex items-center rounded-full bg-cream-50 px-4 py-2 text-xs font-semibold text-bark-700 ring-1 ring-cream-300 transition-colors hover:bg-cream-100 hover:text-ochre-700"
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                  <p className="mt-4 text-xs leading-relaxed text-bark-500">
                     {t.mapPending}
                   </p>
                 </div>
