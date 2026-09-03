@@ -1,49 +1,52 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   캠프티아노기념사업회 디자인 토큰
-   황토(ochre) · 카키(khaki) · 나무/자연 — 따뜻하고 정중한 보훈 사이트
-   검정·회색·강한 빨강은 사용하지 않습니다.
+   캠프티아노기념사업회 — 디자인 기준
+   황토 · 카키 · 나무와 능선. 따뜻하되 가볍지 않게.
+   검정·회색·강한 빨강은 쓰지 않습니다.
    ------------------------------------------------------------------ */
 @theme {
-  /* 크림 — 배경 계열 */
-  --color-cream-50: #fdfbf6;
-  --color-cream-100: #f8f3e9;
-  --color-cream-200: #f0e7d6;
-  --color-cream-300: #e5d8c0;
+  /* 종이 — 배경 */
+  --color-cream-50: #fdfaf4;
+  --color-cream-100: #f8f2e6;
+  --color-cream-200: #f0e6d3;
+  --color-cream-300: #e3d5bc;
 
   /* 황토 — 주조색 */
-  --color-ochre-200: #ecd6ab;
-  --color-ochre-300: #ddb877;
-  --color-ochre-400: #c99a4e;
-  --color-ochre-500: #b07f35;
-  --color-ochre-600: #8f6427;
-  --color-ochre-700: #6e4c1e;
+  --color-ochre-100: #f6e7c8;
+  --color-ochre-200: #ecd3a5;
+  --color-ochre-300: #dcb473;
+  --color-ochre-400: #c9974a;
+  --color-ochre-500: #b07c31;
+  --color-ochre-600: #8e6124;
+  --color-ochre-700: #6d4a1c;
 
-  /* 카키 — 보조색 */
-  --color-khaki-200: #d3d5bb;
-  --color-khaki-300: #a8aa84;
-  --color-khaki-400: #8a8d63;
-  --color-khaki-500: #6e7150;
-  --color-khaki-600: #565840;
-  --color-khaki-700: #3e4030;
+  /* 카키 — 능선과 숲 */
+  --color-khaki-100: #e7e9d8;
+  --color-khaki-200: #d1d4b7;
+  --color-khaki-300: #a9ac84;
+  --color-khaki-400: #888b62;
+  --color-khaki-500: #6b6e4d;
+  --color-khaki-600: #52553a;
+  --color-khaki-700: #3c3f2a;
+  --color-khaki-800: #2c2f1e;
 
-  /* 나무껍질 — 본문 텍스트 (순수 검정 대신) */
+  /* 나무껍질 — 글자 (순수 검정 대신) */
+  --color-bark-400: #8a7359;
   --color-bark-500: #6b5844;
-  --color-bark-600: #574634;
-  --color-bark-700: #46372a;
-  --color-bark-800: #362b20;
-  --color-bark-900: #271f17;
+  --color-bark-600: #554533;
+  --color-bark-700: #443628;
+  --color-bark-800: #33291e;
+  --color-bark-900: #241d15;
 
-  /* 글꼴을 못 받아 온 경우에도 한글이 제대로 보이도록 대체 글꼴을 넉넉히 둡니다. */
   --font-serif:
     "Noto Serif KR", "Nanum Myeongjo", "Apple SD Gothic Neo", "Batang", serif;
   --font-sans:
     "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
     "Malgun Gothic", system-ui, sans-serif;
 
-  --shadow-warm: 0 1px 2px rgb(70 55 42 / 0.06), 0 8px 24px -8px rgb(70 55 42 / 0.14);
-  --shadow-warm-lg: 0 2px 4px rgb(70 55 42 / 0.06), 0 20px 48px -16px rgb(70 55 42 / 0.22);
+  --shadow-warm: 0 1px 2px rgb(68 54 40 / 0.05), 0 10px 30px -12px rgb(68 54 40 / 0.16);
+  --shadow-warm-lg: 0 2px 4px rgb(68 54 40 / 0.05), 0 28px 60px -20px rgb(68 54 40 / 0.26);
 }
 
 @layer base {
@@ -57,8 +60,9 @@
 
   body {
     background-color: var(--color-cream-50);
-    color: var(--color-bark-800);
+    color: var(--color-bark-700);
     font-family: var(--font-sans);
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     text-wrap: pretty;
     /* 한국어는 어절 중간에서 줄이 끊기지 않도록 합니다. */
@@ -72,7 +76,6 @@
   h4 {
     font-family: var(--font-serif);
     color: var(--color-bark-900);
-    letter-spacing: -0.01em;
     text-wrap: balance;
   }
 
@@ -89,63 +92,84 @@
 }
 
 @layer components {
-  /* 종이·한지 결의 은은한 질감 */
-  .texture-paper {
-    background-image:
-      radial-gradient(
-        circle at 20% 15%,
-        rgb(201 154 78 / 0.06) 0%,
-        transparent 55%
-      ),
-      radial-gradient(
-        circle at 85% 70%,
-        rgb(110 113 80 / 0.07) 0%,
-        transparent 50%
-      );
+  /* 큰 제목 — 여백을 넉넉히 쓰고 자간을 좁혀 무게를 줍니다. */
+  .display {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1.12;
   }
 
-  /* 나뭇결 느낌의 가로 결 */
+  /* 구획 머리말 */
+  .eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  /* 한지 결 */
+  .texture-paper {
+    background-image:
+      radial-gradient(circle at 18% 12%, rgb(201 151 74 / 0.055) 0%, transparent 58%),
+      radial-gradient(circle at 84% 74%, rgb(107 110 77 / 0.06) 0%, transparent 54%);
+  }
+
+  /* 새벽빛 — 화면 위에서 아래로 옅게 번지는 황토빛 */
+  .texture-dawn {
+    background-image: linear-gradient(
+      180deg,
+      var(--color-cream-50) 0%,
+      var(--color-cream-100) 55%,
+      var(--color-ochre-100) 100%
+    );
+  }
+
+  /* 나뭇결 */
   .texture-grain {
     background-image: repeating-linear-gradient(
       92deg,
-      rgb(70 55 42 / 0.028) 0px,
-      rgb(70 55 42 / 0.028) 1px,
+      rgb(255 255 255 / 0.022) 0px,
+      rgb(255 255 255 / 0.022) 1px,
       transparent 1px,
-      transparent 9px
+      transparent 10px
+    );
+  }
+
+  /* 사진이 준비되기 전, 의도된 빈 액자 */
+  .photo-slot {
+    background-color: var(--color-cream-200);
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgb(176 124 49 / 0.075) 0px,
+      rgb(176 124 49 / 0.075) 1px,
+      transparent 1px,
+      transparent 13px
     );
   }
 
   /* 첫 화면이 조용히 자리를 잡도록 하는 짧은 등장 */
   .rise {
-    animation: rise 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation: rise 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
   }
   .rise-1 {
-    animation-delay: 0.06s;
+    animation-delay: 0.08s;
   }
   .rise-2 {
-    animation-delay: 0.12s;
+    animation-delay: 0.16s;
   }
   .rise-3 {
-    animation-delay: 0.18s;
+    animation-delay: 0.24s;
   }
-
-  /* 사진이 준비되기 전, 자리를 지켜 주는 품위 있는 플레이스홀더 */
-  .photo-slot {
-    background-color: var(--color-cream-200);
-    background-image: repeating-linear-gradient(
-      135deg,
-      rgb(176 127 53 / 0.09) 0px,
-      rgb(176 127 53 / 0.09) 1px,
-      transparent 1px,
-      transparent 12px
-    );
+  .rise-4 {
+    animation-delay: 0.32s;
   }
 }
 
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;

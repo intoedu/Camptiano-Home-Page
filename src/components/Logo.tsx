@@ -59,7 +59,7 @@ export function Wordmark({
       </span>
       {tagline ? (
         <span
-          className={`mt-0.5 hidden text-[11px] tracking-wide whitespace-nowrap sm:block ${
+          className={`mt-0.5 hidden text-[11px] tracking-wide whitespace-nowrap xl:block ${
             tone === "dark" ? "text-cream-200/70" : "text-bark-500"
           }`}
         >

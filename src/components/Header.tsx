@@ -83,7 +83,7 @@ export function Header({
             className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium whitespace-nowrap text-bark-700 transition-colors hover:bg-cream-100 hover:text-ochre-700"
           >
             <IconPhone className="h-4 w-4" />
-            <span className="hidden xl:inline tabular-nums">
+            <span className="hidden tabular-nums 2xl:inline">
               {site.contact.phone}
             </span>
           </a>

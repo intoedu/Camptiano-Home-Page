@@ -16,10 +16,25 @@ export function Container({
   );
 }
 
-export function Eyebrow({ children }: { children: ReactNode }) {
+export function Eyebrow({
+  children,
+  tone = "light",
+  className = "",
+}: {
+  children: ReactNode;
+  tone?: "light" | "dark";
+  className?: string;
+}) {
   return (
-    <p className="mb-3 flex items-center gap-3 text-xs font-semibold tracking-[0.18em] text-ochre-600 uppercase">
-      <span aria-hidden className="h-px w-8 bg-ochre-400" />
+    <p
+      className={`eyebrow flex items-center gap-3 ${
+        tone === "dark" ? "text-ochre-300" : "text-ochre-600"
+      } ${className}`}
+    >
+      <span
+        aria-hidden
+        className={`h-px w-8 ${tone === "dark" ? "bg-ochre-300/50" : "bg-ochre-400/70"}`}
+      />
       {children}
     </p>
   );
@@ -39,36 +54,36 @@ export function SectionHeading({
   tone?: "light" | "dark";
 }) {
   const centered = align === "center";
+  const dark = tone === "dark";
+
   return (
-    <div
-      className={`max-w-2xl ${centered ? "mx-auto text-center" : ""} ${
-        tone === "dark" ? "text-cream-100" : ""
-      }`}
-    >
+    <div className={`max-w-2xl ${centered ? "mx-auto text-center" : ""}`}>
       {eyebrow ? (
         <p
-          className={`mb-3 flex items-center gap-3 text-xs font-semibold tracking-[0.18em] uppercase ${
+          className={`eyebrow mb-5 flex items-center gap-3 ${
             centered ? "justify-center" : ""
-          } ${tone === "dark" ? "text-ochre-300" : "text-ochre-600"}`}
+          } ${dark ? "text-ochre-300" : "text-ochre-600"}`}
         >
           <span
             aria-hidden
-            className={`h-px w-8 ${tone === "dark" ? "bg-ochre-300/60" : "bg-ochre-400"}`}
+            className={`h-px w-8 ${dark ? "bg-ochre-300/50" : "bg-ochre-400/70"}`}
           />
           {eyebrow}
         </p>
       ) : null}
+
       <h2
-        className={`text-3xl leading-tight font-semibold whitespace-pre-line sm:text-4xl ${
-          tone === "dark" ? "text-cream-50" : ""
+        className={`display text-[1.9rem] whitespace-pre-line sm:text-[2.4rem] ${
+          dark ? "text-cream-50" : ""
         }`}
       >
         {title}
       </h2>
+
       {body ? (
         <p
-          className={`mt-4 text-base leading-relaxed sm:text-lg ${
-            tone === "dark" ? "text-cream-200/85" : "text-bark-600"
+          className={`mt-5 text-[1.0625rem] leading-[1.85] ${
+            dark ? "text-cream-100/80" : "text-bark-600"
           }`}
         >
           {body}
@@ -89,7 +104,7 @@ const buttonStyles: Record<NonNullable<ButtonProps["variant"]>, string> = {
   primary:
     "bg-ochre-600 text-cream-50 hover:bg-ochre-700 shadow-warm hover:shadow-warm-lg",
   secondary:
-    "bg-cream-100 text-bark-800 ring-1 ring-inset ring-ochre-300/70 hover:bg-cream-200",
+    "text-bark-800 ring-1 ring-inset ring-bark-400/35 hover:bg-cream-100 hover:ring-ochre-400",
   ghost: "text-bark-700 hover:text-ochre-700 hover:bg-cream-100",
   onDark:
     "bg-cream-50 text-bark-900 hover:bg-cream-100 shadow-warm hover:shadow-warm-lg",
@@ -104,7 +119,7 @@ export function Button({
   return (
     <Link
       href={href}
-      className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 ${buttonStyles[variant]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold transition-all duration-200 ${buttonStyles[variant]} ${className}`}
     >
       {children}
     </Link>
@@ -135,6 +150,7 @@ export function TextLink({
   );
 }
 
+/** 상자보다 인쇄면에 가깝게 — 테두리 없이 여백과 가는 선으로 나눕니다. */
 export function Card({
   children,
   className = "",
@@ -147,17 +163,14 @@ export function Card({
   return (
     <div
       id={id}
-      className={`rounded-2xl bg-cream-50 p-6 ring-1 ring-cream-300/80 transition-shadow duration-300 hover:shadow-warm sm:p-8 ${className}`}
+      className={`rounded-2xl bg-cream-50 p-7 ring-1 ring-cream-300/70 transition-shadow duration-300 hover:shadow-warm sm:p-8 ${className}`}
     >
       {children}
     </div>
   );
 }
 
-/**
- * 사진이 준비되기 전 자리를 지키는 플레이스홀더.
- * 망가진 이미지가 아니라 '의도된 빈 액자'로 보이도록 그립니다.
- */
+/** 사진이 준비되기 전, 의도된 빈 액자 */
 export function PhotoSlot({
   label,
   className = "",
@@ -169,12 +182,12 @@ export function PhotoSlot({
 }) {
   return (
     <div
-      className={`photo-slot flex flex-col items-center justify-center gap-2.5 rounded-xl ring-1 ring-ochre-300/40 ring-inset ${ratio} ${className}`}
+      className={`photo-slot flex flex-col items-center justify-center gap-2.5 rounded-xl ring-1 ring-ochre-300/35 ring-inset ${ratio} ${className}`}
     >
       <svg
         viewBox="0 0 24 24"
         aria-hidden="true"
-        className="h-7 w-7 text-ochre-600/35"
+        className="h-7 w-7 text-ochre-600/30"
         fill="none"
         stroke="currentColor"
         strokeWidth={1.3}
@@ -185,14 +198,14 @@ export function PhotoSlot({
         <path d="m3 15.4 4.6-4.5 3 2.9 2.3-2.1 5.1 4.4" />
         <circle cx="8.2" cy="9.2" r="1.1" />
       </svg>
-      <span className="px-4 text-center text-[11px] font-medium tracking-wide text-ochre-700/50">
+      <span className="px-4 text-center text-[11px] font-medium tracking-wide text-ochre-700/45">
         {label}
       </span>
     </div>
   );
 }
 
-/** 페이지 상단 제목 영역 */
+/** 안쪽 페이지 머리 — 첫 화면과 같은 새벽빛을 옅게 이어 받습니다. */
 export function PageHeader({
   eyebrow,
   title,
@@ -203,14 +216,18 @@ export function PageHeader({
   lead?: string;
 }) {
   return (
-    <header className="texture-paper border-b border-cream-300/70 bg-cream-100/60 pt-14 pb-12 sm:pt-20 sm:pb-16">
-      <Container>
-        {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-        <h1 className="text-4xl leading-tight font-semibold sm:text-5xl">
-          {title}
-        </h1>
+    <header className="texture-paper relative overflow-hidden border-b border-cream-300/60 bg-cream-100 pt-16 pb-14 sm:pt-24 sm:pb-20">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-32 -right-24 h-80 w-80 rounded-full bg-ochre-200/30 blur-3xl"
+      />
+      <Container className="relative">
+        {eyebrow ? (
+          <Eyebrow className="mb-5">{eyebrow}</Eyebrow>
+        ) : null}
+        <h1 className="display text-[2.35rem] sm:text-[3.1rem]">{title}</h1>
         {lead ? (
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-bark-600 sm:text-lg">
+          <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.85] text-bark-600">
             {lead}
           </p>
         ) : null}
@@ -219,10 +236,10 @@ export function PageHeader({
   );
 }
 
-/** 확인이 끝나지 않은 내용을 정중하게 알리는 안내 상자 */
+/** 확인이 끝나지 않은 내용을 정중하게 알리는 안내 */
 export function PendingNote({ children }: { children: ReactNode }) {
   return (
-    <p className="rounded-xl border border-dashed border-ochre-300 bg-cream-100/70 px-5 py-4 text-sm leading-relaxed text-bark-600">
+    <p className="border-l-2 border-ochre-300 bg-cream-100/60 px-6 py-5 text-sm leading-[1.85] text-bark-600">
       {children}
     </p>
   );
