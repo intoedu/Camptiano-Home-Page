@@ -53,6 +53,18 @@ export const en: Dictionary = {
     ceremonyPassed:
       "This year's ceremony has concluded. The next date will be announced soon.",
 
+    inscriptionEyebrow: "Cut into the stone",
+    inscriptionTitle: "For seventy-four years,\nthe same words",
+    inscriptionBody:
+      "His comrades raised it themselves. The letters they cut are still there, still naming one man, the place where he fell, and the date.",
+    inscriptionThenLabel: "The day the stone was set",
+    inscriptionThenNote:
+      "Raised by the Philippines' 19th Battalion Combat Team for one of their own.",
+    inscriptionNowLabel: "The 74th memorial ceremony",
+    inscriptionNowNote:
+      "Seventy-four years later, on the same day and in the same place, we call the name again.",
+    inscriptionCta: "Read the full inscription",
+
     missionEyebrow: "What we do",
     missionTitle: "Remembrance is carried by what we leave behind",
     missionBody:

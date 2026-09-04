@@ -83,7 +83,10 @@ export default async function AboutPage({
       </section>
 
       {/* 캠프티아노, 그 이름의 유래 · 비문 */}
-      <section className="texture-dawn border-y border-cream-300/60 py-20 sm:py-28">
+      <section
+        id="inscription"
+        className="texture-dawn scroll-mt-24 border-y border-cream-300/60 py-20 sm:py-28"
+      >
         <Container className="grid gap-14 lg:grid-cols-12 lg:gap-16">
           {/* 비석 */}
           <div className="lg:col-span-5">

@@ -50,6 +50,18 @@ export const ko = {
     ceremonyCta: "참석 문의",
     ceremonyPassed: "올해 추모식이 마무리되었습니다. 다음 일정은 곧 안내드립니다.",
 
+    inscriptionEyebrow: "돌에 새겨진 말",
+    inscriptionTitle: "74년 동안 이 돌은\n같은 말을 하고 있습니다",
+    inscriptionBody:
+      "전우들이 손수 세운 돌입니다. 새겨 넣은 글자는 74년이 지난 지금도 그대로 남아, 한 사람의 이름과 그가 쓰러진 자리와 날짜를 알려 줍니다.",
+    inscriptionThenLabel: "비석이 세워진 날",
+    inscriptionThenNote:
+      "필리핀 제19대대전투단이 전우의 이름을 새겨 세웠습니다.",
+    inscriptionNowLabel: "제74주년 추모식",
+    inscriptionNowNote:
+      "74년 뒤 같은 날, 같은 자리에서 그 이름을 다시 부릅니다.",
+    inscriptionCta: "비문 전문 보기",
+
     missionEyebrow: "우리가 하는 일",
     missionTitle: "기억은 말이 아니라, 남겨진 것으로 이어집니다",
     missionBody:

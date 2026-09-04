@@ -93,6 +93,15 @@ export const site = {
       },
     },
 
+    /** 비문 구획 — 1952년, 갓 세워진 비석 */
+    stone1952: {
+      src: "/gallery/stone-1952.jpg",
+      alt: {
+        ko: "1952년에 촬영된 캠프티아노 기념비 — 새겨진 글자가 또렷합니다",
+        en: "The Camp Tiano Memorial photographed in 1952, its lettering still sharp",
+      },
+    },
+
     /** 얼굴들 — 사진 기념관을 미리 보여 주는 띠 */
     faces: [
       {
@@ -125,6 +134,8 @@ export const site = {
     address: { ko: "위치 확인 중", en: "Location to be confirmed" },
     lat: null as number | null,
     lng: null as number | null,
+    /** 비석이 세워진 날 — 비문에 새겨져 있습니다 */
+    dedicatedOn: "1952-09-18T00:00:00+09:00",
   },
 
   /** 다가오는 추모식 */

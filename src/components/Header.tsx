@@ -68,10 +68,10 @@ export function Header({
           : "border-cream-300/70 bg-cream-50/90 backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex h-18 w-full max-w-6xl items-center gap-4 px-5 sm:px-8">
+      <div className="mx-auto flex h-18 w-full max-w-6xl items-center gap-3 px-5 sm:gap-4 sm:px-8">
         <Link
           href={`/${locale}`}
-          className="flex shrink-0 items-center gap-3"
+          className="flex shrink-0 items-center gap-2.5 sm:gap-3"
           aria-label={orgName}
         >
           <LogoMark className="h-10 w-10 sm:h-11 sm:w-11" />
@@ -106,12 +106,12 @@ export function Header({
           ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2 lg:ml-2">
+        <div className="ml-auto flex items-center gap-0.5 sm:gap-2 lg:ml-2">
           {/* 전화가 가장 빠른 연락 수단이므로 어느 화면에서나 한 번에 닿게 둡니다. */}
           <a
             href={`tel:${site.contact.phoneHref}`}
             aria-label={`${dict.contact.callCta} ${site.contact.phone}`}
-            className={`inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
+            className={`inline-flex items-center gap-2 rounded-full px-2.5 py-2 text-sm font-medium sm:px-3 whitespace-nowrap transition-colors ${
               onPhoto
                 ? "text-cream-100/90 hover:bg-cream-50/12 hover:text-cream-50"
                 : "text-bark-700 hover:bg-cream-100 hover:text-ochre-700"
@@ -126,7 +126,7 @@ export function Header({
           <Link
             href={switchHref}
             hrefLang={other}
-            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium transition-colors ${
+            className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-2 text-sm font-medium sm:px-3 transition-colors ${
               onPhoto
                 ? "text-cream-100/85 hover:bg-cream-50/12 hover:text-cream-50"
                 : "text-bark-600 hover:bg-cream-100 hover:text-ochre-700"

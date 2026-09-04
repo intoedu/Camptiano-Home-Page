@@ -73,7 +73,7 @@ export function SectionHeading({
       ) : null}
 
       <h2
-        className={`display text-[1.9rem] whitespace-pre-line sm:text-[2.4rem] ${
+        className={`display text-[2.05rem] whitespace-pre-line sm:text-[2.7rem] lg:text-[3rem] ${
           dark ? "text-cream-50" : ""
         }`}
       >
@@ -82,7 +82,7 @@ export function SectionHeading({
 
       {body ? (
         <p
-          className={`mt-5 text-[1.0625rem] leading-[1.85] ${
+          className={`mt-6 text-[1.0625rem] leading-[1.85] sm:text-[1.125rem] ${
             dark ? "text-cream-100/80" : "text-bark-600"
           }`}
         >
@@ -228,7 +228,9 @@ export function PageHeader({
         {eyebrow ? (
           <Eyebrow className="mb-5">{eyebrow}</Eyebrow>
         ) : null}
-        <h1 className="display text-[2.35rem] sm:text-[3.1rem]">{title}</h1>
+        <h1 className="display text-[2.5rem] sm:text-[3.3rem] lg:text-[3.7rem]">
+          {title}
+        </h1>
         {lead ? (
           <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.85] text-bark-600">
             {lead}

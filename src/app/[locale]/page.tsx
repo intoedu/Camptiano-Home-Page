@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -9,11 +10,17 @@ import { Ridgeline } from "@/components/Ridgeline";
 import { IconArrowRight, IconMapPin } from "@/components/Icons";
 import { Button, Container, Eyebrow, SectionHeading, TextLink } from "@/components/ui";
 import { getDictionary, isLocale, fill, type Locale } from "@/i18n";
+import { inscriptionOriginal, photoCredit } from "@/content/inscription";
 import { getSortedNews } from "@/content/news";
 import { programs } from "@/content/programs";
 import { asset } from "@/lib/asset";
 import { site } from "@/lib/site";
-import { formatDate, formatDateTime, ordinal } from "@/lib/format";
+import {
+  formatDate,
+  formatDateNumeric,
+  formatDateTime,
+  ordinal,
+} from "@/lib/format";
 
 export default async function HomePage({
   params,
@@ -89,7 +96,7 @@ export default async function HomePage({
               <span aria-hidden className="h-px w-6 bg-ochre-200/70 sm:w-10" />
               {t.heroEyebrow}
             </p>
-            <h1 className="rise rise-1 display text-[2.6rem] whitespace-pre-line text-cream-50 sm:text-[3.4rem] lg:text-[4.25rem]">
+            <h1 className="rise rise-1 display text-[2.75rem] whitespace-pre-line text-cream-50 sm:text-[3.6rem] lg:text-[4.6rem] xl:text-[5.1rem]">
               {t.heroTitle}
             </h1>
             <p className="rise rise-2 mt-7 max-w-xl text-[1.0625rem] leading-[1.85] text-cream-100/85 sm:text-lg">
@@ -150,10 +157,103 @@ export default async function HomePage({
           </div>
         </Container>
       </section>
-      <Ridgeline fill="var(--color-khaki-800)" flip className="h-10 sm:h-16" />
+
+      {/*
+        ── 비문 ─────────────────────────────────────────────────
+        사업회를 설명하기 전에, 돌이 스스로 하는 말을 먼저 둡니다.
+        새겨진 원문과 1952년의 사진, 그리고 그날과 오늘을 잇는 두 날짜.
+      */}
+      <section className="texture-grain bg-bark-900 text-cream-100">
+        <Container className="py-24 sm:py-32">
+          <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
+            {/* 1952년, 갓 세워진 비석 — 비문을 읽는 동안 곁에 머무릅니다 */}
+            <div className="lg:col-span-5">
+              <figure className="mx-auto max-w-sm lg:sticky lg:top-28 lg:max-w-none">
+                <Image
+                  src={asset(site.homePhotos.stone1952.src)}
+                  alt={site.homePhotos.stone1952.alt[locale]}
+                  width={638}
+                  height={833}
+                  className="w-full rounded-sm shadow-warm-lg ring-1 ring-cream-100/10"
+                />
+                <figcaption className="mt-4 text-xs leading-relaxed text-cream-100/40">
+                  {photoCredit[locale]}
+                </figcaption>
+              </figure>
+            </div>
+
+            <div className="lg:col-span-7">
+              <Eyebrow tone="dark" className="mb-6">
+                {t.inscriptionEyebrow}
+              </Eyebrow>
+              <h2 className="display text-[2.05rem] whitespace-pre-line text-cream-50 sm:text-[2.7rem] lg:text-[3rem]">
+                {t.inscriptionTitle}
+              </h2>
+              <p className="mt-7 max-w-xl text-[1.0625rem] leading-[1.85] text-cream-100/70">
+                {t.inscriptionBody}
+              </p>
+
+              {/* 새겨진 그대로 */}
+              <div className="mt-11 border-l border-ochre-300/35 py-1 pl-7 sm:pl-9">
+                <div className="space-y-1.5 font-serif text-[0.9375rem] leading-relaxed tracking-[0.09em] text-cream-100/80 sm:text-base">
+                  {inscriptionOriginal.map((line, index) =>
+                    line === "" ? (
+                      <div key={index} className="h-3.5" aria-hidden />
+                    ) : (
+                      <p
+                        key={index}
+                        className={
+                          index === 0
+                            ? "text-lg font-semibold tracking-[0.24em] text-cream-50 sm:text-xl"
+                            : ""
+                        }
+                      >
+                        {line}
+                      </p>
+                    ),
+                  )}
+                </div>
+              </div>
+
+              {/* 그날과 오늘 */}
+              <dl className="mt-12 grid gap-9 border-t border-cream-100/12 pt-10 sm:grid-cols-2 sm:gap-10">
+                <div>
+                  <dt className="eyebrow text-ochre-300">
+                    {t.inscriptionThenLabel}
+                  </dt>
+                  <dd className="mt-3 font-serif text-[1.75rem] font-semibold text-cream-50 tabular-nums sm:text-[2.1rem]">
+                    {formatDateNumeric(site.memorial.dedicatedOn, locale)}
+                  </dd>
+                  <p className="mt-2.5 text-sm leading-relaxed text-cream-100/55">
+                    {t.inscriptionThenNote}
+                  </p>
+                </div>
+                <div>
+                  <dt className="eyebrow text-ochre-300">
+                    {t.inscriptionNowLabel}
+                  </dt>
+                  <dd className="mt-3 font-serif text-[1.75rem] font-semibold text-cream-50 tabular-nums sm:text-[2.1rem]">
+                    {formatDateNumeric(site.ceremony.datetime, locale)}
+                  </dd>
+                  <p className="mt-2.5 text-sm leading-relaxed text-cream-100/55">
+                    {t.inscriptionNowNote}
+                  </p>
+                </div>
+              </dl>
+
+              <div className="mt-10">
+                <TextLink href={`/${locale}/about#inscription`} tone="dark">
+                  {t.inscriptionCta}
+                </TextLink>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+      <Ridgeline fill="var(--color-bark-900)" flip className="h-10 sm:h-16" />
 
       {/* ── 세 가지 사업 · 번호를 매긴 목록 ──────────────────────── */}
-      <section className="py-20 sm:py-28">
+      <section className="py-24 sm:py-32 lg:py-36">
         <Container>
           <SectionHeading
             eyebrow={t.missionEyebrow}
@@ -166,15 +266,15 @@ export default async function HomePage({
               <li key={program.id}>
                 <Link
                   href={`/${locale}/programs#${program.id}`}
-                  className="group grid items-baseline gap-x-8 gap-y-3 border-t border-cream-300/70 py-8 transition-colors hover:bg-cream-100/50 sm:grid-cols-12 sm:py-10"
+                  className="group grid items-baseline gap-x-8 gap-y-3 border-t border-cream-300/70 py-10 transition-colors hover:bg-cream-100/50 sm:grid-cols-12 sm:py-14"
                 >
-                  <span className="font-serif text-2xl text-ochre-400 tabular-nums sm:col-span-1">
+                  <span className="font-serif text-3xl text-ochre-400 tabular-nums sm:col-span-1 sm:text-[2.75rem]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="font-serif text-xl font-semibold transition-colors group-hover:text-ochre-700 sm:col-span-4 sm:text-2xl">
+                  <h3 className="font-serif text-2xl font-semibold transition-colors group-hover:text-ochre-700 sm:col-span-4 sm:text-[1.9rem]">
                     {program.title[locale]}
                   </h3>
-                  <p className="text-[0.9375rem] leading-[1.8] text-bark-600 sm:col-span-6">
+                  <p className="text-[0.9375rem] leading-[1.8] text-bark-600 sm:col-span-6 sm:text-base">
                     {program.lead[locale]}
                   </p>
                   <span className="text-ochre-600 transition-transform duration-200 group-hover:translate-x-1 sm:col-span-1 sm:justify-self-end">
@@ -189,28 +289,32 @@ export default async function HomePage({
       </section>
 
       {/* ── 이야기 ─────────────────────────────────────────────── */}
-      <section className="texture-dawn relative overflow-hidden py-24 sm:py-32">
+      <section className="texture-dawn relative overflow-hidden py-28 sm:py-36 lg:py-44">
         <Container className="relative max-w-3xl text-center">
           <Eyebrow className="mb-6 justify-center">{t.storyEyebrow}</Eyebrow>
-          <h2 className="display text-[2rem] sm:text-[2.6rem]">
+          <h2 className="display text-[2.15rem] sm:text-[2.9rem] lg:text-[3.2rem]">
             {t.storyTitle}
           </h2>
 
           {/* 비석이 세워지던 날의 사진 */}
           <div className="mt-12">
+            {/*
+              제막 사진은 5:4 에 가깝습니다. 넓게 자르면 바르가스 준장도
+              비석도 화면 밖으로 나가 버리므로, 원본 비율 그대로 둡니다.
+            */}
             <PhotoFrame
               photo={site.homePhotos.story}
               locale={locale}
               pendingLabel={dict.common.photoPending}
-              ratio="aspect-16/10"
+              ratio="aspect-5/4"
             />
           </div>
 
           <blockquote className="mt-12">
-            <p className="font-serif text-xl leading-[1.75] whitespace-pre-line text-bark-700 italic sm:text-2xl">
+            <p className="font-serif text-[1.4rem] leading-[1.6] whitespace-pre-line text-bark-700 italic sm:text-[1.9rem] lg:text-[2.15rem]">
               {locale === "ko"
-                ? "“70년 전에 세워진 작은 비석 하나에 담겨 있던,\n잊혀진 전쟁의 잊혀진 영웅 이야기.”"
-                : "“In one small stone set seventy years ago lay the story\nof forgotten heroes of a forgotten war.”"}
+                ? "“74년 전에 세워진 작은 비석 하나에 담겨 있던,\n잊혀진 전쟁의 잊혀진 영웅 이야기.”"
+                : "“In one small stone set seventy-four years ago lay the story\nof forgotten heroes of a forgotten war.”"}
             </p>
             <footer className="mt-6 text-sm text-bark-500">
               {site.org[locale].representative} ·{" "}
@@ -238,7 +342,7 @@ export default async function HomePage({
             <Eyebrow tone="dark" className="mb-5 justify-center">
               {t.galleryEyebrow}
             </Eyebrow>
-            <h2 className="display text-[1.9rem] text-cream-50 sm:text-[2.4rem]">
+            <h2 className="display text-[2.05rem] text-cream-50 sm:text-[2.7rem] lg:text-[3rem]">
               {t.galleryTitle}
             </h2>
             <p className="mt-5 text-[1.0625rem] leading-[1.85] text-cream-100/75">

@@ -23,6 +23,16 @@ export function formatDateTime(iso: string, locale: Locale) {
   }).format(new Date(iso));
 }
 
+/** 숫자로만 — 크게 보여 주는 날짜 (1952. 9. 18. / 18 Sept 1952) */
+export function formatDateNumeric(iso: string, locale: Locale) {
+  return new Intl.DateTimeFormat(locale === "ko" ? "ko-KR" : "en-GB", {
+    year: "numeric",
+    month: locale === "ko" ? "numeric" : "short",
+    day: "numeric",
+    timeZone: TIME_ZONE,
+  }).format(new Date(iso));
+}
+
 export function formatCurrency(amount: number, locale: Locale) {
   return new Intl.NumberFormat(locale === "ko" ? "ko-KR" : "en-US", {
     style: "currency",

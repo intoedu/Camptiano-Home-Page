@@ -51,7 +51,7 @@ export function Wordmark({
   return (
     <span className="flex flex-col leading-tight">
       <span
-        className={`font-serif text-base font-semibold tracking-tight sm:text-lg ${
+        className={`font-serif text-[0.9375rem] font-semibold tracking-tight sm:text-lg ${
           tone === "dark" ? "text-cream-50" : "text-bark-900"
         }`}
       >
