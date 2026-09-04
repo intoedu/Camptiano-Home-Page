@@ -67,10 +67,11 @@ export const en: Dictionary = {
     newsTitle: "From the association",
     newsEmpty: "Our first post is on its way.",
 
-    galleryEyebrow: "Gallery",
+    galleryEyebrow: "The photo memorial hall",
     galleryTitle: "Faces kept in the record",
     galleryBody:
-      "We are gathering photographs held by families, moments from the ceremonies, and the memorial through the seasons. If you hold a photograph, please write to us.",
+      "We are preparing a hall where these faces can hang permanently, enlarged to A4 and A3. A photograph from a drawer becomes a wall in an exhibition room.",
+    galleryCta: "See the gallery",
 
     supportEyebrow: "Stand with us",
     supportTitle: "To leave one name behind,\nwe need one heart at a time",

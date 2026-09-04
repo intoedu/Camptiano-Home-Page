@@ -68,6 +68,52 @@ export const site = {
     en: "The Camp Tiano Memorial",
   },
 
+  /**
+   * 메인 화면에 들어가는 사진들.
+   *
+   * `src` 를 비워 두면 자리표시자가 대신 표시되고, 경로를 넣으면 바로 사진이
+   * 나옵니다. 파일은 public/gallery 아래에 올려 주세요.
+   *   예) src: "/gallery/dedication-1952.jpg"
+   */
+  homePhotos: {
+    /** 이야기 구획 — 비석과 관련된 사진 한 장 */
+    story: {
+      src: "",
+      alt: {
+        ko: "1952년 캠프티아노 기념비 제막식",
+        en: "The dedication of the Camp Tiano Memorial, 1952",
+      },
+      caption: {
+        ko: "1952년 9월 18일, 제19대대전투단 전우들이 세운 비석.",
+        en: "18 September 1952 — the stone raised by the men of the 19th BCT.",
+      },
+    },
+
+    /** 얼굴들 — 사진 기념관을 미리 보여 주는 띠 */
+    faces: [
+      {
+        src: "",
+        alt: { ko: "양구 계곡의 필리핀 참전용사", en: "Filipino soldiers in Yanggu Valley" },
+        caption: { ko: "양구 계곡, 한국", en: "Yanggu Valley, Korea" },
+      },
+      {
+        src: "",
+        alt: { ko: "비석 앞에 선 병사", en: "A soldier before the stone" },
+        caption: { ko: "캠프티아노 기념비 앞", en: "At the Camp Tiano Memorial" },
+      },
+      {
+        src: "",
+        alt: { ko: "겨울 진지의 병사들", en: "Soldiers at a winter position" },
+        caption: { ko: "겨울, 전선", en: "Winter at the front" },
+      },
+      {
+        src: "",
+        alt: { ko: "제막식에 모인 부대원들", en: "The battalion gathered for the dedication" },
+        caption: { ko: "제막식, 1952년", en: "The dedication, 1952" },
+      },
+    ],
+  },
+
   /** 기념비 위치 — 지도 및 오시는 길에 사용 */
   memorial: {
     // TODO: 캠프티아노 기념비 정확한 주소·좌표 확인 필요

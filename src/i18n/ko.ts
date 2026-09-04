@@ -64,10 +64,11 @@ export const ko = {
     newsTitle: "사업회 소식",
     newsEmpty: "첫 소식을 준비하고 있습니다.",
 
-    galleryEyebrow: "갤러리",
+    galleryEyebrow: "사진 기념관",
     galleryTitle: "기록으로 남은 얼굴들",
     galleryBody:
-      "유가족이 간직해 온 사진, 추모식의 순간, 그리고 기념비의 사계절을 모으고 있습니다. 사진을 가지고 계시다면 사업회로 연락 주세요.",
+      "이 얼굴들을 A4와 A3 크기로 확대해 상설로 걸 수 있는 기념관을 준비하고 있습니다. 서랍 속 사진 한 장이 전시실의 한 벽이 됩니다.",
+    galleryCta: "갤러리 보기",
 
     supportEyebrow: "함께해 주세요",
     supportTitle: "한 사람의 이름을 남기는 데,\n한 사람의 마음이 필요합니다",

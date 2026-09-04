@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ContactActions } from "@/components/ContactActions";
 import { Countdown } from "@/components/Countdown";
 import { HeroScene } from "@/components/HeroScene";
+import { PhotoFrame } from "@/components/PhotoFrame";
 import { Ridgeline } from "@/components/Ridgeline";
 import { IconArrowRight, IconMapPin } from "@/components/Icons";
 import { Button, Container, Eyebrow, SectionHeading, TextLink } from "@/components/ui";
@@ -178,6 +179,16 @@ export default async function HomePage({
             {t.storyTitle}
           </h2>
 
+          {/* 비석이 세워지던 날의 사진 */}
+          <div className="mt-12">
+            <PhotoFrame
+              photo={site.homePhotos.story}
+              locale={locale}
+              pendingLabel={dict.common.photoPending}
+              ratio="aspect-16/10"
+            />
+          </div>
+
           <blockquote className="mt-12">
             <p className="font-serif text-xl leading-[1.75] whitespace-pre-line text-bark-700 italic sm:text-2xl">
               {locale === "ko"
@@ -201,6 +212,52 @@ export default async function HomePage({
           </div>
         </Container>
       </section>
+
+      {/* ── 얼굴들 · 사진 기념관 ────────────────────────────────── */}
+      <Ridgeline fill="var(--color-khaki-800)" className="h-10 sm:h-16" />
+      <section className="texture-grain bg-khaki-800 text-cream-100">
+        <Container className="pb-20 sm:pb-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <Eyebrow tone="dark" className="mb-5 justify-center">
+              {t.galleryEyebrow}
+            </Eyebrow>
+            <h2 className="display text-[1.9rem] text-cream-50 sm:text-[2.4rem]">
+              {t.galleryTitle}
+            </h2>
+            <p className="mt-5 text-[1.0625rem] leading-[1.85] text-cream-100/75">
+              {t.galleryBody}
+            </p>
+          </div>
+
+          {/* 전시실 벽에 걸린 것처럼 — 높낮이를 조금씩 어긋나게 둡니다. */}
+          <div className="mt-14 grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-6">
+            {site.homePhotos.faces.map((photo, index) => (
+              <PhotoFrame
+                key={index}
+                photo={photo}
+                locale={locale}
+                pendingLabel={dict.common.photoPending}
+                tone="dark"
+                className={index % 2 === 1 ? "sm:mt-10" : ""}
+              />
+            ))}
+          </div>
+
+          <div className="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+            <Button href={`/${locale}/gallery`} variant="onDark">
+              {t.galleryCta}
+            </Button>
+            <TextLink href={`/${locale}/programs#museum`} tone="dark">
+              {dict.common.learnMore}
+            </TextLink>
+          </div>
+        </Container>
+      </section>
+      <Ridgeline
+        fill="var(--color-khaki-800)"
+        flip
+        className="h-10 sm:h-16"
+      />
 
       {/* ── 소식 ───────────────────────────────────────────────── */}
       <section className="py-20 sm:py-28">
