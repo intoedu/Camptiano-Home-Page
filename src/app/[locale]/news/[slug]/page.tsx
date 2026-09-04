@@ -7,6 +7,7 @@ import { Button, Container, PhotoSlot } from "@/components/ui";
 import { getDictionary, isLocale, locales, type Locale } from "@/i18n";
 import { getNewsPost, getSortedNews, newsPosts } from "@/content/news";
 import { formatDate } from "@/lib/format";
+import { asset } from "@/lib/asset";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -94,7 +95,7 @@ export default async function NewsPostPage({
                   className="overflow-hidden rounded-xl bg-cream-200"
                 >
                   <Image
-                    src={photo.src}
+                    src={asset(photo.src)}
                     alt={photo.alt[locale]}
                     width={1200}
                     height={900}

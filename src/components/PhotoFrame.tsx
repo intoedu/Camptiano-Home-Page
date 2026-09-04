@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Locale } from "@/i18n";
+import { asset } from "@/lib/asset";
 
 type Photo = {
   src: string;
@@ -41,7 +42,7 @@ export function PhotoFrame({
       >
         {photo.src ? (
           <Image
-            src={photo.src}
+            src={asset(photo.src)}
             alt={photo.alt[locale]}
             width={900}
             height={1125}

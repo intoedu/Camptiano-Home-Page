@@ -24,6 +24,8 @@ const nextConfig: NextConfig = {
     // 정적 사이트에는 이미지 변환 서버가 없습니다.
     unoptimized: true,
   },
+  // unoptimized 이미지는 basePath 가 자동으로 붙지 않아, 직접 붙일 수 있게 노출합니다.
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
 };
 
 export default nextConfig;

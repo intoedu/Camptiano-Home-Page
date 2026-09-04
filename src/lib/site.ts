@@ -58,14 +58,13 @@ export const site = {
   },
 
   /**
-   * 메인 화면 큰 사진.
-   * 기념비 사진이 준비되면 "/images/파일이름.jpg" 를 넣어 주세요.
-   * 비어 있으면 삽화(MemorialScene)가 대신 표시됩니다.
+   * 첫 화면의 기념비 사진.
+   * 비어 있으면 새벽 능선 삽화(HeroScene)가 대신 표시됩니다.
    */
-  heroPhoto: "",
+  heroPhoto: "/gallery/memorial-today.jpg",
   heroPhotoAlt: {
-    ko: "캠프티아노 기념비",
-    en: "The Camp Tiano Memorial",
+    ko: "태극기와 필리핀 국기 사이에 선 캠프티아노 기념비",
+    en: "The Camp Tiano Memorial, between the Korean and Philippine flags",
   },
 
   /**
@@ -76,40 +75,40 @@ export const site = {
    *   예) src: "/gallery/dedication-1952.jpg"
    */
   homePhotos: {
-    /** 이야기 구획 — 비석과 관련된 사진 한 장 */
+    /** 이야기 구획 — 1952년 제막의 순간 */
     story: {
-      src: "",
+      src: "/gallery/dedication-unveiling.jpg",
       alt: {
-        ko: "1952년 캠프티아노 기념비 제막식",
-        en: "The dedication of the Camp Tiano Memorial, 1952",
+        ko: "1952년 9월 18일, 캠프티아노 기념비 제막식",
+        en: "The unveiling of the Camp Tiano Memorial, 18 September 1952",
       },
       caption: {
-        ko: "1952년 9월 18일, 제19대대전투단 전우들이 세운 비석.",
-        en: "18 September 1952 — the stone raised by the men of the 19th BCT.",
+        ko: "1952년 9월 18일, 필리핀군 참모차장 바르가스 준장이 비석의 덮개를 벗기고 있습니다. 티아노 가족 명예의 벽 소장.",
+        en: "18 September 1952 — Brigadier General Vargas draws back the cover. Tiano Family Wall of Honor Collection.",
       },
     },
 
     /** 얼굴들 — 사진 기념관을 미리 보여 주는 띠 */
     faces: [
       {
-        src: "",
-        alt: { ko: "양구 계곡의 필리핀 참전용사", en: "Filipino soldiers in Yanggu Valley" },
+        src: "/gallery/yanggu-valley-two.jpg",
+        alt: { ko: "양구 계곡에 선 두 병사", en: "Two soldiers in Yanggu Valley" },
         caption: { ko: "양구 계곡, 한국", en: "Yanggu Valley, Korea" },
       },
       {
-        src: "",
-        alt: { ko: "비석 앞에 선 병사", en: "A soldier before the stone" },
-        caption: { ko: "캠프티아노 기념비 앞", en: "At the Camp Tiano Memorial" },
+        src: "/gallery/soldier-at-stone.jpg",
+        alt: { ko: "캠프티아노 비석 옆에 앉은 병사", en: "A soldier beside the Camp Tiano stone" },
+        caption: { ko: "비석 옆에서, 1952년", en: "Beside the stone, 1952" },
       },
       {
-        src: "",
-        alt: { ko: "겨울 진지의 병사들", en: "Soldiers at a winter position" },
+        src: "/gallery/winter-squad-a.jpg",
+        alt: { ko: "겨울 진지의 부대원들", en: "The squad at a winter position" },
         caption: { ko: "겨울, 전선", en: "Winter at the front" },
       },
       {
-        src: "",
-        alt: { ko: "제막식에 모인 부대원들", en: "The battalion gathered for the dedication" },
-        caption: { ko: "제막식, 1952년", en: "The dedication, 1952" },
+        src: "/gallery/officers-at-stone.jpg",
+        alt: { ko: "비석 양옆에 선 두 장교", en: "Two officers flanking the stone" },
+        caption: { ko: "제막식 날, 1952년", en: "The day of the dedication, 1952" },
       },
     ],
   },

@@ -12,6 +12,7 @@ import { Button, Container, Eyebrow, SectionHeading, TextLink } from "@/componen
 import { getDictionary, isLocale, fill, type Locale } from "@/i18n";
 import { getSortedNews } from "@/content/news";
 import { programs } from "@/content/programs";
+import { asset } from "@/lib/asset";
 import { site } from "@/lib/site";
 import { formatDate, formatDateTime, ordinal } from "@/lib/format";
 
@@ -40,50 +41,20 @@ export default async function HomePage({
 
   return (
     <>
-      {/* ── 첫 화면 · 새벽 능선 ──────────────────────────────────── */}
-      <section className="relative isolate flex min-h-[40rem] flex-col justify-center overflow-hidden lg:min-h-[48rem]">
-        {site.heroPhoto ? (
-          <>
-            <Image
-              src={site.heroPhoto}
-              alt={site.heroPhotoAlt[locale]}
-              fill
-              priority
-              className="-z-10 object-cover"
-            />
-            <div
-              aria-hidden
-              className="absolute inset-0 -z-10 bg-linear-to-r from-cream-50/95 via-cream-50/70 to-transparent"
-            />
-          </>
-        ) : (
+      {/* ── 첫 화면 ─────────────────────────────────────────────── */}
+      <section className="texture-dawn relative isolate overflow-hidden">
+        {/* 사진이 없을 때는 새벽 능선 삽화가 화면을 채웁니다. */}
+        {site.heroPhoto ? null : (
           <HeroScene className="absolute inset-0 -z-10 h-full w-full" />
         )}
 
-        {/*
-          글이 놓이는 왼쪽 위에만 옅은 종이빛을 깝니다.
-          아래로 갈수록 걷혀서 앞 능선의 짙은 색은 그대로 남습니다.
-        */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, var(--color-cream-50) 0%, color-mix(in srgb, var(--color-cream-50) 42%, transparent) 44%, transparent 72%)",
-            maskImage:
-              "linear-gradient(to bottom, #000 0%, #000 52%, transparent 82%)",
-            WebkitMaskImage:
-              "linear-gradient(to bottom, #000 0%, #000 52%, transparent 82%)",
-          }}
-        />
-
-        <Container className="py-24 sm:py-28 lg:py-36">
-          <div className="max-w-2xl">
+        <Container className="grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
+          <div className={site.heroPhoto ? "lg:col-span-7" : "lg:col-span-8"}>
             <p className="rise eyebrow mb-6 flex items-center gap-3 text-ochre-600">
               <span aria-hidden className="h-px w-10 bg-ochre-400" />
               {t.heroEyebrow}
             </p>
-            <h1 className="rise rise-1 display text-[2.6rem] whitespace-pre-line sm:text-[3.6rem] lg:text-[4.25rem]">
+            <h1 className="rise rise-1 display text-[2.6rem] whitespace-pre-line sm:text-[3.4rem] lg:text-[4rem]">
               {t.heroTitle}
             </h1>
             <p className="rise rise-2 mt-8 max-w-xl text-[1.0625rem] leading-[1.85] text-bark-600 sm:text-lg">
@@ -96,8 +67,28 @@ export default async function HomePage({
               </Button>
             </div>
           </div>
+
+          {site.heroPhoto ? (
+            <div className="lg:col-span-5">
+              {/*
+                기념비 사진은 세로로 깁니다. 잘라 내면 국기와 비석 중
+                하나를 잃게 되므로, 자르지 않고 전체를 보여 줍니다.
+              */}
+              <figure className="rise rise-2 mx-auto max-w-xs lg:max-w-none">
+                <Image
+                  src={asset(site.heroPhoto)}
+                  alt={site.heroPhotoAlt[locale]}
+                  width={924}
+                  height={2000}
+                  priority
+                  className="mx-auto max-h-[34rem] w-auto rounded-lg shadow-warm-lg ring-1 ring-bark-400/15 lg:max-h-[38rem]"
+                />
+              </figure>
+            </div>
+          ) : null}
         </Container>
       </section>
+      <Ridgeline fill="var(--color-khaki-800)" className="h-10 sm:h-14" />
 
       {/* ── 다가오는 추모식 ─────────────────────────────────────── */}
       <section className="bg-khaki-800 text-cream-100">

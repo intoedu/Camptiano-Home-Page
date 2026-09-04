@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Button, Container, PageHeader, PhotoSlot } from "@/components/ui";
 import { getDictionary, isLocale, type Locale } from "@/i18n";
 import { galleryAlbums, galleryVideos } from "@/content/gallery";
+import { asset } from "@/lib/asset";
 
 export async function generateMetadata({
   params,
@@ -66,7 +67,7 @@ export default async function GalleryPage({
                       className="overflow-hidden rounded-xl bg-cream-200"
                     >
                       <Image
-                        src={item.src}
+                        src={asset(item.src)}
                         alt={item.alt[locale]}
                         width={800}
                         height={800}
