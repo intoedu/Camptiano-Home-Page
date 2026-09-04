@@ -43,6 +43,7 @@ export const ko = {
       "그 돌 하나에 담겨 있던, 잊혀진 전쟁의 잊혀진 영웅 이야기. 캠프티아노 기념비의 주인공 아폴로 B. 티아노 소위와 한국전에 참전하신 필리핀 용사 여러분께 감사의 마음을 전합니다.",
     heroPrimary: "추모식 안내 보기",
     heroSecondary: "이야기 읽기",
+    heroScroll: "아래로",
 
     ceremonyLabel: "다가오는 추모식",
     ceremonyHeading: "제{n}주년 캠프티아노 추모식",

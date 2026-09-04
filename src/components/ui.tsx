@@ -96,7 +96,7 @@ export function SectionHeading({
 type ButtonProps = {
   href: string;
   children: ReactNode;
-  variant?: "primary" | "secondary" | "ghost" | "onDark";
+  variant?: "primary" | "secondary" | "ghost" | "onDark" | "onPhoto";
   className?: string;
 };
 
@@ -108,6 +108,9 @@ const buttonStyles: Record<NonNullable<ButtonProps["variant"]>, string> = {
   ghost: "text-bark-700 hover:text-ochre-700 hover:bg-cream-100",
   onDark:
     "bg-cream-50 text-bark-900 hover:bg-cream-100 shadow-warm hover:shadow-warm-lg",
+  /* 사진 위 — 사진을 가리지 않도록 테두리만 두고 살짝 비칩니다. */
+  onPhoto:
+    "text-cream-50 ring-1 ring-inset ring-cream-100/45 backdrop-blur-[2px] hover:bg-cream-50/10 hover:ring-cream-50/80",
 };
 
 export function Button({

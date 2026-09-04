@@ -43,8 +43,31 @@ export function Header({
 
   const isActive = (href: string) => pathname.startsWith(`/${locale}${href}`);
 
+  /*
+   * 첫 화면은 사진이 가득 채웁니다. 화면 맨 위에 있는 동안에는 머리글을
+   * 투명하게 두어 사진이 끊기지 않게 하고, 조금이라도 내리면 종이빛 바탕을
+   * 되돌려 글씨가 흐려지지 않게 합니다.
+   */
+  const isHome = pathname === `/${locale}` || pathname === `/${locale}/`;
+  const [atTop, setAtTop] = useState(true);
+
+  useEffect(() => {
+    const onScroll = () => setAtTop(window.scrollY < 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const onPhoto = isHome && atTop;
+
   return (
-    <header className="sticky top-0 z-50 border-b border-cream-300/70 bg-cream-50/90 backdrop-blur-md">
+    <header
+      className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
+        onPhoto
+          ? "border-transparent bg-transparent"
+          : "border-cream-300/70 bg-cream-50/90 backdrop-blur-md"
+      }`}
+    >
       <div className="mx-auto flex h-18 w-full max-w-6xl items-center gap-4 px-5 sm:px-8">
         <Link
           href={`/${locale}`}
@@ -52,7 +75,11 @@ export function Header({
           aria-label={orgName}
         >
           <LogoMark className="h-10 w-10 sm:h-11 sm:w-11" />
-          <Wordmark name={orgName} tagline={tagline} />
+          <Wordmark
+            name={orgName}
+            tagline={tagline}
+            tone={onPhoto ? "dark" : "light"}
+          />
         </Link>
 
         <nav
@@ -65,9 +92,13 @@ export function Header({
               href={`/${locale}${item.href}`}
               aria-current={isActive(item.href) ? "page" : undefined}
               className={`rounded-full px-2.5 py-2 text-sm font-medium whitespace-nowrap transition-colors xl:px-3 ${
-                isActive(item.href)
-                  ? "bg-cream-200 text-ochre-700"
-                  : "text-bark-700 hover:bg-cream-100 hover:text-ochre-700"
+                onPhoto
+                  ? isActive(item.href)
+                    ? "bg-cream-50/15 text-cream-50"
+                    : "text-cream-100/90 hover:bg-cream-50/12 hover:text-cream-50"
+                  : isActive(item.href)
+                    ? "bg-cream-200 text-ochre-700"
+                    : "text-bark-700 hover:bg-cream-100 hover:text-ochre-700"
               }`}
             >
               {dict.nav[item.key as NavKey]}
@@ -80,7 +111,11 @@ export function Header({
           <a
             href={`tel:${site.contact.phoneHref}`}
             aria-label={`${dict.contact.callCta} ${site.contact.phone}`}
-            className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium whitespace-nowrap text-bark-700 transition-colors hover:bg-cream-100 hover:text-ochre-700"
+            className={`inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
+              onPhoto
+                ? "text-cream-100/90 hover:bg-cream-50/12 hover:text-cream-50"
+                : "text-bark-700 hover:bg-cream-100 hover:text-ochre-700"
+            }`}
           >
             <IconPhone className="h-4 w-4" />
             <span className="hidden tabular-nums 2xl:inline">
@@ -91,7 +126,11 @@ export function Header({
           <Link
             href={switchHref}
             hrefLang={other}
-            className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-bark-600 transition-colors hover:bg-cream-100 hover:text-ochre-700"
+            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium transition-colors ${
+              onPhoto
+                ? "text-cream-100/85 hover:bg-cream-50/12 hover:text-cream-50"
+                : "text-bark-600 hover:bg-cream-100 hover:text-ochre-700"
+            }`}
           >
             <IconGlobe className="h-4 w-4" />
             <span className="hidden sm:inline">{dict.meta.switchTo}</span>
@@ -110,7 +149,11 @@ export function Header({
             onClick={() => setOpen(true)}
             aria-label={dict.nav.menu}
             aria-expanded={open}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-bark-700 transition-colors hover:bg-cream-100 lg:hidden"
+            className={`inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors lg:hidden ${
+              onPhoto
+                ? "text-cream-50 hover:bg-cream-50/12"
+                : "text-bark-700 hover:bg-cream-100"
+            }`}
           >
             <IconMenu />
           </button>

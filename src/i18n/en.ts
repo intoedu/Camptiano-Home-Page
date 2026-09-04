@@ -45,6 +45,7 @@ export const en: Dictionary = {
       "In that single stone lay the story of forgotten heroes of a forgotten war. We offer our gratitude to 2nd Lt. Apollo B. Tiano, whose name the Camp Tiano Memorial carries, and to every Filipino veteran who came to Korea.",
     heroPrimary: "About the ceremony",
     heroSecondary: "Read the story",
+    heroScroll: "Scroll",
 
     ceremonyLabel: "Upcoming memorial ceremony",
     ceremonyHeading: "The {n} Camp Tiano Memorial Ceremony",

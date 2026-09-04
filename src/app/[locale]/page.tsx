@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -41,54 +40,81 @@ export default async function HomePage({
 
   return (
     <>
-      {/* ── 첫 화면 ─────────────────────────────────────────────── */}
-      <section className="texture-dawn relative isolate overflow-hidden">
-        {/* 사진이 없을 때는 새벽 능선 삽화가 화면을 채웁니다. */}
-        {site.heroPhoto ? null : (
-          <HeroScene className="absolute inset-0 -z-10 h-full w-full" />
+      {/*
+        ── 첫 화면 ───────────────────────────────────────────────
+        기념비 사진이 화면을 가득 채웁니다.
+        상단 머리글이 사진 위에 겹쳐 보이도록 -mt-18 로 끌어올립니다.
+      */}
+      <section className="relative isolate -mt-18 flex min-h-[100svh] flex-col justify-end overflow-hidden pt-18">
+        {/* 사진 — 세로 화면에서는 원본, 가로 화면에서는 비석 중심의 넓은 사진 */}
+        {site.heroPhoto ? (
+          <picture className="absolute inset-0 -z-20 block h-full w-full">
+            <source
+              media="(min-aspect-ratio: 1/1)"
+              srcSet={asset(site.heroPhotoWide)}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={asset(site.heroPhoto)}
+              alt={site.heroPhotoAlt[locale]}
+              fetchPriority="high"
+              className="h-full w-full object-cover object-center"
+            />
+          </picture>
+        ) : (
+          <HeroScene className="absolute inset-0 -z-20 h-full w-full" />
         )}
 
-        <Container className="grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
-          <div className={site.heroPhoto ? "lg:col-span-7" : "lg:col-span-8"}>
-            <p className="rise eyebrow mb-6 flex items-center gap-3 text-ochre-600">
-              <span aria-hidden className="h-px w-10 bg-ochre-400" />
+        {/*
+          글씨가 읽히도록 사진 위에 덮는 층.
+          검정 대신 나무껍질빛(bark)을 써서 사진의 따뜻함을 지킵니다.
+        */}
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-gradient-to-t from-bark-900/90 via-bark-900/48 to-bark-900/22"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-bark-900/72 via-bark-900/22 to-transparent"
+        />
+        {/* 사진이 아래 능선빛 띠로 자연스럽게 잠기도록 */}
+        <div
+          aria-hidden
+          className="absolute inset-x-0 bottom-0 -z-10 h-28 bg-gradient-to-b from-transparent to-khaki-800"
+        />
+
+        <Container className="relative pt-24 pb-24 sm:pb-28">
+          <div className="max-w-2xl">
+            <p className="rise eyebrow mb-6 flex items-center gap-3 text-ochre-200">
+              <span aria-hidden className="h-px w-6 bg-ochre-200/70 sm:w-10" />
               {t.heroEyebrow}
             </p>
-            <h1 className="rise rise-1 display text-[2.6rem] whitespace-pre-line sm:text-[3.4rem] lg:text-[4rem]">
+            <h1 className="rise rise-1 display text-[2.6rem] whitespace-pre-line text-cream-50 sm:text-[3.4rem] lg:text-[4.25rem]">
               {t.heroTitle}
             </h1>
-            <p className="rise rise-2 mt-8 max-w-xl text-[1.0625rem] leading-[1.85] text-bark-600 sm:text-lg">
+            <p className="rise rise-2 mt-7 max-w-xl text-[1.0625rem] leading-[1.85] text-cream-100/85 sm:text-lg">
               {t.heroBody}
             </p>
-            <div className="rise rise-3 mt-10 flex flex-wrap gap-3">
-              <Button href={`/${locale}/visit`}>{t.heroPrimary}</Button>
-              <Button href={`/${locale}/about`} variant="secondary">
+            <div className="rise rise-3 mt-9 flex flex-wrap gap-3">
+              <Button href={`/${locale}/visit`} variant="onDark">
+                {t.heroPrimary}
+              </Button>
+              <Button href={`/${locale}/about`} variant="onPhoto">
                 {t.heroSecondary}
               </Button>
             </div>
           </div>
-
-          {site.heroPhoto ? (
-            <div className="lg:col-span-5">
-              {/*
-                기념비 사진은 세로로 깁니다. 잘라 내면 국기와 비석 중
-                하나를 잃게 되므로, 자르지 않고 전체를 보여 줍니다.
-              */}
-              <figure className="rise rise-2 mx-auto max-w-xs lg:max-w-none">
-                <Image
-                  src={asset(site.heroPhoto)}
-                  alt={site.heroPhotoAlt[locale]}
-                  width={924}
-                  height={2000}
-                  priority
-                  className="mx-auto max-h-[34rem] w-auto rounded-lg shadow-warm-lg ring-1 ring-bark-400/15 lg:max-h-[38rem]"
-                />
-              </figure>
-            </div>
-          ) : null}
         </Container>
+
+        {/* 아래에 더 있다는 조용한 표시 */}
+        <span
+          aria-hidden
+          className="rise rise-4 absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-cream-100/50 sm:flex"
+        >
+          <span className="eyebrow text-[0.625rem]">{t.heroScroll}</span>
+          <span className="h-10 w-px bg-gradient-to-b from-cream-100/50 to-transparent" />
+        </span>
       </section>
-      <Ridgeline fill="var(--color-khaki-800)" className="h-10 sm:h-14" />
 
       {/* ── 다가오는 추모식 ─────────────────────────────────────── */}
       <section className="bg-khaki-800 text-cream-100">

@@ -58,13 +58,18 @@ export const site = {
   },
 
   /**
-   * 첫 화면의 기념비 사진.
+   * 첫 화면을 가득 채우는 기념비 사진.
+   *
+   * 원본은 세로로 긴 사진입니다. 세로 화면(휴대폰)에서는 원본을 그대로 써서
+   * 태극기와 필리핀 국기, 비석까지 한 화면에 담고, 가로 화면(노트북·데스크톱)
+   * 에서는 비석을 중심으로 넓게 잘라 낸 사진을 씁니다.
    * 비어 있으면 새벽 능선 삽화(HeroScene)가 대신 표시됩니다.
    */
   heroPhoto: "/gallery/memorial-today.jpg",
+  heroPhotoWide: "/gallery/hero-wide.jpg",
   heroPhotoAlt: {
-    ko: "태극기와 필리핀 국기 사이에 선 캠프티아노 기념비",
-    en: "The Camp Tiano Memorial, between the Korean and Philippine flags",
+    ko: "숲을 등지고 선 캠프티아노 기념비",
+    en: "The Camp Tiano Memorial, standing against the woods",
   },
 
   /**
