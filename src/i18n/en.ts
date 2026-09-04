@@ -40,9 +40,9 @@ export const en: Dictionary = {
 
   home: {
     heroEyebrow: "1950 – 1953 · Filipino veterans of the Korean War",
-    heroTitle: "One small stone,\nset seventy years ago",
+    heroTitle: "One small stone,\nset seventy-four years ago",
     heroBody:
-      "In that single stone lay the story of forgotten heroes of a forgotten war. We offer our gratitude to Lt. Apolo Tiano, whose name the Camp Tiano Memorial carries, and to every Filipino veteran who came to Korea.",
+      "In that single stone lay the story of forgotten heroes of a forgotten war. We offer our gratitude to 2nd Lt. Apollo B. Tiano, whose name the Camp Tiano Memorial carries, and to every Filipino veteran who came to Korea.",
     heroPrimary: "About the ceremony",
     heroSecondary: "Read the story",
 
@@ -60,7 +60,7 @@ export const en: Dictionary = {
     storyEyebrow: "The story of Lt. Tiano",
     storyTitle: "The name survived. The story did not.",
     storyBody:
-      "A young man crossed the sea to defend Korea. A camp was raised where he had stood and given his name, and seventy years on a single small stone keeps that place. From that stone we set out to recover the stories of the 7,420 who fought alongside him.",
+      "On 21 June 1952 a young Filipino officer was killed on Hill Eerie. That September the men of the 19th Battalion Combat Team raised a stone where he had stood and gave the place his name — Camp Tiano. Seventy-four years on, the stone still stands where they set it.",
     storyCta: "About the association",
 
     newsEyebrow: "News",
@@ -91,15 +91,15 @@ export const en: Dictionary = {
 
     greetingHeading: "A word from the association",
     greetingBody: [
-      "In one small stone set seventy years ago lay the story of forgotten heroes of a forgotten war.",
-      "We offer our gratitude to Lt. Apolo Tiano, whose name the Camp Tiano Memorial carries, and to every veteran of the Korean War.",
+      "In one small stone set seventy-four years ago lay the story of forgotten heroes of a forgotten war.",
+      "We offer our gratitude to 2nd Lt. Apollo B. Tiano, whose name the Camp Tiano Memorial carries, and to every veteran of the Korean War.",
       "Through this site we hope the families of Lt. Tiano and of the Filipino veterans will come to visit Korea. And we hope it becomes a place where the next generation in Korea and around the world — who never knew what the Filipino veterans did here — can learn what the Korean War meant and give thanks for their noble sacrifice.",
     ],
     greetingSignoff: "Camp Tiano Memorial Association",
 
     storyHeading: "Camp Tiano: where the name comes from",
     storyBody:
-      "This section will carry the life of Lt. Apolo Tiano and the history of the Camp Tiano Memorial as confirmed by the association — service records, the circumstances of his death, and how the stone came to be raised. Only verified facts will appear here.",
+      "A young officer came from Cagayan de Oro City in the Philippines — 2nd Lieutenant Apollo B. Tiano. On 21 June 1952 he was killed on Hill Eerie, at Karhwa-gol.\n\nThree months later, on 18 September, the men of the 19th Battalion Combat Team raised a stone where he had stood, and called the place by his name — Camp Tiano.",
 
     valuesHeading: "What we hold to",
     values: [
