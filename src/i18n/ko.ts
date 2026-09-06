@@ -175,6 +175,18 @@ export const ko = {
     addressLabel: "주소",
     transportHeading: "교통편",
     transportPending: "교통편 안내를 준비하고 있습니다.",
+    heritageEyebrow: "국가보훈부 지정",
+    heritageHeading: "현충시설",
+    heritageBody:
+      "캠프티아노 기념비는 현충시설로 지정되어 있습니다. 나라를 지키기 위해 싸운 이들의 공훈을 기리는 시설로 국가가 인정하고 살피는 자리라는 뜻입니다.",
+    heritageAuthority: "지정 기관",
+    heritageNumber: "관리번호",
+    heritageDate: "지정일",
+    heritageKind: "시설 종류",
+    heritageManager: "관리주체",
+    heritagePending: "확인 중",
+    heritageNote:
+      "지정서에 적힌 관리번호와 지정일을 확인하는 대로 이 자리에 그대로 옮겨 싣겠습니다.",
     etiquetteHeading: "참배 안내",
     etiquette: [
       "기념비는 언제든 자유롭게 참배하실 수 있습니다.",

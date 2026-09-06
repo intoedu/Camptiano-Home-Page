@@ -23,14 +23,14 @@ export const site = {
       name: "캠프티아노기념사업회",
       shortName: "캠프티아노",
       tagline: "잊혀진 전쟁의, 잊혀진 영웅들을 기억합니다",
-      representativeTitle: "회장",
+      representativeTitle: "대표",
       representative: "윤정화",
     },
     en: {
       name: "Camp Tiano Memorial Association",
       shortName: "Camp Tiano",
       tagline: "Remembering the forgotten heroes of the forgotten war",
-      representativeTitle: "President",
+      representativeTitle: "Representative",
       representative: "Yoon Jung-hwa",
     },
   },
@@ -136,6 +136,29 @@ export const site = {
     lng: null as number | null,
     /** 비석이 세워진 날 — 비문에 새겨져 있습니다 */
     dedicatedOn: "1952-09-18T00:00:00+09:00",
+  },
+
+  /**
+   * 현충시설 지정.
+   *
+   * 지정 사실은 사업회(윤정화 대표)께서 알려 주신 내용입니다.
+   * 아래 세부 항목은 지정서에 적힌 값으로 채워 주세요.
+   * null 로 두면 화면에 "확인 중"으로 표시되고, 값을 넣으면 바로 나옵니다.
+   */
+  heritage: {
+    designated: true,
+    authority: {
+      ko: "국가보훈부",
+      en: "Ministry of Patriots and Veterans Affairs",
+    },
+    /** 관리번호 (예: "51-1-23") */
+    number: null as string | null,
+    /** 지정일 — ISO 8601 (예: "2015-06-01T00:00:00+09:00") */
+    designatedOn: null as string | null,
+    /** 시설 종류 (예: "국가수호시설 · 비") */
+    kind: null as { ko: string; en: string } | null,
+    /** 관리주체 */
+    manager: null as { ko: string; en: string } | null,
   },
 
   /** 다가오는 추모식 */

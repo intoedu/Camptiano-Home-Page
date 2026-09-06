@@ -6,13 +6,14 @@ import {
   Button,
   Card,
   Container,
+  Eyebrow,
   PageHeader,
   PendingNote,
   SectionHeading,
 } from "@/components/ui";
 import { getDictionary, isLocale, type Locale } from "@/i18n";
 import { site } from "@/lib/site";
-import { formatDateTime, mapLinks } from "@/lib/format";
+import { formatDate, formatDateTime, mapLinks } from "@/lib/format";
 
 export async function generateMetadata({
   params,
@@ -37,6 +38,28 @@ export default async function VisitPage({
   const t = dict.visit;
 
   const hasCoords = site.memorial.lat !== null && site.memorial.lng !== null;
+
+  /*
+   * 현충시설 지정 내역.
+   * 지정서에서 확인되지 않은 항목은 비워 두지 않고 "확인 중"으로 밝힙니다.
+   */
+  const heritage = site.heritage;
+  const heritageRows = [
+    { label: t.heritageAuthority, value: heritage.authority[locale] },
+    { label: t.heritageNumber, value: heritage.number },
+    {
+      label: t.heritageDate,
+      value: heritage.designatedOn
+        ? formatDate(heritage.designatedOn, locale)
+        : null,
+    },
+    { label: t.heritageKind, value: heritage.kind?.[locale] ?? null },
+    { label: t.heritageManager, value: heritage.manager?.[locale] ?? null },
+  ].map((row) => ({
+    label: row.label,
+    value: row.value ?? t.heritagePending,
+    pending: !row.value,
+  }));
 
   const links = mapLinks(site.contact.address[locale]);
   const mapButtons =
@@ -156,6 +179,58 @@ export default async function VisitPage({
           </div>
         </Container>
       </section>
+
+      {/*
+        ── 현충시설 ─────────────────────────────────────────────
+        기념비가 국가로부터 받은 지정입니다. 다른 안내에 섞이지 않도록
+        구획을 따로 두었습니다.
+      */}
+      {site.heritage.designated ? (
+        <section className="texture-grain bg-khaki-700 text-cream-100">
+          <Container className="grid gap-12 py-16 sm:py-20 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <Eyebrow tone="dark" className="mb-5">
+                {t.heritageEyebrow}
+              </Eyebrow>
+              <h2 className="display text-[2.05rem] text-cream-50 sm:text-[2.5rem]">
+                {t.heritageHeading}
+              </h2>
+              <p className="mt-6 text-[1.0625rem] leading-[1.85] text-cream-100/75">
+                {t.heritageBody}
+              </p>
+            </div>
+
+            <div className="lg:col-span-7">
+              <dl className="divide-y divide-cream-100/12 border-y border-cream-100/12">
+                {heritageRows.map((row) => (
+                  <div
+                    key={row.label}
+                    className="grid gap-1 py-5 sm:grid-cols-3 sm:gap-6"
+                  >
+                    <dt className="text-sm font-semibold text-ochre-200">
+                      {row.label}
+                    </dt>
+                    <dd
+                      className={`sm:col-span-2 ${
+                        row.pending
+                          ? "text-sm text-cream-100/45 italic"
+                          : "text-[0.9375rem] leading-relaxed text-cream-50"
+                      }`}
+                    >
+                      {row.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              {heritageRows.some((row) => row.pending) ? (
+                <p className="mt-6 text-xs leading-relaxed text-cream-100/45">
+                  {t.heritageNote}
+                </p>
+              ) : null}
+            </div>
+          </Container>
+        </section>
+      ) : null}
 
       <section className="texture-paper border-y border-cream-300/70 bg-cream-100/70 py-16 sm:py-20">
         <Container className="grid gap-10 lg:grid-cols-2 lg:gap-14">

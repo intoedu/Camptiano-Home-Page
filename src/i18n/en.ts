@@ -178,6 +178,18 @@ export const en: Dictionary = {
     addressLabel: "Address",
     transportHeading: "Getting there",
     transportPending: "Travel directions are being prepared.",
+    heritageEyebrow: "Designated by the Republic of Korea",
+    heritageHeading: "A national memorial facility",
+    heritageBody:
+      "The Camp Tiano Memorial is a designated national memorial facility (현충시설) — a site the Republic of Korea recognises and keeps watch over, raised in honour of those who fought to defend this country.",
+    heritageAuthority: "Designating authority",
+    heritageNumber: "Registration number",
+    heritageDate: "Date of designation",
+    heritageKind: "Type of facility",
+    heritageManager: "Managed by",
+    heritagePending: "To be confirmed",
+    heritageNote:
+      "The registration number and date of designation will be published here exactly as they appear on the certificate.",
     etiquetteHeading: "Visiting the memorial",
     etiquette: [
       "The memorial is open to visitors at any time.",

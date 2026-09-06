@@ -56,8 +56,8 @@ export default async function AboutPage({
             <PhotoSlot
               label={
                 locale === "ko"
-                  ? "회장 사진이 들어갈 자리"
-                  : "Portrait of the president"
+                  ? `${org.representativeTitle} 사진이 들어갈 자리`
+                  : "Portrait of the representative"
               }
               ratio="aspect-4/5"
               className="shadow-warm"
