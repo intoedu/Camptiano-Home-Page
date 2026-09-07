@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import {
@@ -7,9 +8,9 @@ import {
   Eyebrow,
   PageHeader,
   PendingNote,
-  PhotoSlot,
   SectionHeading,
 } from "@/components/ui";
+import { asset } from "@/lib/asset";
 import { getDictionary, isLocale, type Locale } from "@/i18n";
 import {
   dedicationNote,
@@ -51,33 +52,37 @@ export default async function AboutPage({
 
       {/* 인사말 */}
       <section className="py-20 sm:py-24">
-        <Container className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
-            <PhotoSlot
-              label={
-                locale === "ko"
-                  ? `${org.representativeTitle} 사진이 들어갈 자리`
-                  : "Portrait of the representative"
-              }
-              ratio="aspect-4/5"
-              className="shadow-warm"
-            />
+        <Container className="max-w-3xl">
+          <SectionHeading title={t.greetingHeading} />
+          <div className="mt-8 space-y-5 text-[1.0625rem] leading-[1.9] text-bark-700 sm:text-[1.125rem]">
+            {t.greetingBody.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
 
-          <div className="lg:col-span-7">
-            <SectionHeading title={t.greetingHeading} />
-            <div className="mt-7 space-y-5 text-[1.0625rem] leading-[1.9] text-bark-700">
-              {t.greetingBody.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
-            <p className="mt-9 font-serif text-lg">
-              <span className="text-bark-500">{t.greetingSignoff}</span>
-              <br />
-              <span className="font-semibold">
+          {/*
+            서명 — 편지 끝에 도장을 찍듯 사진을 작게 둡니다.
+            받은 사진이 작아 크게 걸면 흐려지므로, 작게 두어 또렷하게 보이도록
+            했습니다. 더 큰 사진이 오면 site.representativePhoto 만 바꾸면 됩니다.
+          */}
+          <div className="mt-12 flex items-center gap-6 border-t border-cream-300/70 pt-9 sm:gap-7">
+            {site.representativePhoto ? (
+              <Image
+                src={asset(site.representativePhoto)}
+                alt={`${org.representative} ${org.representativeTitle}`}
+                width={230}
+                height={288}
+                className="w-28 shrink-0 rounded-sm bg-cream-50 p-1.5 shadow-warm ring-1 ring-cream-300/70 sm:w-36"
+              />
+            ) : null}
+            <div>
+              <p className="text-sm leading-relaxed text-bark-500">
+                {t.greetingSignoff}
+              </p>
+              <p className="mt-1.5 font-serif text-xl font-semibold sm:text-2xl">
                 {org.representativeTitle} {org.representative}
-              </span>
-            </p>
+              </p>
+            </div>
           </div>
         </Container>
       </section>
