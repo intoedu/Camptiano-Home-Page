@@ -161,6 +161,9 @@ export const en: Dictionary = {
     title: "Gallery",
     lead: "The memorial through the seasons, moments from the ceremonies, and photographs kept by families.",
     tabs: { photo: "Photos", video: "Video" },
+    takedownHeading: "If you would like a photograph taken down",
+    takedownBody:
+      "If you are in one of these photographs, or are family to someone who is, and would rather it were not here, we will take it down as soon as we have confirmed. You need not give a reason. Please call or write to us.",
     contribute: "Do you hold a photograph?",
     contributeBody:
       "One photograph of a father or grandfather is where the memorial hall begins. Write to us and we will receive it with care.",

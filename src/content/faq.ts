@@ -132,6 +132,22 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         q: {
+          ko: "실린 사진을 내려 주셨으면 합니다.",
+          en: "I would like a photograph removed.",
+        },
+        a: {
+          ko: [
+            "전화나 이메일로 알려 주시면, 확인한 뒤 곧바로 내립니다. 이유를 밝히지 않으셔도 됩니다.",
+            "사진 속 인물 본인은 물론, 가족 누구든 요청하실 수 있습니다. 사업회는 유가족의 뜻을 앞세운다는 원칙으로 일합니다.",
+          ],
+          en: [
+            "Call or write to us and we will take it down as soon as we have confirmed it. You do not need to give a reason.",
+            "The person in the photograph, or any member of their family, may ask. The association works on the principle that the family's wishes come first.",
+          ],
+        },
+      },
+      {
+        q: {
           ko: "사진이나 유품을 제공하고 싶습니다.",
           en: "I would like to offer a photograph or a keepsake.",
         },

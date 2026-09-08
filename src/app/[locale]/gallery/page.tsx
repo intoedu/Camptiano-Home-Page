@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import { ContactActions } from "@/components/ContactActions";
 import { Button, Container, PageHeader } from "@/components/ui";
 import { getDictionary, isLocale, type Locale } from "@/i18n";
 import { galleryAlbums, galleryVideos } from "@/content/gallery";
@@ -111,6 +112,28 @@ export default async function GalleryPage({
           </Container>
         </section>
       ) : null}
+
+      {/*
+        사진을 내려 달라고 하실 수 있는 자리.
+        사이트가 세 군데에서 "원하지 않으시면 내립니다"라고 약속하고 있으면서
+        정작 말할 창구가 없었습니다. 사진 바로 아래에 둡니다.
+      */}
+      <section className="border-t border-cream-300/70 py-14 sm:py-16">
+        <Container className="max-w-3xl">
+          <h2 className="font-serif text-xl font-semibold sm:text-2xl">
+            {t.takedownHeading}
+          </h2>
+          <p className="mt-4 text-[0.9375rem] leading-[1.85] text-bark-600">
+            {t.takedownBody}
+          </p>
+          <div className="mt-7">
+            <ContactActions
+              callLabel={dict.common.call}
+              emailLabel={dict.common.email}
+            />
+          </div>
+        </Container>
+      </section>
 
       {/* 사진을 기다립니다 */}
       <section className="texture-grain bg-khaki-600 text-cream-100">
