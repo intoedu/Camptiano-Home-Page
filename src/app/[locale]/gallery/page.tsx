@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { ContactActions } from "@/components/ContactActions";
-import { Button, Container, PageHeader } from "@/components/ui";
+import { Container, PageHeader } from "@/components/ui";
 import { getDictionary, isLocale, type Locale } from "@/i18n";
 import { galleryAlbums, galleryVideos } from "@/content/gallery";
 import { asset } from "@/lib/asset";
@@ -135,22 +135,6 @@ export default async function GalleryPage({
         </Container>
       </section>
 
-      {/* 사진을 기다립니다 */}
-      <section className="texture-grain bg-khaki-600 text-cream-100">
-        <Container className="py-16 text-center sm:py-20">
-          <h2 className="font-serif text-2xl font-semibold text-cream-50 sm:text-3xl">
-            {t.contribute}
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-cream-200/85 sm:text-base">
-            {t.contributeBody}
-          </p>
-          <div className="mt-8 flex justify-center">
-            <Button href={`/${locale}/contact`} variant="onDark">
-              {dict.common.contactUs}
-            </Button>
-          </div>
-        </Container>
-      </section>
     </>
   );
 }

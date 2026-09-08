@@ -113,36 +113,6 @@ export const newsPosts: NewsPost[] = [
       ],
     },
   },
-  {
-    slug: "call-for-photographs",
-    date: "2026-07-20",
-    category: "notice",
-    pinned: true,
-    title: {
-      ko: "참전용사 사진을 찾습니다 — 사진 기념관 준비",
-      en: "Looking for photographs — building the memorial hall",
-    },
-    excerpt: {
-      ko: "유가족이 간직해 온 아버지와 할아버지의 사진을 모읍니다. A4·A3 크기로 확대해 상설 전시할 사진 기념관을 준비하고 있습니다.",
-      en: "We are gathering the photographs families have kept of their fathers and grandfathers, to be enlarged and permanently exhibited.",
-    },
-    body: {
-      ko: [
-        "사업회는 필리핀 참전용사 사진 기념관 건립을 준비하고 있습니다.",
-        "유가족이 오랜 시간 간직해 온 아버지와 할아버지의 사진을 모아, A4와 A3 크기까지 확대해 상설로 전시하는 것이 목표입니다. 한 장의 사진이 한 사람의 생애를 되살립니다.",
-        "사진은 원본을 보내 주실 필요가 없습니다. 스마트폰으로 찍은 사진이나 스캔본이면 충분하며, 원본을 맡겨 주시는 경우에는 고해상도 스캔 후 안전하게 돌려드립니다.",
-        "사진에 담긴 분의 성함, 계급, 부대, 촬영 시기와 장소를 아시는 만큼만 함께 알려 주시면 기록에 큰 도움이 됩니다. 모르셔도 괜찮습니다.",
-        "모든 사진은 유가족의 동의를 받은 범위 안에서만 사용하며, 원하지 않으시면 언제든 공개를 중단합니다.",
-      ],
-      en: [
-        "The association is preparing a photo memorial hall for the Filipino veterans of the Korean War.",
-        "Our aim is to gather the photographs families have kept for decades — of fathers and grandfathers — and enlarge them to A4 and A3 for permanent exhibition. A single photograph can bring back a whole life.",
-        "You do not need to send us an original. A phone photo or a scan is enough. If you do entrust an original to us, we will scan it at high resolution and return it safely.",
-        "If you know the name, rank, unit, or when and where the photograph was taken, please tell us as much as you can — it helps the record enormously. If you don't know, that is perfectly all right.",
-        "Every photograph is used only within the limits the family agrees to, and we will withdraw any image from public view at a family's request.",
-      ],
-    },
-  },
 ];
 
 export function getSortedNews() {

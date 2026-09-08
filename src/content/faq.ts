@@ -146,22 +146,6 @@ export const faqGroups: FaqGroup[] = [
           ],
         },
       },
-      {
-        q: {
-          ko: "사진이나 유품을 제공하고 싶습니다.",
-          en: "I would like to offer a photograph or a keepsake.",
-        },
-        a: {
-          ko: [
-            "정말 감사합니다. 원본을 보내 주실 필요는 없으며, 사진으로 찍은 이미지나 스캔본이면 충분합니다. 원본을 맡겨 주시는 경우 고해상도로 스캔한 뒤 안전하게 돌려드립니다.",
-            "모든 자료는 유가족이 동의하신 범위 안에서만 사용하며, 원하지 않으시면 언제든 공개를 중단합니다.",
-          ],
-          en: [
-            "Thank you — truly. You do not need to send an original; a photo or scan is enough. If you entrust an original to us, we scan it at high resolution and return it safely.",
-            "Every item is used only within the limits the family agrees to, and we will withdraw anything from public view on request.",
-          ],
-        },
-      },
     ],
   },
   {

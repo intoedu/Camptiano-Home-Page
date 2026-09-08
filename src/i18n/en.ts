@@ -80,7 +80,7 @@ export const en: Dictionary = {
     galleryEyebrow: "The photo memorial hall",
     galleryTitle: "Faces kept in the record",
     galleryBody:
-      "We are preparing a hall where these faces can hang permanently, enlarged to A4 and A3. A photograph from a drawer becomes a wall in an exhibition room.",
+      "We are preparing a hall where these faces can hang permanently, enlarged to A4 and A3.",
     galleryCta: "See the gallery",
 
     supportEyebrow: "Stand with us",
@@ -164,9 +164,6 @@ export const en: Dictionary = {
     takedownHeading: "If you would like a photograph taken down",
     takedownBody:
       "If you are in one of these photographs, or are family to someone who is, and would rather it were not here, we will take it down as soon as we have confirmed. You need not give a reason. Please call or write to us.",
-    contribute: "Do you hold a photograph?",
-    contributeBody:
-      "One photograph of a father or grandfather is where the memorial hall begins. Write to us and we will receive it with care.",
   },
 
   visit: {
@@ -214,7 +211,7 @@ export const en: Dictionary = {
       "We publish where the money went, and what it built, in our news section.",
     otherHeading: "It doesn't have to be money",
     otherBody:
-      "Photographs, translation, volunteering at events, helping us reach a family — there are many ways to take part.",
+      "Translation, volunteering at events, helping us reach a family — there are many ways to take part.",
   },
 
   faq: {
@@ -236,7 +233,7 @@ export const en: Dictionary = {
 
     mailHeading: "By email",
     mailBody:
-      "Best when you are sending photographs or documents, or writing in English. Enquiries from the Philippines are very welcome.",
+      "Best when you are sending documents, or writing in English. Enquiries from the Philippines are very welcome.",
     mailCta: "Email us",
 
     reasonsHeading: "Why people write to us",
@@ -248,10 +245,6 @@ export const en: Dictionary = {
       {
         title: "Veterans and families",
         body: "If you are the family of a Filipino veteran, please do get in touch. We correspond in English and Korean.",
-      },
-      {
-        title: "Photographs and records",
-        body: "One photograph of a father or grandfather is where the memorial hall begins. It need not be an original.",
       },
       {
         title: "Giving and partnership",

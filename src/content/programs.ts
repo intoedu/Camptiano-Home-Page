@@ -95,13 +95,11 @@ export const programs: Program[] = [
       ko: [
         "유가족이 오랫동안 간직해 온 아버지와 할아버지의 사진을 모아, A4와 A3 크기까지 확대해 상설로 전시하는 기념관을 세우는 것이 사업회의 가장 큰 목표입니다.",
         "숫자로 남은 참전 기록은 얼굴을 보여 주지 못합니다. 사진은 보여 줍니다. 스무 살 청년의 얼굴을 마주한 사람은 그 전쟁을 다시 생각하게 됩니다.",
-        "지금은 사진을 모으는 단계입니다. 원본이 아니어도 좋습니다. 휴대폰으로 찍은 사진이면 충분합니다.",
         "모든 사진은 유가족의 동의를 받은 범위 안에서만 전시하며, 원하지 않으시면 언제든 내립니다.",
       ],
       en: [
         "Our largest aim: to gather the photographs families have kept of their fathers and grandfathers, enlarge them to A4 and A3, and hang them permanently.",
         "A record kept in numbers cannot show a face. A photograph can. Anyone who looks a twenty-year-old in the eye thinks about that war differently afterwards.",
-        "We are at the gathering stage. It need not be an original — a photo taken on a phone is enough.",
         "Every photograph is exhibited only within the limits the family agrees to, and comes down at any time on request.",
       ],
     },
