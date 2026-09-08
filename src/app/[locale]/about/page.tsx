@@ -7,7 +7,6 @@ import {
   Container,
   Eyebrow,
   PageHeader,
-  PendingNote,
   SectionHeading,
 } from "@/components/ui";
 import { asset } from "@/lib/asset";
@@ -21,6 +20,7 @@ import {
   inscriptionTranslation,
   photoCredit,
 } from "@/content/inscription";
+import { timeline } from "@/content/timeline";
 import { site } from "@/lib/site";
 
 export async function generateMetadata({
@@ -205,20 +205,87 @@ export default async function AboutPage({
         </Container>
       </section>
 
-      {/* 연혁 · 조직 */}
+      {/* 연표 · 사업회 */}
       <section className="texture-paper border-t border-cream-300/60 bg-cream-100/60 py-20 sm:py-24">
-        <Container className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
+        <Container className="grid gap-14 lg:grid-cols-12 lg:gap-16">
+          {/* 근거가 있는 날짜만 싣습니다 — 대부분 비문에 새겨져 있습니다. */}
+          <div className="lg:col-span-7">
             <SectionHeading title={t.historyHeading} />
-            <div className="mt-6">
-              <PendingNote>{t.historyPending}</PendingNote>
-            </div>
+            <ol className="mt-9">
+              {timeline.map((entry, index) => (
+                <li
+                  key={index}
+                  className="grid gap-x-6 gap-y-1.5 border-t border-cream-300/70 py-6 sm:grid-cols-12"
+                >
+                  <time
+                    className={`font-serif text-base font-semibold tabular-nums sm:col-span-4 ${
+                      entry.upcoming ? "text-ochre-600" : "text-bark-500"
+                    }`}
+                  >
+                    {entry.when[locale]}
+                  </time>
+                  <div className="sm:col-span-8">
+                    <h3 className="font-serif text-lg font-semibold">
+                      {entry.title[locale]}
+                    </h3>
+                    <p className="mt-1.5 text-[0.9375rem] leading-[1.8] text-bark-600">
+                      {entry.body[locale]}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <div className="border-t border-cream-300/70" />
+            <p className="mt-5 text-xs leading-relaxed text-bark-500">
+              {t.historyPending}
+            </p>
           </div>
-          <div>
+
+          {/* 확인된 것만 밝힙니다. */}
+          <div className="lg:col-span-5">
             <SectionHeading title={t.orgHeading} />
-            <div className="mt-6">
-              <PendingNote>{t.orgPending}</PendingNote>
-            </div>
+            <dl className="mt-9 divide-y divide-cream-300/70 border-y border-cream-300/70">
+              <div className="py-5">
+                <dt className="text-xs font-semibold tracking-wide text-bark-500">
+                  {org.representativeTitle}
+                </dt>
+                <dd className="mt-1.5 font-serif text-lg font-semibold">
+                  {org.representative}
+                </dd>
+              </div>
+              <div className="py-5">
+                <dt className="text-xs font-semibold tracking-wide text-bark-500">
+                  {dict.contact.infoHeading}
+                </dt>
+                <dd className="mt-1.5 space-y-1 text-[0.9375rem]">
+                  <a
+                    href={`tel:${site.contact.phoneHref}`}
+                    className="block tabular-nums transition-colors hover:text-ochre-700"
+                  >
+                    {site.contact.phone}
+                  </a>
+                  <a
+                    href={`mailto:${site.contact.email}`}
+                    className="block break-all transition-colors hover:text-ochre-700"
+                  >
+                    {site.contact.email}
+                  </a>
+                </dd>
+              </div>
+              {site.heritage.designated ? (
+                <div className="py-5">
+                  <dt className="text-xs font-semibold tracking-wide text-bark-500">
+                    {dict.visit.heritageHeading}
+                  </dt>
+                  <dd className="mt-1.5 text-[0.9375rem]">
+                    {dict.visit.heritageEyebrow}
+                  </dd>
+                </div>
+              ) : null}
+            </dl>
+            <p className="mt-5 text-xs leading-relaxed text-bark-500">
+              {t.orgPending}
+            </p>
           </div>
         </Container>
       </section>

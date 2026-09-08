@@ -131,10 +131,12 @@ export const en: Dictionary = {
       },
     ],
 
-    historyHeading: "Milestones",
-    historyPending: "The association's timeline is being compiled.",
-    orgHeading: "Who we are",
-    orgPending: "Our organisation details are being compiled.",
+    historyHeading: "Camp Tiano: a timeline",
+    historyPending:
+      "Every date above is taken from the record cut into the stone. The association's own founding history and officers will be added here as they are settled.",
+    orgHeading: "The association",
+    orgPending:
+      "Our registered name and registration number will be published here once confirmed.",
   },
 
   programs: {
@@ -205,6 +207,8 @@ export const en: Dictionary = {
     bankHeading: "Bank transfer",
     bankName: "Bank",
     bankAccount: "Account number",
+    bankPendingBody:
+      "The association's bank account is being opened, and the details will appear here as soon as it is confirmed.\n\nIf you would like to give now, please call or write to us. We will pass on the account details and designate your gift to the fund you choose.",
     bankHolder: "Account holder",
     copy: "Copy",
     copied: "Copied",

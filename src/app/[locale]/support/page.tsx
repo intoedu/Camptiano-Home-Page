@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { ContactActions } from "@/components/ContactActions";
 import { CopyButton } from "@/components/CopyButton";
 import { programIcons } from "@/components/Icons";
 import {
@@ -40,6 +41,8 @@ export default async function SupportPage({
 
   // 링크가 채워진 간편 후원 수단만 노출합니다.
   const activeLinks = site.donationLinks.filter((link) => link.url);
+  // 계좌번호가 확정되기 전에는 계좌표 대신 사람에게 연결합니다.
+  const hasBank = site.bank.account.trim().length > 0;
 
   return (
     <>
@@ -105,39 +108,60 @@ export default async function SupportPage({
               title={t.bankHeading}
             />
 
-            <dl className="mt-8 divide-y divide-cream-300/80 rounded-2xl bg-cream-50 px-6 ring-1 ring-cream-300/80">
-              <div className="flex items-center justify-between gap-4 py-4">
-                <dt className="text-sm text-bark-500">{t.bankName}</dt>
-                <dd className="text-sm font-semibold">
-                  {site.bank.name[locale]}
-                </dd>
-              </div>
-              <div className="flex items-center justify-between gap-4 py-4">
-                <dt className="text-sm text-bark-500">{t.bankAccount}</dt>
-                <dd className="flex items-center gap-3">
-                  <span className="font-serif text-base font-semibold tabular-nums">
-                    {site.bank.account}
-                  </span>
-                  <CopyButton
-                    value={site.bank.account}
-                    label={t.copy}
-                    copiedLabel={t.copied}
-                  />
-                </dd>
-              </div>
-              <div className="flex items-center justify-between gap-4 py-4">
-                <dt className="text-sm text-bark-500">{t.bankHolder}</dt>
-                <dd className="text-sm font-semibold">
-                  {site.bank.holder[locale]}
-                </dd>
-              </div>
-            </dl>
+            {hasBank ? (
+              <>
+                <dl className="mt-8 divide-y divide-cream-300/80 rounded-2xl bg-cream-50 px-6 ring-1 ring-cream-300/80">
+                  <div className="flex items-center justify-between gap-4 py-4">
+                    <dt className="text-sm text-bark-500">{t.bankName}</dt>
+                    <dd className="text-sm font-semibold">
+                      {site.bank.name[locale]}
+                    </dd>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 py-4">
+                    <dt className="text-sm text-bark-500">{t.bankAccount}</dt>
+                    <dd className="flex items-center gap-3">
+                      <span className="font-serif text-base font-semibold tabular-nums">
+                        {site.bank.account}
+                      </span>
+                      <CopyButton
+                        value={site.bank.account}
+                        label={t.copy}
+                        copiedLabel={t.copied}
+                      />
+                    </dd>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 py-4">
+                    <dt className="text-sm text-bark-500">{t.bankHolder}</dt>
+                    <dd className="text-sm font-semibold">
+                      {site.bank.holder[locale]}
+                    </dd>
+                  </div>
+                </dl>
 
-            <p className="mt-4 text-xs leading-relaxed text-bark-500">
-              {locale === "ko"
-                ? "특정 사업을 지정해 후원하시려면 입금자명 뒤에 '장학', '벽', '기념관' 을 붙여 주세요. 예) 홍길동장학"
-                : "To designate your gift, add “scholarship”, “wall”, or “hall” after your name in the transfer reference."}
-            </p>
+                <p className="mt-4 text-xs leading-relaxed text-bark-500">
+                  {locale === "ko"
+                    ? "특정 사업을 지정해 후원하시려면 입금자명 뒤에 '장학', '벽', '기념관' 을 붙여 주세요. 예) 홍길동장학"
+                    : "To designate your gift, add “scholarship”, “wall”, or “hall” after your name in the transfer reference."}
+                </p>
+              </>
+            ) : (
+              /*
+                계좌가 확정되기 전에는 표를 띄우지 않습니다.
+                자리를 채우려고 가짜 번호를 두면 그 번호로 송금하는 분이
+                생길 수 있습니다. 대신 사람에게 바로 닿게 합니다.
+              */
+              <div className="mt-8 rounded-2xl bg-cream-50 p-7 ring-1 ring-cream-300/80 sm:p-8">
+                <p className="text-[0.9375rem] leading-[1.85] text-bark-700">
+                  {t.bankPendingBody}
+                </p>
+                <div className="mt-6">
+                  <ContactActions
+                    callLabel={dict.common.call}
+                    emailLabel={dict.common.email}
+                  />
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="space-y-6">

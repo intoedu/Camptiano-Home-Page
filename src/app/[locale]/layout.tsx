@@ -4,6 +4,7 @@ import "../globals.css";
 
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { StructuredData } from "@/components/StructuredData";
 import { VisitorStatsScript } from "@/components/VisitorStats";
 import { getDictionary, isLocale, locales, type Locale } from "@/i18n";
 import { site } from "@/lib/site";
@@ -50,9 +51,29 @@ export async function generateMetadata({
       siteName: org.name,
       locale: locale === "ko" ? "ko_KR" : "en_US",
       title: `${org.name} — ${org.tagline}`,
+      url: `${site.url}/${locale}/`,
+      // 카카오톡·페이스북에 링크를 붙였을 때 보이는 그림.
+      // 절대 주소로 적어야 합니다 — 상대 주소는 하위 경로가 떨어져 나갑니다.
+      images: [
+        {
+          url: `${site.url}/og.jpg`,
+          width: 1200,
+          height: 630,
+          alt: `${org.name} — ${org.tagline}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${org.name} — ${org.tagline}`,
+      images: [`${site.url}/og.jpg`],
     },
     // 정적 배포 시 하위 경로(/Camptiano-Home-Page)를 붙여 줘야 합니다.
-    icons: { icon: `${process.env.BASE_PATH ?? ""}/favicon.svg` },
+    icons: {
+      icon: `${process.env.BASE_PATH ?? ""}/favicon.svg`,
+      // 휴대폰 홈 화면에 바로가기를 만들 때 쓰이는 아이콘입니다.
+      apple: `${process.env.BASE_PATH ?? ""}/apple-touch-icon.png`,
+    },
   };
 }
 
@@ -80,6 +101,7 @@ export default async function LocaleLayout({
           crossOrigin="anonymous"
         />
         <link rel="stylesheet" href={FONT_CSS} />
+        <StructuredData locale={typedLocale} />
       </head>
       <body className="flex min-h-screen flex-col">
         <a

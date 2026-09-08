@@ -242,10 +242,17 @@ export const site = {
     { id: "toss", label: { ko: "토스로 후원", en: "Give with Toss" }, url: "" },
   ],
 
-  /** 후원 계좌 — TODO: 사업회 명의 계좌 확정 후 입력 */
+  /**
+   * 후원 계좌.
+   *
+   * `account` 가 비어 있으면 후원 페이지에 계좌표 대신 전화·이메일 안내가
+   * 나옵니다. 가짜 번호를 보여 주면 방문자가 그 번호로 송금을 시도할 수
+   * 있어, 확정 전까지는 아예 띄우지 않습니다.
+   * 계좌가 나오면 아래 세 칸만 채우면 곧바로 표로 바뀝니다.
+   */
   bank: {
-    name: { ko: "은행명 확인 중", en: "Bank to be confirmed" },
-    account: "000-0000-0000-00",
+    name: { ko: "", en: "" },
+    account: "",
     holder: { ko: "캠프티아노기념사업회", en: "Camp Tiano Memorial Association" },
   },
 } as const;

@@ -128,10 +128,12 @@ export const ko = {
       },
     ],
 
-    historyHeading: "연혁",
-    historyPending: "사업회 연혁을 정리하고 있습니다.",
-    orgHeading: "조직",
-    orgPending: "조직 구성을 정리하고 있습니다.",
+    historyHeading: "캠프티아노 연표",
+    historyPending:
+      "위 날짜는 모두 비석에 새겨진 기록에서 확인한 것입니다. 사업회의 설립 연혁과 임원 구성은 정리되는 대로 이곳에 더합니다.",
+    orgHeading: "사업회",
+    orgPending:
+      "정식 명칭과 고유번호는 확인되는 대로 이곳에 밝히겠습니다.",
   },
 
   programs: {
@@ -201,6 +203,8 @@ export const ko = {
     bankHeading: "계좌 후원",
     bankName: "은행",
     bankAccount: "계좌번호",
+    bankPendingBody:
+      "사업회 명의의 후원 계좌를 개설하는 중입니다. 확정되는 대로 이 자리에 바로 올리겠습니다.\n\n지금 후원을 원하시면 전화나 이메일로 연락 주세요. 계좌를 안내해 드리고, 원하시는 사업(장학기금·전사자의 벽·사진 기념관)으로 지정해 드리겠습니다.",
     bankHolder: "예금주",
     copy: "복사",
     copied: "복사되었습니다",
