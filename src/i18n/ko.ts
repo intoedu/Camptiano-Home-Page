@@ -28,12 +28,9 @@ export const ko = {
     call: "전화 걸기",
     email: "이메일 보내기",
     backTo: "목록으로",
-    comingSoon: "준비 중입니다",
     days: "일",
     hours: "시간",
     minutes: "분",
-    photoPending: "사진 준비 중",
-    contentPending: "내용 준비 중입니다. 자료가 확보되는 대로 채워집니다.",
   },
 
   home: {
@@ -129,11 +126,8 @@ export const ko = {
     ],
 
     historyHeading: "캠프티아노 연표",
-    historyPending:
-      "위 날짜는 모두 비석에 새겨진 기록에서 확인한 것입니다. 사업회의 설립 연혁과 임원 구성은 정리되는 대로 이곳에 더합니다.",
+    historySource: "위 날짜는 모두 비석에 새겨진 기록에서 확인한 것입니다.",
     orgHeading: "사업회",
-    orgPending:
-      "정식 명칭과 고유번호는 확인되는 대로 이곳에 밝히겠습니다.",
   },
 
   programs: {
@@ -163,8 +157,6 @@ export const ko = {
     title: "갤러리",
     lead: "기념비의 사계절, 추모식의 순간, 그리고 유가족이 간직해 온 사진들.",
     tabs: { photo: "사진", video: "영상" },
-    empty: "사진을 모으고 있습니다.",
-    videoEmpty: "영상을 준비하고 있습니다.",
     contribute: "사진을 가지고 계신가요?",
     contributeBody:
       "아버지, 할아버지의 사진 한 장이 기념관의 시작이 됩니다. 사업회로 연락 주시면 정중히 모시겠습니다.",
@@ -173,10 +165,7 @@ export const ko = {
   visit: {
     title: "오시는 길",
     lead: "캠프티아노 기념비와 사업회 사무실 위치를 안내합니다.",
-    mapPending: "지도 앱에서 길찾기를 시작하실 수 있습니다. 기념비의 정확한 좌표가 확인되면 이 자리에 지도를 바로 띄워 드리겠습니다.",
     addressLabel: "주소",
-    transportHeading: "교통편",
-    transportPending: "교통편 안내를 준비하고 있습니다.",
     heritageEyebrow: "국가보훈부 지정",
     heritageHeading: "현충시설",
     heritageBody:
@@ -186,9 +175,6 @@ export const ko = {
     heritageDate: "지정일",
     heritageKind: "시설 종류",
     heritageManager: "관리주체",
-    heritagePending: "확인 중",
-    heritageNote:
-      "지정서에 적힌 관리번호와 지정일을 확인하는 대로 이 자리에 그대로 옮겨 싣겠습니다.",
     etiquetteHeading: "참배 안내",
     etiquette: [
       "기념비는 언제든 자유롭게 참배하실 수 있습니다.",
@@ -211,15 +197,10 @@ export const ko = {
     onlineHeading: "간편 후원",
     onlineBody:
       "카카오페이나 토스로 계좌번호를 입력하지 않고 바로 후원하실 수 있습니다.",
-    onlinePending:
-      "간편 후원 링크를 준비하고 있습니다. 그동안은 계좌 후원을 이용하시거나 전화·이메일로 연락 주세요.",
     corporateHeading: "기업·기관 후원",
     corporateBody:
       "기업, 관공서, 학교, 교회 등 단체 차원의 후원과 협력을 환영합니다. 추모식 공동 주최, 장학기금 매칭, 사진 기념관 건립 참여 등 함께할 수 있는 방법을 상의드리겠습니다.",
     corporateCta: "협력 문의하기",
-    receiptHeading: "기부금 영수증",
-    receiptPending:
-      "기부금 영수증 발급 가능 여부는 확인 후 안내드리겠습니다.",
     transparencyHeading: "사용 내역 공개",
     transparencyBody:
       "모인 후원금이 어디에 어떻게 쓰였는지 공지·소식 게시판에 정기적으로 올립니다.",

@@ -22,7 +22,6 @@ export type NewsPost = {
   /** 본문에 곁들일 사진. /public 아래 경로. */
   photos?: { src: string; alt: Record<Locale, string> }[];
   /** 사진이 아직 없을 때 보여 줄 자리표시자 개수 */
-  photoPlaceholders?: number;
 };
 
 /**
@@ -85,7 +84,6 @@ export const newsPosts: NewsPost[] = [
         en: "These accounts are for Col. Flores's funeral, and are separate from the association's general donation account.",
       },
     },
-    photoPlaceholders: 2,
   },
   {
     slug: "74th-memorial-ceremony",

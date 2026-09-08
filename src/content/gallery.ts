@@ -6,8 +6,6 @@ export type GalleryAlbum = {
   caption: Record<Locale, string>;
   /** 사진 파일은 /public/gallery 아래에 둡니다. */
   items: { src: string; alt: Record<Locale, string> }[];
-  /** 아직 사진이 없는 앨범에서 자리표시자를 몇 칸 보여 줄지 */
-  placeholders: number;
 };
 
 export type GalleryVideo = {
@@ -49,7 +47,6 @@ export const galleryAlbums: GalleryAlbum[] = [
         },
       },
     ],
-    placeholders: 3,
   },
   {
     id: "dedication",
@@ -112,7 +109,6 @@ export const galleryAlbums: GalleryAlbum[] = [
         },
       },
     ],
-    placeholders: 4,
   },
   {
     id: "veterans",
@@ -158,7 +154,6 @@ export const galleryAlbums: GalleryAlbum[] = [
         },
       },
     ],
-    placeholders: 5,
   },
 ];
 

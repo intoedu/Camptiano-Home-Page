@@ -237,7 +237,7 @@ export default async function AboutPage({
             </ol>
             <div className="border-t border-cream-300/70" />
             <p className="mt-5 text-xs leading-relaxed text-bark-500">
-              {t.historyPending}
+              {t.historySource}
             </p>
           </div>
 
@@ -283,9 +283,6 @@ export default async function AboutPage({
                 </div>
               ) : null}
             </dl>
-            <p className="mt-5 text-xs leading-relaxed text-bark-500">
-              {t.orgPending}
-            </p>
           </div>
         </Container>
       </section>

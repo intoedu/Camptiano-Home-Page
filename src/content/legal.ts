@@ -25,7 +25,8 @@ export type LegalDocument = {
  * 사이트가 실제로 하는 일만 적었습니다.
  * 홈페이지에는 입력 양식이 없어, 사이트 자체가 수집하는 개인정보는 없습니다.
  *
- * TODO: 개인정보 보호책임자 성함·직위·연락처를 사업회에서 확정해 주세요.
+ * 개인정보 보호책임자는 「개인정보 보호법」상 기본값인 대표자로 두었습니다.
+ * 다른 분을 지정하시면 아래 7번 항목만 고치면 됩니다.
  */
 export const privacyPolicy: LegalDocument = {
   title: { ko: "개인정보처리방침", en: "Privacy Policy" },
@@ -166,12 +167,12 @@ export const privacyPolicy: LegalDocument = {
       },
       body: {
         ko: [
-          "개인정보와 관련한 문의는 아래로 연락해 주시기 바랍니다.",
-          "※ 보호책임자의 성함과 직위는 사업회 확정 후 게시합니다.",
+          "개인정보 보호책임자: 윤정화 (대표)",
+          "개인정보와 관련한 문의는 아래 연락처로 주시기 바랍니다.",
         ],
         en: [
-          "For any question about personal data, please contact us below.",
-          "※ The name and position of the officer will be published once confirmed by the association.",
+          "Data protection officer: Yoon Jung-hwa (Representative)",
+          "For any question about personal data, please use the contact details below.",
         ],
       },
     },

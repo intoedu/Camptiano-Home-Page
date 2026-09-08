@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import Image from "next/image";
-import { Button, Container, PhotoSlot } from "@/components/ui";
+import { Button, Container } from "@/components/ui";
 import { getDictionary, isLocale, locales, type Locale } from "@/i18n";
 import { getNewsPost, getSortedNews, newsPosts } from "@/content/news";
 import { formatDate } from "@/lib/format";
@@ -102,16 +102,6 @@ export default async function NewsPostPage({
                     className="h-auto w-full object-cover"
                   />
                 </figure>
-              ))}
-            </div>
-          ) : post.photoPlaceholders ? (
-            <div className="mt-10 grid gap-4 sm:grid-cols-2">
-              {Array.from({ length: post.photoPlaceholders }).map((_, i) => (
-                <PhotoSlot
-                  key={i}
-                  label={dict.common.photoPending}
-                  ratio="aspect-4/3"
-                />
               ))}
             </div>
           ) : null}

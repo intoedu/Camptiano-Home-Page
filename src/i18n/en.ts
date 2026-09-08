@@ -30,12 +30,9 @@ export const en: Dictionary = {
     call: "Call",
     email: "Email us",
     backTo: "Back to list",
-    comingSoon: "Coming soon",
     days: "days",
     hours: "hrs",
     minutes: "min",
-    photoPending: "Photograph pending",
-    contentPending: "This section will be filled in as records are confirmed.",
   },
 
   home: {
@@ -132,11 +129,9 @@ export const en: Dictionary = {
     ],
 
     historyHeading: "Camp Tiano: a timeline",
-    historyPending:
-      "Every date above is taken from the record cut into the stone. The association's own founding history and officers will be added here as they are settled.",
+    historySource:
+      "Every date above is taken from the record cut into the stone.",
     orgHeading: "The association",
-    orgPending:
-      "Our registered name and registration number will be published here once confirmed.",
   },
 
   programs: {
@@ -166,8 +161,6 @@ export const en: Dictionary = {
     title: "Gallery",
     lead: "The memorial through the seasons, moments from the ceremonies, and photographs kept by families.",
     tabs: { photo: "Photos", video: "Video" },
-    empty: "We are still gathering photographs.",
-    videoEmpty: "Video is on its way.",
     contribute: "Do you hold a photograph?",
     contributeBody:
       "One photograph of a father or grandfather is where the memorial hall begins. Write to us and we will receive it with care.",
@@ -176,10 +169,7 @@ export const en: Dictionary = {
   visit: {
     title: "Visit",
     lead: "How to reach the Camp Tiano Memorial and the association's office.",
-    mapPending: "Open directions in a map app. Once the memorial's exact coordinates are confirmed, the map will appear here.",
     addressLabel: "Address",
-    transportHeading: "Getting there",
-    transportPending: "Travel directions are being prepared.",
     heritageEyebrow: "Designated by the Republic of Korea",
     heritageHeading: "A national memorial facility",
     heritageBody:
@@ -189,9 +179,6 @@ export const en: Dictionary = {
     heritageDate: "Date of designation",
     heritageKind: "Type of facility",
     heritageManager: "Managed by",
-    heritagePending: "To be confirmed",
-    heritageNote:
-      "The registration number and date of designation will be published here exactly as they appear on the certificate.",
     etiquetteHeading: "Visiting the memorial",
     etiquette: [
       "The memorial is open to visitors at any time.",
@@ -215,15 +202,10 @@ export const en: Dictionary = {
     onlineHeading: "Quick giving",
     onlineBody:
       "Give through KakaoPay or Toss without entering an account number.",
-    onlinePending:
-      "Quick-giving links are being prepared. Until then, please use a bank transfer, or call or email us.",
     corporateHeading: "Companies and institutions",
     corporateBody:
       "We welcome support and partnership from companies, public bodies, schools, and churches — co-hosting the ceremony, matching the scholarship fund, or helping build the memorial hall. Let's talk about what fits.",
     corporateCta: "Discuss a partnership",
-    receiptHeading: "Tax receipts",
-    receiptPending:
-      "We will confirm whether tax-deductible receipts can be issued and update this page.",
     transparencyHeading: "How gifts are used",
     transparencyBody:
       "We publish where the money went, and what it built, in our news section.",

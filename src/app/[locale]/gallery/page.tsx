@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { Button, Container, PageHeader, PhotoSlot } from "@/components/ui";
+import { Button, Container, PageHeader } from "@/components/ui";
 import { getDictionary, isLocale, type Locale } from "@/i18n";
 import { galleryAlbums, galleryVideos } from "@/content/gallery";
 import { asset } from "@/lib/asset";
@@ -33,7 +33,9 @@ export default async function GalleryPage({
     <>
       <PageHeader eyebrow={dict.nav.gallery} title={t.title} lead={t.lead} />
 
-      {galleryAlbums.map((album, index) => (
+      {galleryAlbums
+        .filter((album) => album.items.length > 0)
+        .map((album, index) => (
         <section
           key={album.id}
           className={`py-14 sm:py-16 ${
@@ -53,49 +55,35 @@ export default async function GalleryPage({
                 </p>
               </div>
               <span className="text-xs text-bark-500">
-                {album.items.length > 0
-                  ? `${album.items.length}`
-                  : dict.common.photoPending}
+                {album.items.length}
               </span>
             </div>
 
             <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-              {album.items.length > 0
-                ? album.items.map((item) => (
-                    <figure
-                      key={item.src}
-                      className="overflow-hidden rounded-xl bg-cream-200"
-                    >
-                      <Image
-                        src={asset(item.src)}
-                        alt={item.alt[locale]}
-                        width={800}
-                        height={800}
-                        className="aspect-square h-auto w-full object-cover transition-transform duration-500 hover:scale-105"
-                      />
-                    </figure>
-                  ))
-                : Array.from({ length: album.placeholders }).map((_, i) => (
-                    <PhotoSlot
-                      key={i}
-                      label={dict.common.photoPending}
-                      ratio="aspect-square"
-                    />
-                  ))}
+              {album.items.map((item) => (
+                <figure
+                  key={item.src}
+                  className="overflow-hidden rounded-xl bg-cream-200"
+                >
+                  <Image
+                    src={asset(item.src)}
+                    alt={item.alt[locale]}
+                    width={800}
+                    height={800}
+                    className="aspect-square h-auto w-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                </figure>
+              ))}
             </div>
           </Container>
         </section>
       ))}
 
-      {/* 영상 */}
-      <section className="py-14 sm:py-16">
-        <Container>
-          <h2 className="font-serif text-2xl font-semibold">{t.tabs.video}</h2>
-          {galleryVideos.length === 0 ? (
-            <p className="mt-4 rounded-xl border border-dashed border-ochre-300 bg-cream-100/70 px-5 py-4 text-sm text-bark-600">
-              {t.videoEmpty}
-            </p>
-          ) : (
+      {/* 영상 — 올릴 영상이 있을 때만 나옵니다 */}
+      {galleryVideos.length > 0 ? (
+        <section className="py-14 sm:py-16">
+          <Container>
+            <h2 className="font-serif text-2xl font-semibold">{t.tabs.video}</h2>
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               {galleryVideos.map((video) => (
                 <figure key={video.id}>
@@ -120,9 +108,9 @@ export default async function GalleryPage({
                 </figure>
               ))}
             </div>
-          )}
-        </Container>
-      </section>
+          </Container>
+        </section>
+      ) : null}
 
       {/* 사진을 기다립니다 */}
       <section className="texture-grain bg-khaki-600 text-cream-100">

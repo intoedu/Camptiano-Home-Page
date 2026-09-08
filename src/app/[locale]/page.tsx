@@ -305,7 +305,6 @@ export default async function HomePage({
             <PhotoFrame
               photo={site.homePhotos.story}
               locale={locale}
-              pendingLabel={dict.common.photoPending}
               ratio="aspect-5/4"
             />
           </div>
@@ -357,7 +356,6 @@ export default async function HomePage({
                 key={index}
                 photo={photo}
                 locale={locale}
-                pendingLabel={dict.common.photoPending}
                 tone="dark"
                 className={index % 2 === 1 ? "sm:mt-10" : ""}
               />

@@ -138,9 +138,11 @@ export const site = {
 
   /** 기념비 위치 — 지도 및 오시는 길에 사용 */
   memorial: {
-    // TODO: 캠프티아노 기념비 정확한 주소·좌표 확인 필요
+    // TODO: 캠프티아노 기념비 정확한 주소·좌표 확인 필요.
+    //       주소가 비어 있으면 "오시는 길"에서 주소 줄이 나오지 않습니다.
+    //       "확인 중" 같은 자리표시자를 넣지 마세요.
     name: { ko: "캠프티아노 기념비", en: "Camp Tiano Memorial" },
-    address: { ko: "위치 확인 중", en: "Location to be confirmed" },
+    address: { ko: "", en: "" },
     lat: null as number | null,
     lng: null as number | null,
     /** 비석이 세워진 날 — 비문에 새겨져 있습니다 */
@@ -152,7 +154,7 @@ export const site = {
    *
    * 지정 사실은 사업회(윤정화 대표)께서 알려 주신 내용입니다.
    * 아래 세부 항목은 지정서에 적힌 값으로 채워 주세요.
-   * null 로 두면 화면에 "확인 중"으로 표시되고, 값을 넣으면 바로 나옵니다.
+   * null 로 둔 항목은 화면에 아예 나오지 않고, 값을 넣으면 그 줄이 생깁니다.
    */
   heritage: {
     designated: true,
@@ -172,12 +174,12 @@ export const site = {
 
   /** 다가오는 추모식 */
   ceremony: {
-    /** ISO 8601 (KST). TODO: 정확한 시각·장소 확인 필요 */
+    /** ISO 8601 (KST). TODO: 정확한 시각을 사업회에서 확인해 주세요. */
     datetime: "2026-09-18T11:00:00+09:00",
     anniversary: 74,
     place: {
-      ko: "캠프티아노 기념비 (장소 확정 예정)",
-      en: "Camp Tiano Memorial (venue to be confirmed)",
+      ko: "캠프티아노 기념비 앞",
+      en: "At the Camp Tiano Memorial",
     },
   },
 

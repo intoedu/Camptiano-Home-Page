@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { programIcons } from "@/components/Icons";
-import { Button, Container, PageHeader, PhotoSlot } from "@/components/ui";
+import { Button, Container, PageHeader } from "@/components/ui";
 import { getDictionary, isLocale, type Locale } from "@/i18n";
 import { programs } from "@/content/programs";
 import { site } from "@/lib/site";
@@ -71,10 +71,8 @@ export default async function ProgramsPage({
                 reversed ? "texture-paper bg-cream-100/60" : ""
               }`}
             >
-              <Container className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-                <div
-                  className={`lg:col-span-7 ${reversed ? "lg:order-2" : ""}`}
-                >
+              <Container className="max-w-3xl">
+                <div>
                   <div className="flex items-center gap-4">
                     <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-ochre-200/50 text-ochre-700">
                       <Icon className="h-6 w-6" />
@@ -128,14 +126,6 @@ export default async function ProgramsPage({
                       {dict.common.contactUs}
                     </Button>
                   </div>
-                </div>
-
-                <div className={`lg:col-span-5 ${reversed ? "lg:order-1" : ""}`}>
-                  <PhotoSlot
-                    label={dict.common.photoPending}
-                    ratio="aspect-4/3"
-                    className="shadow-warm"
-                  />
                 </div>
               </Container>
             </section>

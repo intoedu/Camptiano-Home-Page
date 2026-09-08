@@ -173,41 +173,6 @@ export function Card({
   );
 }
 
-/** 사진이 준비되기 전, 의도된 빈 액자 */
-export function PhotoSlot({
-  label,
-  className = "",
-  ratio = "aspect-4/3",
-}: {
-  label: string;
-  className?: string;
-  ratio?: string;
-}) {
-  return (
-    <div
-      className={`photo-slot flex flex-col items-center justify-center gap-2.5 rounded-xl ring-1 ring-ochre-300/35 ring-inset ${ratio} ${className}`}
-    >
-      <svg
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-        className="h-7 w-7 text-ochre-600/30"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1.3}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <rect x="3" y="5" width="18" height="14" rx="1.5" />
-        <path d="m3 15.4 4.6-4.5 3 2.9 2.3-2.1 5.1 4.4" />
-        <circle cx="8.2" cy="9.2" r="1.1" />
-      </svg>
-      <span className="px-4 text-center text-[11px] font-medium tracking-wide text-ochre-700/45">
-        {label}
-      </span>
-    </div>
-  );
-}
-
 /** 안쪽 페이지 머리 — 첫 화면과 같은 새벽빛을 옅게 이어 받습니다. */
 export function PageHeader({
   eyebrow,
@@ -241,11 +206,3 @@ export function PageHeader({
   );
 }
 
-/** 확인이 끝나지 않은 내용을 정중하게 알리는 안내 */
-export function PendingNote({ children }: { children: ReactNode }) {
-  return (
-    <p className="border-l-2 border-ochre-300 bg-cream-100/60 px-6 py-5 text-sm leading-[1.85] text-bark-600">
-      {children}
-    </p>
-  );
-}

@@ -8,7 +8,6 @@ import {
   Container,
   Eyebrow,
   PageHeader,
-  PendingNote,
   SectionHeading,
 } from "@/components/ui";
 import { getDictionary, isLocale, type Locale } from "@/i18n";
@@ -41,11 +40,12 @@ export default async function VisitPage({
 
   /*
    * 현충시설 지정 내역.
-   * 지정서에서 확인되지 않은 항목은 비워 두지 않고 "확인 중"으로 밝힙니다.
+   * 지정 기관은 머리말에 이미 밝히므로, 표에는 지정서에서 확인된 항목만
+   * 싣습니다. 확인되지 않은 줄을 "확인 중"으로 채워 두지 않습니다 —
+   * 없는 것을 있는 것처럼 보이게 하는 자리표시자는 두지 않습니다.
    */
   const heritage = site.heritage;
   const heritageRows = [
-    { label: t.heritageAuthority, value: heritage.authority[locale] },
     { label: t.heritageNumber, value: heritage.number },
     {
       label: t.heritageDate,
@@ -55,11 +55,7 @@ export default async function VisitPage({
     },
     { label: t.heritageKind, value: heritage.kind?.[locale] ?? null },
     { label: t.heritageManager, value: heritage.manager?.[locale] ?? null },
-  ].map((row) => ({
-    label: row.label,
-    value: row.value ?? t.heritagePending,
-    pending: !row.value,
-  }));
+  ].filter((row): row is { label: string; value: string } => Boolean(row.value));
 
   const links = mapLinks(site.contact.address[locale]);
   const mapButtons =
@@ -90,7 +86,7 @@ export default async function VisitPage({
                 className="aspect-4/3 w-full rounded-2xl ring-1 ring-cream-300"
               />
             ) : (
-              <div className="photo-slot flex aspect-4/3 items-center justify-center rounded-2xl ring-1 ring-ochre-300/40 ring-inset">
+              <div className="flex aspect-4/3 items-center justify-center rounded-2xl bg-cream-100/70 ring-1 ring-cream-300/80 ring-inset">
                 <div className="max-w-sm px-6 text-center">
                   <IconMapPin className="mx-auto h-8 w-8 text-ochre-600/60" />
                   <p className="mt-4 font-serif text-lg font-semibold text-bark-800">
@@ -110,9 +106,6 @@ export default async function VisitPage({
                       </a>
                     ))}
                   </div>
-                  <p className="mt-4 text-xs leading-relaxed text-bark-500">
-                    {t.mapPending}
-                  </p>
                 </div>
               </div>
             )}
@@ -126,17 +119,19 @@ export default async function VisitPage({
             />
 
             <dl className="mt-8 space-y-6 text-sm">
-              <div className="flex gap-3">
-                <IconMapPin className="mt-0.5 h-5 w-5 shrink-0 text-ochre-600" />
-                <div>
-                  <dt className="font-semibold text-bark-700">
-                    {t.addressLabel}
-                  </dt>
-                  <dd className="mt-1 leading-relaxed text-bark-600">
-                    {site.memorial.address[locale]}
-                  </dd>
+              {site.memorial.address[locale] ? (
+                <div className="flex gap-3">
+                  <IconMapPin className="mt-0.5 h-5 w-5 shrink-0 text-ochre-600" />
+                  <div>
+                    <dt className="font-semibold text-bark-700">
+                      {t.addressLabel}
+                    </dt>
+                    <dd className="mt-1 leading-relaxed text-bark-600">
+                      {site.memorial.address[locale]}
+                    </dd>
+                  </div>
                 </div>
-              </div>
+              ) : null}
 
               <div className="flex gap-3">
                 <IconPhone className="mt-0.5 h-5 w-5 shrink-0 text-ochre-600" />
@@ -187,8 +182,14 @@ export default async function VisitPage({
       */}
       {site.heritage.designated ? (
         <section className="texture-grain bg-khaki-700 text-cream-100">
-          <Container className="grid gap-12 py-16 sm:py-20 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-5">
+          <Container
+            className={`py-16 sm:py-20 ${
+              heritageRows.length > 0
+                ? "grid gap-12 lg:grid-cols-12 lg:gap-16"
+                : "max-w-2xl"
+            }`}
+          >
+            <div className={heritageRows.length > 0 ? "lg:col-span-5" : ""}>
               <Eyebrow tone="dark" className="mb-5">
                 {t.heritageEyebrow}
               </Eyebrow>
@@ -200,6 +201,7 @@ export default async function VisitPage({
               </p>
             </div>
 
+            {heritageRows.length > 0 ? (
             <div className="lg:col-span-7">
               <dl className="divide-y divide-cream-100/12 border-y border-cream-100/12">
                 {heritageRows.map((row) => (
@@ -210,38 +212,21 @@ export default async function VisitPage({
                     <dt className="text-sm font-semibold text-ochre-200">
                       {row.label}
                     </dt>
-                    <dd
-                      className={`sm:col-span-2 ${
-                        row.pending
-                          ? "text-sm text-cream-100/45 italic"
-                          : "text-[0.9375rem] leading-relaxed text-cream-50"
-                      }`}
-                    >
+                    <dd className="text-[0.9375rem] leading-relaxed text-cream-50 sm:col-span-2">
                       {row.value}
                     </dd>
                   </div>
                 ))}
               </dl>
-              {heritageRows.some((row) => row.pending) ? (
-                <p className="mt-6 text-xs leading-relaxed text-cream-100/45">
-                  {t.heritageNote}
-                </p>
-              ) : null}
             </div>
+            ) : null}
           </Container>
         </section>
       ) : null}
 
       <section className="texture-paper border-y border-cream-300/70 bg-cream-100/70 py-16 sm:py-20">
-        <Container className="grid gap-10 lg:grid-cols-2 lg:gap-14">
-          <div>
-            <SectionHeading title={t.transportHeading} />
-            <div className="mt-6">
-              <PendingNote>{t.transportPending}</PendingNote>
-            </div>
-          </div>
-
-          <div>
+        <Container>
+          <div className="max-w-2xl">
             <SectionHeading title={t.etiquetteHeading} />
             <ul className="mt-6 space-y-3">
               {t.etiquette.map((line, index) => (

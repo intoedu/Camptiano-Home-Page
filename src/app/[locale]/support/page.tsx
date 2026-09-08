@@ -9,7 +9,6 @@ import {
   Card,
   Container,
   PageHeader,
-  PendingNote,
   SectionHeading,
 } from "@/components/ui";
 import { getDictionary, isLocale, type Locale } from "@/i18n";
@@ -165,35 +164,29 @@ export default async function SupportPage({
           </div>
 
           <div className="space-y-6">
-            <div>
-              <h2 className="font-serif text-lg font-semibold">
-                {t.onlineHeading}
-              </h2>
-              {activeLinks.length > 0 ? (
-                <>
-                  <p className="mt-3 text-sm leading-relaxed text-bark-600">
-                    {t.onlineBody}
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-3">
-                    {activeLinks.map((link) => (
-                      <a
-                        key={link.id}
-                        href={link.url}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        className="inline-flex items-center justify-center rounded-full bg-ochre-600 px-6 py-3 text-sm font-semibold text-cream-50 shadow-warm transition-colors hover:bg-ochre-700"
-                      >
-                        {link.label[locale]}
-                      </a>
-                    ))}
-                  </div>
-                </>
-              ) : (
-                <div className="mt-3">
-                  <PendingNote>{t.onlinePending}</PendingNote>
+            {activeLinks.length > 0 ? (
+              <div>
+                <h2 className="font-serif text-lg font-semibold">
+                  {t.onlineHeading}
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-bark-600">
+                  {t.onlineBody}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {activeLinks.map((link) => (
+                    <a
+                      key={link.id}
+                      href={link.url}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="inline-flex items-center justify-center rounded-full bg-ochre-600 px-6 py-3 text-sm font-semibold text-cream-50 shadow-warm transition-colors hover:bg-ochre-700"
+                    >
+                      {link.label[locale]}
+                    </a>
+                  ))}
                 </div>
-              )}
-            </div>
+              </div>
+            ) : null}
 
             <div>
               <h2 className="font-serif text-lg font-semibold">
@@ -206,15 +199,6 @@ export default async function SupportPage({
                 <Button href={`/${locale}/contact`} variant="secondary">
                   {t.corporateCta}
                 </Button>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="font-serif text-lg font-semibold">
-                {t.receiptHeading}
-              </h2>
-              <div className="mt-3">
-                <PendingNote>{t.receiptPending}</PendingNote>
               </div>
             </div>
 

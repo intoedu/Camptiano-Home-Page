@@ -136,17 +136,6 @@
     );
   }
 
-  /* 사진이 준비되기 전, 의도된 빈 액자 */
-  .photo-slot {
-    background-color: var(--color-cream-200);
-    background-image: repeating-linear-gradient(
-      135deg,
-      rgb(176 124 49 / 0.075) 0px,
-      rgb(176 124 49 / 0.075) 1px,
-      transparent 1px,
-      transparent 13px
-    );
-  }
 
   /* 첫 화면이 조용히 자리를 잡도록 하는 짧은 등장 */
   .rise {
